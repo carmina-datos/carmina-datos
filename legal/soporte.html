@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Soporte — Carmina</title>
+<!--
+  **Existe porque la URL de soporte apuntaba a la plantilla que GitHub crea
+  sola** —«Hi there 👋», con los `🔭 I'm currently working on ...` sin tocar—.
+  Apple rechaza por eso, y no por la app.
+
+  Lo que la revisión comprueba de verdad es **que haya una forma de contactar
+  que funcione**: una URL de soporte sin dirección es la que rechazan. Por eso
+  el correo va arriba y no en un pie.
+
+  **Y la lee alguien que ya tiene un problema, no alguien decidiendo si compra.**
+  Por eso dice qué hacer antes que qué es, y las dos frases de arriba están para
+  que quien llegue de fuera sepa de qué app le hablan — no son la ficha de la
+  tienda.
+
+  **La dirección aparece UNA sola vez en este archivo**, para que cambiarla por
+  una de soporte sea un reemplazo y no una relectura. Aviso para quien lo haga:
+  también está en `privacidad.html` y en `borrar-cuenta.html`, así que son
+  **tres archivos** y no uno.
+-->
+<style>
+  :root { color-scheme: light dark;
+    --papel:#FCFBF8; --tinta:#1F1B19; --suave:#6B625D; --carmin:#D32B37; --filete:#E7E1D8; }
+  @media (prefers-color-scheme: dark) {
+    :root { --papel:#16120F; --tinta:#EDE7DF; --suave:#A89E95; --carmin:#E9636E; --filete:#322C26; }
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--papel); color:var(--tinta); padding:40px 22px 56px;
+    font:16.5px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
+  main { max-width:34rem; margin:0 auto; }
+  .marca { color:var(--carmin); font-size:2rem; font-weight:700; letter-spacing:.5px;
+    font-family:Georgia,"Times New Roman",serif; margin:0 0 28px; }
+  h1 { font-size:1.6rem; line-height:1.25; margin:0 0 10px; }
+  h2 { font-size:1.1rem; margin:32px 0 8px; }
+  p { color:var(--suave); margin:0 0 16px; }
+  a { color:var(--carmin); }
+  .correo { display:block; border:1px solid var(--filete); border-radius:14px;
+    padding:18px 20px; margin:22px 0 8px; text-align:center;
+    font-size:1.15rem; font-weight:600; text-decoration:none; }
+  .correo span { display:block; font-size:.9rem; font-weight:400; color:var(--suave);
+    margin-top:6px; }
+  ul { color:var(--suave); padding-left:1.2em; margin:0 0 16px; }
+  li { margin-bottom:6px; }
+  footer { margin-top:40px; padding-top:18px; border-top:1px solid var(--filete);
+    font-size:.9rem; color:var(--suave); }
+</style>
+</head>
+<body>
+<main>
+  <p class="marca">Carmina</p>
+  <h1>Soporte</h1>
+
+  <p>Si algo no funciona, o no sabes cómo hacer algo en la aplicación,
+  escríbenos. Contesta una persona.</p>
+
+  <a class="correo" href="mailto:dslarralde@gmail.com?subject=Carmina%20—%20ayuda">
+    dslarralde@gmail.com
+    <span>Escríbenos y te contestamos</span>
+  </a>
+
+  <p>Si nos cuentas <strong>qué estabas haciendo</strong> y <strong>qué
+  esperabas que pasara</strong>, lo resolvemos antes. Una captura de pantalla
+  ayuda más que una descripción.</p>
+
+  <h2>Tu cuenta</h2>
+  <ul>
+    <li><strong>Olvidaste la contraseña:</strong> en Carmina, en Perfil, en la
+      pantalla de entrar, toca «¿Olvidaste la contraseña?». Te llega un correo
+      con un enlace, y ese enlace hay que abrirlo <strong>en el mismo teléfono</strong>
+      desde el que lo pediste.</li>
+    <li><strong>Quieres borrar tu cuenta:</strong> se hace desde
+      <a href="./borrar-cuenta.html">esta página</a>, y se borra de verdad.</li>
+  </ul>
+
+  <h2>Qué es Carmina</h2>
+  <p>Una aplicación para leer latín y griego antiguo: el texto a un lado y, al
+  tocar cualquier palabra, su análisis y lo que significa. Trae también
+  ejercicios para practicar la métrica, la concordancia y el vocabulario de un
+  autor concreto.</p>
+
+  <footer>
+    <a href="./privacidad.html">Política de privacidad</a> ·
+    <a href="./borrar-cuenta.html">Borrar tu cuenta</a>
+  </footer>
+</main>
+</body>
+</html>
