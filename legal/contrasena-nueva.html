@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contraseña nueva — Carmina</title>
+<!--
+  PUENTE, no formulario. Y no es una elección de diseño: la app pide el correo
+  con PKCE, así que **la mitad secreta se queda en el teléfono que lo pidió** y
+  esta página recibe un `code` que no tiene con qué canjear. Poner aquí un campo
+  de contraseña sería prometer algo que no puede ocurrir.
+
+  Existe porque iOS **no abre una app desde un salto del servidor**: un `302`
+  hacia un esquema propio no lo considera iniciado por la persona y lo bloquea —
+  y el alumno veía «la dirección no es válida» con la app instalada al lado.
+  **Un enlace que se toca sí funciona.** De ahí el botón.
+
+  Lo que NO puede olvidar, y es el fallo que se lee como éxito: **el botón
+  arrastra el `code`**. Si abriera el esquema a secas, la app se abriría sin
+  nada que canjear y parecería que funcionó.
+
+  **El texto es del pedagogo** (DECISIONES §151), y con él vinieron dos cambios
+  que no son de palabras: el orden —el aviso antes del botón— y quitar un viaje
+  que no hacía falta. El mío mandaba a empezar de cero desde la app; el suyo
+  manda a abrir **el mismo correo** en el teléfono.
+
+  Nada promete: ni «pronto», ni «ya casi», ni «se activará». La única frase en
+  futuro —«te pedirá la nueva»— describe lo que hace el botón que tiene debajo.
+  Se fue «Ya casi está», que no decía nada y, si el botón no funciona —que es
+  justo lo que le pasa al del ordenador—, se leía como una mentira.
+
+  **Y una frase suya lleva pegada una coletilla mía, con su motivo:** «si te
+  dice que el enlace ya no sirve, pide otro desde la app». Ninguno de los dos ha
+  medido si Supabase invalida el enlace al abrirlo —el paso `/auth/v1/verify`
+  corre ANTES de llegar aquí, así que el enlace puede estar gastado aunque esta
+  página no lea nada—. Él apuesta a que sobrevive y yo a que no.
+
+  **Los dos errores no cuestan lo mismo**: si él acierta, mi coletilla sobra y
+  no molesta; si acierto yo, su frase manda a un fallo a alguien ya frustrado y
+  le confirma que la app está rota. Mientras nadie lo mida, la frase tiene que
+  ser cierta con las dos respuestas. Se mide en un minuto: abrir un enlace de
+  recuperación en el ordenador y volver a abrirlo en el teléfono.
+-->
+<style>
+  :root { color-scheme: light dark;
+    --papel:#FCFBF8; --tinta:#1F1B19; --suave:#6B625D; --carmin:#D32B37; --filete:#E7E1D8; }
+  @media (prefers-color-scheme: dark) {
+    :root { --papel:#16120F; --tinta:#EDE7DF; --suave:#A89E95; --carmin:#E9636E; --filete:#322C26; }
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+    background:var(--papel); color:var(--tinta); padding:32px 22px;
+    font:16.5px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
+  main { max-width:28rem; text-align:center; }
+  .marca { color:var(--carmin); font-size:2rem; font-weight:700; letter-spacing:.5px;
+    font-family:Georgia,"Times New Roman",serif; margin:0 0 28px; }
+  h1 { font-size:1.5rem; line-height:1.25; margin:0 0 10px; }
+  p { color:var(--suave); margin:0 0 22px; }
+  .boton { display:inline-block; background:var(--carmin); color:#fff; text-decoration:none;
+    font-size:1.05rem; font-weight:600; padding:14px 26px; border-radius:12px; margin-bottom:22px; }
+  .aviso { border:1px solid var(--filete); border-radius:14px; padding:16px 18px;
+    text-align:left; font-size:.95rem; color:var(--suave); }
+  .aviso strong { color:var(--tinta); }
+  [hidden] { display:none !important; }
+</style>
+</head>
+<body>
+<main>
+  <p class="marca">Carmina</p>
+
+  <!--
+    **El aviso va ANTES del botón, y ése era el defecto de verdad.** Estaba
+    debajo: el botón es grande y rojo, el del ordenador lo pulsa primero y se
+    queda sin nada, y la información que necesitaba le llegaba **después de
+    haber fallado**. La advertencia tiene que poder leerse sin haber tocado el
+    botón (pedagogo, DECISIONES §151).
+  -->
+  <div id="puente" hidden>
+    <h1>Tu contraseña nueva, en la app</h1>
+    <div class="aviso" style="margin-bottom:22px">
+      <strong>¿Estás en un ordenador?</strong><br>
+      Aquí el botón no funciona, y no es un fallo: el cambio se queda atado al
+      teléfono desde el que lo pediste. Abre este mismo correo en ese teléfono y
+      toca el enlace desde ahí. Si te dice que el enlace ya no sirve, pide otro
+      desde la app.
+    </div>
+    <p>Toca el botón y Carmina te pedirá la nueva.</p>
+    <a id="abrir" class="boton" href="#">Abrir Carmina</a>
+  </div>
+
+  <div id="sincodigo" hidden>
+    <h1>Este enlace ya no sirve</h1>
+    <p>Los enlaces para cambiar la contraseña caducan y sólo se pueden usar una vez.</p>
+    <div class="aviso">
+      <strong>Pide otro desde el teléfono.</strong><br>
+      En Carmina, en Perfil, en la pantalla de entrar, toca
+      «¿Olvidaste la contraseña?». Abre el correo nuevo en ese mismo teléfono.
+    </div>
+  </div>
+</main>
+
+<script>
+  // **El `code` se arrastra entero, y no se lee ni se toca.**
+  //
+  // Supabase puede mandar la respuesta en la consulta (`?code=…`) o en el
+  // fragmento (`#access_token=…`), según el flujo. Se reenvía LO QUE VENGA, en
+  // el mismo sitio en que venga: interpretarlo aquí sería escribir por segunda
+  // vez una regla que ya está en la app, y las dos copias se separan.
+  (function () {
+    var consulta = window.location.search || '';
+    var trozo = window.location.hash || '';
+    var hayAlgo = /[?&](code|token|token_hash)=/.test(consulta) ||
+                  /(access_token|refresh_token|code)=/.test(trozo);
+
+    // Un error explícito de Supabase (`?error=…`) NO es un puente: es un enlace
+    // gastado o caducado, y mandar a la app con eso dentro sólo traslada el
+    // problema a una pantalla que no puede explicarlo.
+    var hayError = /[?&#]error(_code|_description)?=/.test(consulta + trozo);
+
+    if (hayAlgo && !hayError) {
+      var destino = 'com.circuloestudiosliterarios.carmina://recuperar' + consulta + trozo;
+      document.getElementById('abrir').setAttribute('href', destino);
+      document.getElementById('puente').hidden = false;
+    } else {
+      document.getElementById('sincodigo').hidden = false;
+    }
+  })();
+</script>
+</body>
+</html>
