@@ -29,17 +29,45 @@
   Se fue «Ya casi está», que no decía nada y, si el botón no funciona —que es
   justo lo que le pasa al del ordenador—, se leía como una mentira.
 
-  **Y una frase suya lleva pegada una coletilla mía, con su motivo:** «si te
-  dice que el enlace ya no sirve, pide otro desde la app». Ninguno de los dos ha
-  medido si Supabase invalida el enlace al abrirlo —el paso `/auth/v1/verify`
-  corre ANTES de llegar aquí, así que el enlace puede estar gastado aunque esta
-  página no lea nada—. Él apuesta a que sobrevive y yo a que no.
+  **El párrafo del ordenador es la tercera redacción, y las dos primeras eran
+  peores por el mismo motivo: las dos afirmaban algo sobre el enlace.**
 
-  **Los dos errores no cuestan lo mismo**: si él acierta, mi coletilla sobra y
-  no molesta; si acierto yo, su frase manda a un fallo a alguien ya frustrado y
-  le confirma que la app está rota. Mientras nadie lo mida, la frase tiene que
-  ser cierta con las dos respuestas. Se mide en un minuto: abrir un enlace de
-  recuperación en el ordenador y volver a abrirlo en el teléfono.
+  Él escribió «abre este mismo correo en el teléfono» —que falla si el enlace ya
+  se gastó— y yo le pegué «si te dice que ya no sirve, pide otro», que manda a
+  alguien ya frustrado a probar algo que probablemente falle.
+
+  **Lo que se sabe, medido y no supuesto** (DECISIONES §151.a): `verifyOtp`,
+  `exchangeCodeForSession`, `getSessionFromUrl` y `recoverSession` salen **cero
+  veces** en todo `app/`. La app no tiene ningún canje manual: sólo sabe
+  atrapar un `code`, y un `code` no viene en el correo — lo acuña Supabase en
+  `/auth/v1/verify` al pulsar el enlace. **Entre el correo y esta página corre
+  siempre un salto de servidor, y quien lo pulse primero es quien lo gasta**,
+  toque esta página el código o no.
+
+  Lo que sigue sin estar medido es si ese salto invalida el enlace. Así que
+  **ninguno de los dos estados lo dice**: los dos mandan a pedir otro, que es lo
+  único cierto con las dos respuestas y además lo que funciona a la primera.
+
+  > La primera versión de cada uno describía el enlace. La que queda describe
+  > **lo que hay que hacer**, y por eso no depende de lo que no sabemos.
+
+  **Y la misma afirmación sobrevivió doce líneas más abajo**, en `#sincodigo`:
+  «los enlaces caducan y sólo se pueden usar una vez» — el mismo hecho sin medir,
+  **en el sitio donde nadie estaba discutiendo**. Arreglamos donde nos
+  peleábamos y lo dejamos donde no. Lo encontró el pedagogo buscando la página
+  entera en vez de sólo el párrafo en disputa.
+
+  El título de ese estado **sí se queda**: «este enlace ya no sirve» es lo que la
+  página ha OBSERVADO —llegó sin código utilizable, o con un `error=` explícito—,
+  no una teoría sobre la vida de los enlaces. Lo que se fue es la explicación.
+  Y «ábrelo en cuanto te llegue» es **un consejo y no una afirmación**: bueno si
+  caducan, inofensivo si no.
+
+  **Esta página no tiene guarda para esto y lo digo en vez de fingirla.** «No
+  afirmar un hecho que no se ha medido» no se comprueba con una prueba: una que
+  buscara las palabras prohibidas bloquearía cualquier reescritura legítima. Lo
+  único que queda es este comentario, donde lo va a leer quien escriba la
+  siguiente frase.
 -->
 <style>
   :root { color-scheme: light dark;
@@ -80,9 +108,9 @@
     <div class="aviso" style="margin-bottom:22px">
       <strong>¿Estás en un ordenador?</strong><br>
       Aquí el botón no funciona, y no es un fallo: el cambio se queda atado al
-      teléfono desde el que lo pediste. Abre este mismo correo en ese teléfono y
-      toca el enlace desde ahí. Si te dice que el enlace ya no sirve, pide otro
-      desde la app.
+      teléfono desde el que lo pediste. Pide otro enlace desde la app —en Perfil,
+      en la pantalla de entrar, «¿Olvidaste la contraseña?»— y abre ese correo en
+      el teléfono.
     </div>
     <p>Toca el botón y Carmina te pedirá la nueva.</p>
     <a id="abrir" class="boton" href="#">Abrir Carmina</a>
@@ -90,7 +118,7 @@
 
   <div id="sincodigo" hidden>
     <h1>Este enlace ya no sirve</h1>
-    <p>Los enlaces para cambiar la contraseña caducan y sólo se pueden usar una vez.</p>
+    <p>No es un fallo tuyo. Pide otro y ábrelo en cuanto te llegue.</p>
     <div class="aviso">
       <strong>Pide otro desde el teléfono.</strong><br>
       En Carmina, en Perfil, en la pantalla de entrar, toca

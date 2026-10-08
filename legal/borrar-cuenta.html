@@ -8,7 +8,7 @@
   :root {
     color-scheme: light dark;
     --papel: #FCFBF8; --tinta: #1F1B19; --suave: #6B625D;
-    --filete: #E7E1D8; --carmin: #B01F2A; --hundido: #F6F3EC;
+    --filete: #E7E1D8; --carmin: #D32B37; --hundido: #F6F3EC;
   }
   @media (prefers-color-scheme: dark) {
     :root { --papel: #16120F; --tinta: #EDE7DF; --suave: #A89E95;
@@ -51,9 +51,15 @@
   <div class="caja">
     <h2>Desde la aplicación, en un momento</h2>
     <ol style="margin-bottom:0">
-      <li>Abre Carmina y entra en <strong>Perfil</strong>.</li>
-      <li>Baja hasta <strong>Borrar mi cuenta</strong>.</li>
-      <li>Confirma. El borrado es inmediato y no hay que esperar a nadie.</li>
+      <li>Abre Carmina y toca tu foto o tus iniciales, arriba a la derecha: se abre <strong>Perfil</strong>.</li>
+      <li>Toca tu nombre: se abre <strong>Cuenta</strong>.</li>
+      <li>Al final de la pantalla, toca <strong>Borrar mi cuenta</strong>.</li>
+      <!-- «Inmediato» es cierto porque el proyecto de Supabase está en el plan
+           gratuito, que no guarda copias de seguridad (David, 1-oct-2026). Si
+           pasa a un plan de pago, Supabase guarda copias diarias durante días,
+           y entonces esta frase y «De inmediato y por completo», en la tabla
+           de abajo, prometen más de lo que pasa: hay que cambiarlas. -->
+      <li>Confirma. El borrado es inmediato.</li>
     </ol>
   </div>
 
@@ -69,6 +75,17 @@
       <td><strong>Se borra</strong><br>Tu cuenta y tu correo</td>
       <td>De inmediato y por completo.</td>
     </tr>
+    <!-- Lo del sitio, como lo dice hoy el aviso de la app al borrar
+         (`perfilBorrarCuentaDetalle`): es la misma cuenta de Supabase y todo
+         lo suyo cuelga de ella con `on delete cascade`. Si se mantiene es D44,
+         de David. «Tus tareas entregadas», que el aviso sí nombra, no va
+         aquí: se borra la fila de cada entrega, pero no consta que se borre
+         el archivo, que vive aparte, en Storage. -->
+    <tr>
+      <td><strong>Se borra</strong><br>Tu cuenta del sitio del Círculo</td>
+      <td>Es la misma cuenta: se borran también tu inscripción, tu horario y tu
+      avance en las sesiones.</td>
+    </tr>
     <tr>
       <td><strong>Se borra</strong><br>Las traducciones que enviaste</td>
       <td>Incluidas las que tu profesor ya haya visto.</td>
@@ -78,6 +95,19 @@
       <td>La marca que te devolvía a tu sitio.</td>
     </tr>
     <tr>
+      <td><strong>Se borra</strong><br>Tu foto de perfil</td>
+      <td>La que guardamos en tu cuenta. La de tu aparato se va al borrar la
+      aplicación.</td>
+    </tr>
+    <tr>
+      <td><strong>Se borra</strong><br>Tus favoritos</td>
+      <td>Los autores y las obras que marcaste con la estrella.</td>
+    </tr>
+    <tr>
+      <td><strong>Se borra</strong><br>Cómo te fue en los ejercicios</td>
+      <td>El resultado de cada tanda que hiciste.</td>
+    </tr>
+    <tr>
       <td><strong>Se borra</strong><br>Lo que contestaste al empezar</td>
       <td>Por qué estudias latín, por dónde vas y qué autores te interesan.</td>
     </tr>
@@ -85,6 +115,19 @@
       <td><strong>Se borra</strong><br>Los avisos de error que mandaste</td>
       <td>Si el aviso ya sirvió para corregir el diccionario, la corrección se
       queda —es del diccionario, no tuya— pero deja de constar quién la mandó.</td>
+    </tr>
+    <tr>
+      <td><strong>Se borra</strong><br>Lo de Amigos</td>
+      <td>Tus amistades y solicitudes, las traducciones que compartiste y tus
+      comentarios. De los comentarios entre una persona menor y una adulta queda
+      una copia que se borra a los 90 días, y las denuncias se quedan sin tu
+      nombre.</td>
+    </tr>
+    <tr>
+      <td><strong>Se borra</strong><br>Tu número de investigación</td>
+      <td>La correspondencia entre tu cuenta y el número con que se guardan los
+      datos de investigación. Esos datos se quedan, pero ya no son de nadie, y
+      de ellos solo se publican resultados de conjunto.</td>
     </tr>
     <tr>
       <td><strong>Se queda</strong><br>El diccionario y los textos</td>

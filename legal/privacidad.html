@@ -8,7 +8,7 @@
   :root {
     color-scheme: light dark;
     --papel: #FCFBF8; --tinta: #1F1B19; --suave: #6B625D;
-    --filete: #E7E1D8; --carmin: #B01F2A;
+    --filete: #E7E1D8; --carmin: #D32B37;
   }
   @media (prefers-color-scheme: dark) {
     :root { --papel: #16120F; --tinta: #EDE7DF; --suave: #A89E95;
@@ -39,9 +39,9 @@
 <body>
 <main>
   <h1>Política de privacidad de Carmina</h1>
-  <p class="fecha">David Sainz Larralde · actualizada el 4 de septiembre de 2026</p>
+  <p class="fecha">David Sainz Larralde · actualizada el 8 de octubre de 2026</p>
 
-  <p>Carmina es una aplicación para leer latín. Casi todo lo que hace ocurre
+  <p>Carmina es una aplicación para leer latín y griego. Casi todo lo que hace ocurre
   dentro de tu aparato: el diccionario, los textos y los ejercicios funcionan
   sin conexión y sin cuenta. Esta página explica qué pasa con lo poco que sí
   sale de ahí.</p>
@@ -51,13 +51,20 @@
   registrarse. Si no creas una cuenta, no recogemos absolutamente nada.</p>
 
   <h2>Qué guardamos si creas una cuenta</h2>
-  <p>La cuenta sirve para el taller: que tu profesor vea tu trabajo.
-  Guardamos entonces:</p>
+  <p>La cuenta sirve para que tengas lo tuyo igual en cualquier aparato donde
+  entres y, si vas a un taller, para que tu profesor vea tu trabajo. Guardamos
+  entonces:</p>
   <ul>
     <li><strong>Tu correo electrónico y tu nombre</strong>, para identificarte
       ante tu profesor.</li>
     <li><strong>Las traducciones que envías</strong> desde el taller.</li>
-    <li><strong>Por dónde vas leyendo</strong>, para devolverte al sitio.</li>
+    <li><strong>Por dónde vas leyendo</strong> en cada obra, para devolverte al
+      sitio.</li>
+    <li><strong>Tus autores y obras favoritos</strong>, los que marcas con la
+      estrella.</li>
+    <li><strong>Cómo te fue en los ejercicios</strong>: de cada tanda, cuál
+      hiciste, cuántas acertaste de cuántas y cuándo. No guardamos cada
+      respuesta.</li>
     <li><strong>Los avisos de error</strong> que mandes sobre una palabra o un
       verso, con la pantalla desde la que los enviaste.</li>
     <li><strong>Lo que contestaste al abrir la aplicación por primera vez</strong>:
@@ -65,9 +72,14 @@
       guarda en tu aparato desde el principio, sin cuenta; solo sube aquí si
       algún día inicias sesión.</li>
   </ul>
-  <p>Nada más. No recogemos tu ubicación, tu agenda, tus contactos, tus fotos
-  ni identificadores de publicidad. La aplicación no lleva anuncios ni
+  <p>Nada más. No recogemos tu ubicación, tu agenda, tus contactos ni
+  identificadores de publicidad. La aplicación no lleva anuncios ni
   rastreadores de terceros.</p>
+  <p>Si pones una foto de perfil, la eliges tú, de tus fotos o haciéndola con la
+  cámara. Se guarda en tu aparato y en tu cuenta, en un almacén privado, para
+  que la tengas también en otros aparatos donde entres: solo la ves tú. Si la
+  quitas, la borramos de tu cuenta, y se borra también al borrar la cuenta. La
+  aplicación no abre la cámara ni mira tus fotos para nada más.</p>
 
   <h2>Si entras con Apple o con Facebook</h2>
   <p>Puedes entrar con tu cuenta de Apple o de Facebook en vez de con un
@@ -90,19 +102,84 @@
   acreditar que en su momento nos lo pediste y que dejamos de hacerlo cuando nos
   lo dijiste.</p>
 
+  <h2>Amigos</h2>
+  <p>Amigos no está encendido hasta que lo activas tú (Perfil › Amigos). Si lo
+  activas:</p>
+  <ul>
+    <li><strong>Tus amigos ven</strong> tu nombre como elijas mostrarlo, tu
+      @usuario, tu foto si la pusiste y desde cuándo sois amigos. Lo que estás
+      leyendo, solo si enciendes esa opción. Alguien te encuentra por tu
+      @usuario solo si lo permites, y a quien es menor de edad no se le puede
+      encontrar así.</li>
+    <li><strong>Las traducciones que compartes</strong>: solo las aprobadas, y
+      solo las ven las personas que aceptaste como amigos. Dejas de
+      compartirlas cuando quieras.</li>
+    <li><strong>Los comentarios</strong> sobre una traducción compartida son
+      privados entre dos: quien la compartió y el amigo que la comenta. Nadie
+      más los ve. Cada uno puede borrar los suyos, y quien compartió la
+      traducción puede borrar cualquiera de ella o no admitir comentarios.
+      Entre una persona menor de edad y una adulta solo hay comentarios si la
+      menor lo permite; de esos guardamos una copia durante 90 días, aunque se
+      borren, únicamente para poder revisar una denuncia.</li>
+    <li><strong>Las denuncias</strong> que hagas, con su motivo y, si la hay,
+      la traducción o el comentario denunciado. Las leemos nosotros para
+      decidir qué hacer; la persona denunciada no sabe quién la denunció.</li>
+  </ul>
+
   <h2>Con quién se comparte</h2>
-  <p>Con tu profesor del taller, y con nadie más. No vendemos datos, no los
+  <p>Con tu profesor del taller y, si activas Amigos, con las personas que
+  aceptes como amigos, en la medida que se explica arriba. Con nadie más. No vendemos datos, no los
   cedemos a anunciantes y no los usamos para entrenar nada. Los datos se
   guardan en <a href="https://supabase.com/privacy">Supabase</a>, que los aloja
-  por nosotros y no los usa para otra cosa.</p>
+  por nosotros y no los usa para otra cosa. De la investigación (más abajo) se
+  publican resultados de conjunto, nunca los de una persona.</p>
+
+  <p>Hay una excepción, y solo si la pides tú: si pides la revisión con IA de una
+  traducción, tu traducción y el latín se mandan a
+  <a href="https://www.anthropic.com/legal/privacy">Anthropic</a> (Claude) para
+  revisarlos. Carmina no los guarda: de cada revisión queda solo que la pediste
+  y cuándo, para no pasar de 20 al día.</p>
+
+  <h2>Investigación</h2>
+  <p>Carmina es también una investigación sobre cómo se aprenden el latín y el
+  griego, y lo que aprendemos de ella sirve además para mejorar la aplicación.
+  Mientras tengas encendido <strong>Investigación y mejora de Carmina</strong>
+  (Ajustes › Privacidad), se registra:</p>
+  <ul>
+    <li><strong>Cómo usas la aplicación</strong>: qué buscas en el diccionario,
+      qué fichas abres, qué libros abres y qué palabras tocas al leer, cómo te
+      va en cada tanda de ejercicios y, en la traducción, qué preguntas
+      acertaste, si usaste la pista y cuánto tardaste. Nunca el texto de tus
+      traducciones.</li>
+    <li><strong>Unos datos sobre ti</strong>: tu mes y año de nacimiento, por
+      qué estudias y tu nivel (lo que contestaste al empezar), el idioma de la
+      aplicación, la lengua que estudias, el país que tiene configurado tu
+      aparato —no tu ubicación—, si usas iPhone o Android y la versión de la
+      aplicación.</li>
+  </ul>
+  <p>Todo eso se guarda con un número en lugar de tu nombre: los datos de
+  investigación no llevan tu nombre, tu correo ni tu @usuario, y solo se
+  publican resultados de conjunto. La correspondencia entre tu cuenta y tu
+  número se guarda aparte, y se borra al borrar tu cuenta: desde entonces, lo
+  que quede ya no es de nadie.</p>
+  <p>Te lo decimos antes de crear la cuenta, en «Lo que debes saber», y
+  guardamos qué versión de este texto viste y cuándo. Puedes dejar de
+  participar cuando quieras apagando <strong>Investigación y mejora de
+  Carmina</strong>: desde ese momento, lo que hagas deja de entrar, también
+  desde tus otros aparatos.</p>
 
   <h2>Cuánto tiempo</h2>
-  <p>Mientras tengas cuenta. Cuando la borras, se borra todo lo anterior.</p>
+  <p>Mientras tengas cuenta. Cuando la borras, se borra todo lo anterior —también
+  tus amistades, lo que compartiste y tus comentarios—, salvo los datos de
+  investigación, que desde ese momento ya no llevan nada que te identifique;
+  las denuncias, que se quedan sin tu nombre, y la copia de los comentarios
+  entre una persona menor y una adulta, que se borra a los 90 días.</p>
 
   <div class="caja">
     <h2 style="margin-top:0">Cómo borrar tu cuenta</h2>
-    <p style="margin-bottom:0">Dentro de la aplicación, en <strong>Perfil →
-    Borrar mi cuenta</strong>. Es inmediato y no hace falta pedírnoslo. Si
+    <p style="margin-bottom:0">Dentro de la aplicación: toca tu foto o tus
+    iniciales, arriba a la derecha; luego tu nombre, y al final de la pantalla,
+    <strong>Borrar mi cuenta</strong>. Es inmediato y no hace falta pedírnoslo. Si
     prefieres que lo hagamos nosotros, o ya no tienes la app instalada, puedes
     solicitarlo en <a href="./borrar-cuenta.html">esta página</a>.</p>
   </div>

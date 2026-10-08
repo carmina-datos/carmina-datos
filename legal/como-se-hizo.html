@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cómo se hizo Carmina</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --papel: #FCFBF8; --tinta: #1F1B19; --suave: #6B625D;
+    --filete: #E7E1D8; --carmin: #D32B37; --hundido: #F6F3EC;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --papel: #16120F; --tinta: #EDE7DF; --suave: #A89E95;
+            --filete: #322C26; --carmin: #E9636E; --hundido: #120E0C; }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 48px 22px 80px; background: var(--papel); color: var(--tinta);
+    font: 16.5px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 38rem; margin: 0 auto; }
+  h1 { font-size: 1.8rem; line-height: 1.2; margin: 0 0 6px; }
+  .app { color: var(--suave); font-size: .95rem; margin: 0 0 36px; }
+  h2 { font-size: 1.12rem; margin: 32px 0 10px; }
+  ol { padding-left: 1.2rem; }
+  li { margin-bottom: 9px; }
+  a { color: var(--carmin); }
+  .caja {
+    background: var(--hundido); border: 1px solid var(--filete);
+    border-radius: 12px; padding: 18px 20px; margin: 24px 0;
+  }
+  .caja h2 { margin-top: 0; }
+  table { border-collapse: collapse; width: 100%; margin: 10px 0 0; }
+  td { padding: 7px 0; border-bottom: 1px solid var(--filete); vertical-align: top; }
+  td:first-child { width: 45%; padding-right: 14px; }
+  td:last-child { color: var(--suave); }
+  tr:last-child td { border-bottom: 0; }
+  footer {
+    margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--filete);
+    color: var(--suave); font-size: .9rem;
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>Cómo se hizo Carmina</h1>
+  <p class="app">Aplicación <strong>Carmina</strong> · David Sainz
+  Larralde · <code>com.circuloestudiosliterarios.carmina_app</code></p>
+
+  <p>El programa —la aplicación, las herramientas que compilan su base y las reglas con que se genera la flexión— se escribió con asistencia de una herramienta de inteligencia artificial. La idea, el diseño de lo que había que enseñar y la revisión de que el resultado esté bien son del autor de la app.</p>
+
+  <p><strong>Las glosas.</strong> Parte de los significados en español vienen
+  del <em>Valbuena</em> (1793). Los demás —y todos los del griego y el
+  italiano— se redactaron para Carmina, en sesiones con asistencia de
+  inteligencia artificial, a partir del artículo del diccionario de cada
+  entrada.</p>
+
+  <p>Ese artículo está debajo de la entrada, así que la glosa se puede cotejar
+  con su fuente sin salir de la app. Quedan fuera unas pocas entradas griegas,
+  escritas también para Carmina —nombres propios que los léxicos no
+  recogen—, que no tienen artículo debajo.</p>
+
+  <p>Las glosas se revisan con el uso, no una por una antes de publicarlas.</p>
+
+  <footer>
+    <p><strong>Contacto:</strong> <a href="mailto:dslarralde@gmail.com">dslarralde@gmail.com</a></p>
+  </footer>
+</main>
+</body>
+</html>
