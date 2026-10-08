@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Condiciones de uso — Carmina</title>
+<!--
+  **Existe porque «Tu cuenta» (A4 del alta nueva, 8-oct-2026) dice «Al
+  continuar aceptas las Condiciones de uso y las Normas de la comunidad»**, con
+  un enlace a cada una. Hasta ese día Carmina no tenía condiciones propias.
+
+  **Por qué hacen falta, además:** desde que existe Amigos la app tiene
+  contenido de los usuarios —traducciones compartidas, comentarios, fotos—, y
+  Apple (norma 1.2) pide que el usuario acepte unas condiciones que digan que
+  no se tolera el contenido ofensivo ni a quien abusa, que haya forma de
+  denunciar y de bloquear, y que las denuncias se atiendan en 24 horas. Lo de
+  la convivencia va en `normas.html`; aquí, lo que se acepta.
+
+  **Lo que dice cada párrafo tiene que existir en la app.** La edad y el tutor
+  son la puerta de «Tu cuenta» (`cuenta_del_alta.dart`); la investigación, la
+  política de privacidad; denunciar, bloquear y la suspensión, Amigos
+  (`horario-app/schema_carmina_amigos.sql`). Si algo de eso cambia, cambia
+  aquí.
+
+  Borrador del implementador, 8-oct-2026, para que David lo lea antes de
+  publicarlo: el plazo de 24 horas es un compromiso suyo.
+-->
+<style>
+  :root {
+    color-scheme: light dark;
+    --papel: #FCFBF8; --tinta: #1F1B19; --suave: #6B625D;
+    --filete: #E7E1D8; --carmin: #D32B37;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --papel: #16120F; --tinta: #EDE7DF; --suave: #A89E95;
+            --filete: #322C26; --carmin: #E9636E; }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 48px 22px 80px; background: var(--papel); color: var(--tinta);
+    font: 16.5px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 40rem; margin: 0 auto; }
+  h1 { font-size: 1.8rem; line-height: 1.2; margin: 0 0 6px; }
+  .fecha { color: var(--suave); font-size: .9rem; margin: 0 0 36px; }
+  h2 { font-size: 1.12rem; margin: 34px 0 10px; }
+  p, li { color: var(--tinta); }
+  li { margin-bottom: 7px; }
+  a { color: var(--carmin); }
+  footer {
+    margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--filete);
+    color: var(--suave); font-size: .9rem;
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>Condiciones de uso de Carmina</h1>
+  <p class="fecha">David Sainz Larralde · 8 de octubre de 2026</p>
+
+  <p>Carmina es una aplicación gratuita para leer latín y griego: los textos,
+  un diccionario que analiza cada palabra, ejercicios, el taller de traducción
+  y Amigos. Al crear tu cuenta aceptas estas condiciones y las
+  <a href="./normas.html">Normas de la comunidad</a>. Son cortas a propósito:
+  léelas.</p>
+
+  <h2>Tu cuenta</h2>
+  <ul>
+    <li><strong>Hace falta una cuenta</strong> para usar Carmina. Se crea con
+      Apple, con Facebook o con tu correo.</li>
+    <li><strong>Hay que tener trece años cumplidos.</strong> Si tienes de trece
+      a diecisiete, lee lo que te enseñamos al crearla con tu madre, tu padre o
+      quien sea tu tutor, y confirmad juntos que estáis de acuerdo.</li>
+    <li><strong>Los datos tienen que ser verdaderos</strong>, empezando por tu
+      fecha de nacimiento: de ella dependen las protecciones para menores de
+      Amigos.</li>
+    <li><strong>La cuenta es tuya y de nadie más.</strong> Una por persona, sin
+      prestarla ni hacerte pasar por otro. Si crees que alguien ha entrado en
+      la tuya, escríbenos.</li>
+  </ul>
+
+  <h2>La investigación</h2>
+  <p>Carmina es también una investigación sobre cómo se aprenden el latín y el
+  griego, y <strong>participar en ella es parte de tener una cuenta</strong>.
+  Qué se estudia, cómo se guarda —con un número en lugar de tu nombre— y qué se
+  publica está en la <a href="./privacidad.html">política de privacidad</a>.
+  Para dejar de participar hay que borrar la cuenta.</p>
+
+  <h2>Lo que publicas</h2>
+  <p>Tus traducciones, tus comentarios, tu foto y tu nombre siguen siendo
+  tuyos. Nos das permiso para guardarlos y para enseñarlos a quien tú elijas
+  —tu profesor del taller, los amigos que aceptes— y solo para eso. Lo que
+  publiques tiene que cumplir las <a href="./normas.html">Normas de la
+  comunidad</a>: <strong>en Carmina no se tolera el contenido ofensivo ni a
+  quien acosa o abusa de otros</strong>.</p>
+
+  <h2>Denuncias, bloqueos y cuentas cerradas</h2>
+  <p>Puedes bloquear o denunciar a cualquiera desde Amigos. <strong>Cada
+  denuncia la revisa una persona en un plazo de 24 horas.</strong> Si lo
+  denunciado incumple las normas, lo borramos y, según lo grave que sea,
+  avisamos, suspendemos la cuenta de quien lo publicó o la cerramos para
+  siempre. Podemos hacer lo mismo sin denuncia si lo vemos nosotros.</p>
+
+  <h2>La revisión con IA</h2>
+  <p>Si pides que se revise una traducción con IA, se envían tu traducción y el
+  texto original a Anthropic (Claude), como se explica en la política de
+  privacidad. Es una ayuda para estudiar: puede equivocarse, y no sustituye a tu
+  profesor.</p>
+
+  <h2>Lo que trae Carmina</h2>
+  <p>El diccionario, los análisis, las notas y los ejercicios se han preparado
+  con cuidado, pero pueden tener errores; si encuentras uno, avísanos desde la
+  propia palabra o el propio verso. Úsalos para estudiar y enseñar; no los
+  copies en bloque para publicarlos o venderlos como tuyos.</p>
+
+  <h2>Sin garantías</h2>
+  <p>Carmina se ofrece gratis y tal como está. Hacemos lo posible para que
+  funcione y sea correcta, pero puede fallar, cambiar o dejar de estar
+  disponible, y no respondemos de los daños que eso pueda causar, en la medida
+  en que la ley lo permita.</p>
+  <p>Si descargaste Carmina desde el App Store, se aplica además el
+  <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">contrato
+  de licencia estándar de Apple</a>.</p>
+
+  <h2>Borrar tu cuenta</h2>
+  <p>Cuando quieras, desde la propia aplicación o desde
+  <a href="./borrar-cuenta.html">esta página</a>. Qué se borra y qué queda está
+  en la política de privacidad.</p>
+
+  <h2>Cambios</h2>
+  <p>Si estas condiciones cambian, cambiaremos la fecha de arriba y lo diremos
+  en la aplicación antes de que el cambio se aplique.</p>
+
+  <footer>
+    <p><strong>Responsable:</strong> David Sainz Larralde, editor de la
+    aplicación Carmina.<br>
+    <strong>Contacto:</strong> <a href="mailto:dslarralde@gmail.com">dslarralde@gmail.com</a></p>
+  </footer>
+</main>
+</body>
+</html>
