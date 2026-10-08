@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Normas de la comunidad — Carmina</title>
+<!--
+  **Existe porque «Tu cuenta» (A4 del alta nueva, 8-oct-2026) enlaza «Normas
+  de la comunidad»**, y porque desde Amigos hay contenido de los usuarios:
+  Apple (norma 1.2) pide decir qué no se permite, cómo se denuncia y se
+  bloquea, y qué se hace con una denuncia. Lo que se acepta va en
+  `condiciones.html`; aquí, cómo se convive.
+
+  **Cada motivo de la lista de lo que no se permite es uno de los motivos de
+  denuncia de la app** (`amigosMotivo…` en `app/lib/l10n/app_es.arb`), más lo
+  que la app ya impide sola con los menores. Si cambia la lista de motivos,
+  cambia esta página. Y lo de los menores es lo que hace el servidor
+  (`horario-app/schema_carmina_amigos.sql` y `schema_carmina_comentarios.sql`):
+  aquí no se promete nada que no esté construido.
+
+  Borrador del implementador, 8-oct-2026, para que David lo lea antes de
+  publicarlo.
+-->
+<style>
+  :root {
+    color-scheme: light dark;
+    --papel: #FCFBF8; --tinta: #1F1B19; --suave: #6B625D;
+    --filete: #E7E1D8; --carmin: #D32B37;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --papel: #16120F; --tinta: #EDE7DF; --suave: #A89E95;
+            --filete: #322C26; --carmin: #E9636E; }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 48px 22px 80px; background: var(--papel); color: var(--tinta);
+    font: 16.5px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 40rem; margin: 0 auto; }
+  h1 { font-size: 1.8rem; line-height: 1.2; margin: 0 0 6px; }
+  .fecha { color: var(--suave); font-size: .9rem; margin: 0 0 36px; }
+  h2 { font-size: 1.12rem; margin: 34px 0 10px; }
+  p, li { color: var(--tinta); }
+  li { margin-bottom: 7px; }
+  a { color: var(--carmin); }
+  footer {
+    margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--filete);
+    color: var(--suave); font-size: .9rem;
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>Normas de la comunidad</h1>
+  <p class="fecha">Carmina · 8 de octubre de 2026</p>
+
+  <p>En Carmina se comparten traducciones y se comentan entre amigos, y hay
+  estudiantes de trece años junto a profesores jubilados. Lo que pedimos es lo
+  que pediría cualquier clase: que se pueda aprender sin miedo a equivocarse
+  delante de otros.</p>
+
+  <h2>Lo que no se permite</h2>
+  <ul>
+    <li><strong>Acosar o insultar</strong>, amenazar o burlarse de alguien,
+      también de cómo traduce.</li>
+    <li><strong>Comentarios o textos inapropiados</strong>: sexuales,
+      violentos, que inciten al odio o desprecien a alguien por quien es.</li>
+    <li><strong>Fotos inapropiadas</strong>. La foto de perfil es tuya o de
+      algo tuyo: nada sexual, violento ni de otra persona sin su permiso.</li>
+    <li><strong>Hacerse pasar por otra persona</strong>, con su nombre o con su
+      foto.</li>
+    <li><strong>Compartir como tuya una traducción copiada</strong> de un libro
+      o de otra persona. Puedes compartir lo que traduces tú; lo de otros, no.</li>
+    <li><strong>Publicidad, cadenas o datos de otros</strong>: ni teléfonos ni
+      direcciones, tampoco las tuyas.</li>
+  </ul>
+
+  <h2>Con los menores, más cuidado</h2>
+  <p>Algunas cosas la app ya las hace sola:</p>
+  <ul>
+    <li>A quien es menor de edad solo lo encuentra quien tenga su invitación:
+      no aparece al buscar por @usuario, y sale con la inicial de su
+      apellido.</li>
+    <li>Entre una persona menor y una adulta solo hay comentarios si la menor
+      lo permite para esa persona, y puede quitarlo cuando quiera.</li>
+    <li>Un adulto denunciado por un menor no puede comentar con menores
+      mientras revisamos la denuncia.</li>
+  </ul>
+  <p>Y una que depende de ti: si eres adulto, no le pidas a un menor su
+  teléfono, sus redes ni que os veáis.</p>
+
+  <h2>Si algo no está bien</h2>
+  <ul>
+    <li><strong>Denúncialo</strong>: en Amigos, desde el perfil de esa persona
+      o desde el comentario, con «Denunciar». Eliges el motivo y, si quieres,
+      cuentas más. La persona denunciada no sabe quién la denunció.</li>
+    <li><strong>Bloquéala</strong>: deja de ser tu amiga y ninguna de las dos
+      verá a la otra, ni al buscar ni con una invitación. Se puede bloquear al
+      denunciar, en el mismo paso, y desbloquear en Privacidad de amigos.</li>
+    <li>Si es urgente o no sabes cómo hacerlo, escríbenos a la dirección de
+      abajo.</li>
+  </ul>
+
+  <h2>Qué hacemos con una denuncia</h2>
+  <p><strong>La revisa una persona en un plazo de 24 horas</strong>, primero
+  las que mandan menores. Si lo denunciado incumple estas normas, lo borramos
+  o, si es una foto, la ocultamos; y según lo grave que sea, avisamos,
+  suspendemos la cuenta de quien lo publicó o la cerramos para siempre. Quien
+  denunció no recibe un informe, pero lo que no cumplía deja de verse.</p>
+
+  <p>Todo esto forma parte de las <a href="./condiciones.html">Condiciones de
+  uso</a>. Cómo se tratan tus datos, también los de una denuncia, está en la
+  <a href="./privacidad.html">política de privacidad</a>.</p>
+
+  <footer>
+    <p><strong>Contacto:</strong> <a href="mailto:dslarralde@gmail.com">dslarralde@gmail.com</a></p>
+  </footer>
+</main>
+</body>
+</html>
