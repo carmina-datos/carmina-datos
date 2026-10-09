@@ -1,0 +1,8 @@
+# Lo que hay en la raíz del repositorio carmina-datos y no es web. Comprobado
+# el 9-oct-2026 con `WRANGLER_LOG=debug wrangler deploy --dry-run` (4.149.0):
+# así quedan solo las páginas de legal/.
+.git/
+.wrangler/
+wrangler.jsonc
+README.md
+CNAME
