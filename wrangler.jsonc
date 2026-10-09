@@ -2,12 +2,24 @@
 // (9-oct-2026; antes, GitHub Pages). La sube etl/subir_legales.py a la raíz
 // del repositorio carmina-datos, y Cloudflare la despliega en cada envío.
 //
-// Por ahora, solo archivos: las páginas de legal/. En la Fase 2 entra aquí
-// el código de las páginas /t/ y /a/ ("main") y apple-app-site-association.
+// Los archivos (legal/, a/) se sirven tal cual; lo demás llega a worker.js,
+// que hace las páginas /t/ de las traducciones compartidas (Fase 2).
 {
   // Tiene que llamarse como el Worker en Cloudflare (Workers & Pages).
   "name": "carmina-datos",
+  "main": "worker.js",
   "compatibility_date": "2026-09-01",
   // La raíz del repositorio; .assetsignore deja fuera lo que no es web.
-  "assets": { "directory": "." }
+  // `html_handling: none`: cada archivo en su dirección exacta, con su
+  // `.html`. Por defecto Cloudflare redirige `/legal/privacidad.html` a
+  // `/legal/privacidad`, y ésas son las direcciones de las tiendas y de la
+  // app. Las carpetas (`/a/`) las resuelve worker.js.
+  "assets": { "directory": ".", "binding": "ASSETS", "html_handling": "none" },
+  "vars": {
+    "SUPABASE_URL": "https://rpzrcrsjphrrzqpzjaec.supabase.co",
+    // La clave PÚBLICA (rol «anon»), la misma que lleva la app: sólo puede
+    // lo que permiten las funciones públicas (leer_pagina_publica y
+    // denunciar_pagina). Nunca la de servicio.
+    "SUPABASE_ANON": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJwenJjcnNqcGhycnpxcHpqYWVjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODczNzcxNTEsImV4cCI6MjEwMjk1MzE1MX0.4VvVh0Ej4X23ZvjbDj0GXGUuYU2CIJPCVoHyvPVR4us"
+  }
 }
