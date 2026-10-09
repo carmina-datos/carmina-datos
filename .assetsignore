@@ -6,3 +6,6 @@
 wrangler.jsonc
 README.md
 CNAME
+# El código del Worker y sus pruebas no son páginas.
+worker.js
+worker.test.mjs
