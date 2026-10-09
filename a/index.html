@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Una invitación de Amigos — Carmina</title>
+<!--
+  **La invitación de Amigos** (A3 del documento de Amigos; Fase 2 de «Cambios
+  del 9 de octubre»: «/a/<código>, la invitación de Amigos, que hoy da 404: la
+  app ya comparte ese enlace y la página nunca se subió»).
+
+  La app comparte `https://carmina.circulodeestudiosliterarios.com/a/?c=CÓDIGO`
+  (`enlaceDeInvitacion` en app/lib/data/amigos.dart). Esta página enseña el
+  código, lo copia y dice dónde pegarlo; «Abrir Carmina» abre la app con su
+  esquema propio. Que la app abra Amigos sola con el código llega con los
+  enlaces universales (Fase 2).
+
+  Sin rastreadores ni cookies: el aviso de cookies y el Píxel de Meta llegan
+  con la portada (F8), y no a esta página.
+
+  Las tiendas: la app aún no está publicada. Cuando lo esté, se ponen sus
+  direcciones en TIENDAS, abajo.
+-->
+<style>
+  :root { color-scheme: light dark;
+    --papel:#FCFBF8; --tinta:#1F1B19; --suave:#6B625D; --carmin:#D32B37; --filete:#E7E1D8;
+    --fondo-codigo:#F4EFE8; }
+  @media (prefers-color-scheme: dark) {
+    :root { --papel:#16120F; --tinta:#EDE7DF; --suave:#A89E95; --carmin:#E9636E; --filete:#322C26;
+      --fondo-codigo:#221C17; }
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+    background:var(--papel); color:var(--tinta); padding:32px 22px;
+    font:16.5px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
+  main { width:100%; max-width:28rem; text-align:center; }
+  .marca { color:var(--carmin); font-size:2rem; font-weight:700; letter-spacing:.5px;
+    font-family:Georgia,"Times New Roman",serif; margin:0 0 28px; }
+  h1 { font-size:1.5rem; line-height:1.25; margin:0 0 10px; text-wrap:balance; }
+  p { color:var(--suave); margin:0 0 22px; }
+  .codigo { background:var(--fondo-codigo); border:1px solid var(--filete); border-radius:14px;
+    padding:16px 18px; margin:0 0 22px; }
+  .codigo small { display:block; color:var(--suave); font-size:.85rem; letter-spacing:.06em;
+    text-transform:uppercase; margin-bottom:4px; }
+  .codigo code { display:block; font:600 1.9rem/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;
+    letter-spacing:.18em; color:var(--tinta); user-select:all; -webkit-user-select:all; margin-bottom:10px; }
+  button, .boton { font:600 1rem/1 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    border-radius:999px; padding:13px 22px; min-height:44px; cursor:pointer; text-decoration:none;
+    display:inline-flex; align-items:center; justify-content:center; }
+  .secundario { background:transparent; color:var(--carmin); border:1.5px solid var(--carmin); }
+  .principal { background:var(--carmin); color:#fff; border:0; width:100%; margin:0 0 22px; }
+  ol { text-align:left; color:var(--suave); padding-left:1.3rem; margin:0 0 26px; }
+  ol li { margin-bottom:6px; }
+  ol strong { color:var(--tinta); }
+  .tiendas { border-top:1px solid var(--filete); padding-top:20px; font-size:.95rem; }
+  .tiendas p { margin:0 0 12px; }
+  .tiendas a { color:var(--carmin); }
+  .error { border:1px solid var(--filete); border-radius:14px; padding:16px 18px; color:var(--suave); }
+  [hidden] { display:none !important; }
+</style>
+</head>
+<body>
+<main>
+  <p class="marca">Carmina</p>
+
+  <section id="con-codigo" hidden>
+    <h1 data-t="titulo">Tienes una invitación de Amigos</h1>
+    <p data-t="explica">Carmina es una aplicación para leer latín y griego. Con
+    Amigos compartes tus traducciones con quien tú quieras.</p>
+
+    <div class="codigo">
+      <small data-t="tuCodigo">Tu código</small>
+      <code id="codigo"></code>
+      <button type="button" class="secundario" id="copiar" data-t="copiar">Copiar el código</button>
+    </div>
+
+    <a class="boton principal" id="abrir" data-t="abrir">Abrir Carmina</a>
+
+    <ol>
+      <li data-t="paso1">Abre <strong>Carmina</strong> y entra con tu cuenta.</li>
+      <li data-t="paso2">Ve a <strong>Perfil › Amigos</strong> (si aún no lo usas, actívalo) y toca <strong>Añadir amigo</strong>.</li>
+      <li data-t="paso3">En <strong>¿Te mandaron una invitación?</strong>, pega el código o este enlace.</li>
+    </ol>
+  </section>
+
+  <section id="sin-codigo" hidden>
+    <h1 data-t="sinTitulo">A esta invitación le falta el código</h1>
+    <p class="error" data-t="sinExplica">Pide a quien te invitó que te mande el enlace otra vez, entero.</p>
+  </section>
+
+  <div class="tiendas">
+    <p data-t="noLaTienes">¿Aún no tienes Carmina?</p>
+    <p id="enlaces-tiendas" hidden></p>
+    <p id="pronto" data-t="pronto">Muy pronto en la App Store y en Google Play.</p>
+  </div>
+</main>
+<script>
+  // Cuando la app esté publicada, sus direcciones aquí; mientras, «Muy pronto».
+  const TIENDAS = { appStore: null, googlePlay: null };
+  const ESQUEMA = 'com.circuloestudiosliterarios.carmina://amigo?c=';
+
+  const italiano = {
+    titulo: 'Hai un invito di Amici',
+    explica: 'Carmina è un’app per leggere il latino e il greco. Con Amici condividi le tue traduzioni con chi vuoi.',
+    tuCodigo: 'Il tuo codice',
+    copiar: 'Copia il codice',
+    copiado: 'Codice copiato',
+    abrir: 'Apri Carmina',
+    paso1: 'Apri <strong>Carmina</strong> ed entra con il tuo account.',
+    paso2: 'Vai su <strong>Profilo › Amici</strong> (se non lo usi ancora, attivalo) e tocca <strong>Aggiungi amico</strong>.',
+    paso3: 'In <strong>Ti hanno mandato un invito?</strong>, incolla il codice o questo link.',
+    sinTitulo: 'A questo invito manca il codice',
+    sinExplica: 'Chiedi a chi ti ha invitato di mandarti di nuovo il link, intero.',
+    noLaTienes: 'Non hai ancora Carmina?',
+    pronto: 'Presto su App Store e Google Play.',
+  };
+  const textos = { copiado: 'Código copiado' };
+  if ((navigator.language || '').toLowerCase().startsWith('it')) {
+    document.documentElement.lang = 'it';
+    document.title = 'Un invito di Amici — Carmina';
+    for (const el of document.querySelectorAll('[data-t]')) {
+      const t = italiano[el.dataset.t];
+      if (t) el.innerHTML = t;
+    }
+    Object.assign(textos, italiano);
+  }
+
+  // El mismo código que acepta la app (`codigoDeInvitacion`): ocho letras o cifras.
+  const c = (new URLSearchParams(location.search).get('c') || '').trim();
+  const valido = /^[A-Za-z0-9]{8}$/.test(c);
+  document.getElementById(valido ? 'con-codigo' : 'sin-codigo').hidden = false;
+
+  if (valido) {
+    const codigo = c.toUpperCase();
+    document.getElementById('codigo').textContent = codigo;
+    document.getElementById('abrir').href = ESQUEMA + encodeURIComponent(codigo);
+    const boton = document.getElementById('copiar');
+    const copiado = () => { boton.textContent = textos.copiado; };
+    boton.addEventListener('click', () => {
+      const seleccionar = () => {
+        const r = document.createRange();
+        r.selectNodeContents(document.getElementById('codigo'));
+        const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(codigo).then(copiado, seleccionar);
+      } else {
+        seleccionar();
+      }
+    });
+  }
+
+  if (TIENDAS.appStore || TIENDAS.googlePlay) {
+    const p = document.getElementById('enlaces-tiendas');
+    const enlaces = [];
+    if (TIENDAS.appStore) enlaces.push('<a href="' + TIENDAS.appStore + '">App Store</a>');
+    if (TIENDAS.googlePlay) enlaces.push('<a href="' + TIENDAS.googlePlay + '">Google Play</a>');
+    p.innerHTML = enlaces.join(' · ');
+    p.hidden = false;
+    document.getElementById('pronto').hidden = true;
+  }
+</script>
+</body>
+</html>
