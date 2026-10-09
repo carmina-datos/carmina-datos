@@ -16,6 +16,11 @@
   // app. Las carpetas (`/a/`) las resuelve worker.js.
   "assets": { "directory": ".", "binding": "ASSETS", "html_handling": "none" },
   "vars": {
+    // El Píxel de Meta de la web (David, 9-oct-2026). Con él, la portada, /t/
+    // y /a/ llevan el aviso de cookies, y el Píxel se carga sólo tras
+    // «Aceptar» (worker.js, «El aviso de cookies y el Píxel de Meta»). Quitarlo
+    // apaga las dos cosas. Es público: va escrito en la página.
+    "PIXEL_ID": "1360946059199413",
     "SUPABASE_URL": "https://rpzrcrsjphrrzqpzjaec.supabase.co",
     // La clave PÚBLICA (rol «anon»), la misma que lleva la app: sólo puede
     // lo que permiten las funciones públicas (leer_pagina_publica y
