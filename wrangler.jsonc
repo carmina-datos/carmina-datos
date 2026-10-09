@@ -1,0 +1,13 @@
+// La web de carmina.circulodeestudiosliterarios.com, en Cloudflare Workers
+// (9-oct-2026; antes, GitHub Pages). La sube etl/subir_legales.py a la raíz
+// del repositorio carmina-datos, y Cloudflare la despliega en cada envío.
+//
+// Por ahora, solo archivos: las páginas de legal/. En la Fase 2 entra aquí
+// el código de las páginas /t/ y /a/ ("main") y apple-app-site-association.
+{
+  // Tiene que llamarse como el Worker en Cloudflare (Workers & Pages).
+  "name": "carmina-datos",
+  "compatibility_date": "2026-09-01",
+  // La raíz del repositorio; .assetsignore deja fuera lo que no es web.
+  "assets": { "directory": "." }
+}
