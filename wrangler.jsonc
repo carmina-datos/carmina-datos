@@ -21,6 +21,10 @@
     // «Aceptar» (worker.js, «El aviso de cookies y el Píxel de Meta»). Quitarlo
     // apaga las dos cosas. Es público: va escrito en la página.
     "PIXEL_ID": "1360946059199413",
+    // El id de Carmina en la App Store (App Store Connect › Información de la
+    // app › Apple ID), para el anuncio de Safari. El enlace «Descargar en App
+    // Store» va aparte, en APP_STORE, cuando la app esté publicada.
+    "APP_STORE_ID": "6808968860",
     "SUPABASE_URL": "https://rpzrcrsjphrrzqpzjaec.supabase.co",
     // La clave PÚBLICA (rol «anon»), la misma que lleva la app: sólo puede
     // lo que permiten las funciones públicas (leer_pagina_publica y
