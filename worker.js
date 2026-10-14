@@ -55,7 +55,7 @@ const ASOCIACION = JSON.stringify({
     details: [
       {
         appIDs: [APP_IOS],
-        components: [{ '/': '/t/*' }, { '/': '/h/*' }, { '/': '/a/*' }],
+        components: [{ '/': '/t/*' }, { '/': '/h/*' }, { '/': '/a/*' }, { '/': '/abrir' }],
       },
     ],
   },
@@ -317,6 +317,17 @@ function avisoDeCookies(env, lang, categoria = '') {
 <script>${js}</script>`;
 }
 
+// **El anuncio de Safari** (Smart App Banner, «Lo común a todas las páginas
+// web»): la etiqueta `apple-itunes-app` con el id de Carmina en la App Store
+// (APP_STORE_ID). Safari sólo lo enseña si la app está en la tienda; con la
+// app instalada dice «Abrir» y le pasa a la app [argumento], la dirección de
+// la página, que la app abre (`app/lib/data/enlaces.dart`).
+function anuncioDeSafari(env, argumento) {
+  if (!env.APP_STORE_ID) return '';
+  const extra = argumento ? `, app-argument=${esc(argumento)}` : '';
+  return `<meta name="apple-itunes-app" content="app-id=${esc(env.APP_STORE_ID)}${extra}">`;
+}
+
 function pagina({ lang, titulo, cabeza = '', cuerpo, aviso = '', indexable = false }) {
   return `<!doctype html>
 <html lang="${lang}">
@@ -398,6 +409,7 @@ async function paginaDeTraduccion(id, request, env, { aviso } = {}) {
         .join('/')}`
     : null;
   const cabeza = [
+    anuncioDeSafari(env, enlace),
     `<meta property="og:type" content="website">`,
     `<meta property="og:site_name" content="Carmina">`,
     `<meta property="og:title" content="${esc(titulo)}">`,
@@ -533,6 +545,7 @@ async function paginaDeInvitacion(codigo, request, env) {
   const nombre = quien?.nombre || null;
   const enlace = `${url.origin}/a/${codigo}`;
   const cabeza = [
+    anuncioDeSafari(env, enlace),
     `<meta property="og:type" content="website">`,
     `<meta property="og:site_name" content="Carmina">`,
     `<meta property="og:title" content="${esc(t.teInvito)}">`,
@@ -630,6 +643,7 @@ function portada(request, env) {
   const c = (url.searchParams.get('c') || '').toLowerCase();
   const campana = CAMPANA.test(c) ? `anuncio_${c}` : 'portada';
   const cabeza = [
+    anuncioDeSafari(env),
     `<meta name="description" content="${esc(t.portadaNota)}">`,
     `<meta property="og:type" content="website">`,
     `<meta property="og:site_name" content="Carmina">`,
@@ -713,6 +727,12 @@ export default {
     }
     if (url.pathname === '/' && (request.method === 'GET' || request.method === 'HEAD')) {
       return portada(request, env);
+    }
+    // **«Abrir en Carmina» de los correos** (N2): un enlace universal, así que
+    // con la app instalada la abre sin llegar aquí; sin ella, la portada, con
+    // la búsqueda intacta (`?c=correo` llega a la tienda como campaña).
+    if (url.pathname === '/abrir' && (request.method === 'GET' || request.method === 'HEAD')) {
+      return new Response(null, { status: 302, headers: { location: `/${url.search}` } });
     }
     const a = url.pathname.match(INVITACION);
     if (a && (request.method === 'GET' || request.method === 'HEAD')) {
