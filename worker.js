@@ -279,6 +279,11 @@ const AVISO_JS = `(function () {
     !function (f, b, e, v, n, t, s) { if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
       if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; t = b.createElement(e); t.async = !0;
       t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s); }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+    // Sin la configuración automática (22-oct-2026): con ella el Píxel manda
+    // por su cuenta cada botón que se toca, con su texto, y los metadatos de
+    // la página. La política promete sólo la visita, «Descargar» y «Abrir en
+    // Carmina». Va antes de 'init', como pide Meta.
+    window.fbq('set', 'autoConfig', false, PIXEL);
     window.fbq('init', PIXEL);
     evento('PageView');
     if (CATEGORIA) evento('ViewContent', { content_category: CATEGORIA });
