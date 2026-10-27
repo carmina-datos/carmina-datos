@@ -24,6 +24,13 @@
 //             Sin fila: 404. Retirada: 410, «Esta página ya no existe.».
 //   POST /t/<id>   la denuncia, sin cuenta (`denunciar_pagina`).
 //
+//   /palabras, /p/<slug>   la palabra del día (27-oct-2026): la portada de
+//             las palabras y la página de cada una, con la imagen de
+//             Instagram. Ver «La palabra del día», abajo.
+//   POST /boletin, /boletin/gracias   la suscripción de la ventana del
+//             boletín, a la función `boletin_web`, y adonde lleva el enlace
+//             de confirmación. Ver «La ventana del boletín».
+//
 //   /.well-known/apple-app-site-association   los enlaces universales: un
 //             enlace a /t/, /h/ o /a/ abre la app si está instalada (la otra
 //             mitad, en `app/ios/Runner/Runner.entitlements`).
@@ -121,6 +128,44 @@ const TEXTOS = {
     privacidad: 'Privacidad',
     condiciones: 'Condiciones',
     soporte: 'Soporte',
+    palabraDelDia: 'La palabra del día',
+    palabrasLema: 'Una palabra latina o griega cada tres días, como la enseña Carmina.',
+    hoy: 'Hoy',
+    latin: 'Latín',
+    griego: 'Griego',
+    todas: 'Todas',
+    anteriores: 'Anteriores',
+    verPalabra: 'Ver la palabra',
+    masPalabras: 'Más palabras',
+    verTodas: 'Ver todas',
+    sinPalabras: 'Muy pronto, la primera.',
+    laProxima: 'La próxima sale el',
+    noLaTienesGratis: '¿No la tienes? Descárgala gratis.',
+    palabrasApp: 'Toca cualquier palabra de un texto latino o griego y mira cómo se arma.',
+    cursos: 'Cursos del Círculo',
+    cursosTexto: 'Los cursos del Círculo de Estudios Literarios.',
+    verCursos: 'Ver cursos',
+    proximaEnTuCorreo: '¿La próxima, en tu correo?',
+    recibelaEnTuCorreo: 'Recíbela en tu correo, con las novedades de Carmina y los cursos del Círculo.',
+    suscribirme: 'Suscribirme',
+    cerrar: 'Cerrar',
+    suscribeteTitulo: 'Suscríbete a Carmina',
+    suscribeteTexto: 'Recibe novedades, etimologías y palabras, ofertas de cursos y más.',
+    bolPalabras: 'Palabras y etimologías',
+    bolNovedades: 'Novedades de Carmina',
+    tuCorreo: 'Tu correo',
+    // **El texto del consentimiento** (TEXTO_DEL_CONSENTIMIENTO, «web-2026-10-27»,
+    // en horario-app/supabase/functions/_shared/boletin.ts): si cambia, cambia
+    // allí su nombre.
+    bolLetra:
+      'Al suscribirte confirmas que tienes 18 años o más y aceptas recibir correos de Carmina y del Círculo de Estudios Literarios. Te das de baja con un clic.',
+    politica: 'Política de privacidad',
+    bolError: 'No se pudo. Revisa tu correo e inténtalo otra vez.',
+    bolHechoTitulo: 'Revisa tu correo',
+    bolHechoTexto: 'Te mandamos un enlace para confirmar. Sin confirmar, no te escribimos nada más.',
+    graciasTitulo: 'Ya estás dentro.',
+    graciasTexto: 'Te llegará la próxima palabra, con las novedades de Carmina y los cursos del Círculo.',
+    verLasPalabras: 'Ver las palabras',
   },
   it: {
     sello: 'Latino verificato',
@@ -171,6 +216,41 @@ const TEXTOS = {
     privacidad: 'Privacy',
     condiciones: 'Condizioni',
     soporte: 'Assistenza',
+    palabraDelDia: 'La parola del giorno',
+    palabrasLema: 'Una parola latina o greca ogni tre giorni, come la insegna Carmina.',
+    hoy: 'Oggi',
+    latin: 'Latino',
+    griego: 'Greco',
+    todas: 'Tutte',
+    anteriores: 'Precedenti',
+    verPalabra: 'Vedi la parola',
+    masPalabras: 'Altre parole',
+    verTodas: 'Vedi tutte',
+    sinPalabras: 'Presto, la prima.',
+    laProxima: 'La prossima esce il',
+    noLaTienesGratis: 'Non ce l’hai? Scaricala gratis.',
+    palabrasApp: 'Tocca una parola qualsiasi di un testo latino o greco e guarda com’è fatta.',
+    cursos: 'Corsi del Círculo',
+    cursosTexto: 'I corsi del Círculo de Estudios Literarios.',
+    verCursos: 'Vedi i corsi',
+    proximaEnTuCorreo: 'La prossima, nella tua email?',
+    recibelaEnTuCorreo: 'Ricevila nella tua email, con le novità di Carmina e i corsi del Círculo.',
+    suscribirme: 'Iscrivimi',
+    cerrar: 'Chiudi',
+    suscribeteTitulo: 'Iscriviti a Carmina',
+    suscribeteTexto: 'Ricevi novità, etimologie e parole, offerte di corsi e altro.',
+    bolPalabras: 'Parole ed etimologie',
+    bolNovedades: 'Novità di Carmina',
+    tuCorreo: 'La tua email',
+    bolLetra:
+      'Iscrivendoti confermi di avere almeno 18 anni e accetti di ricevere email da Carmina e dal Círculo de Estudios Literarios. Ti cancelli con un clic.',
+    politica: 'Informativa sulla privacy',
+    bolError: 'Non è stato possibile. Controlla la tua email e riprova.',
+    bolHechoTitulo: 'Controlla la tua email',
+    bolHechoTexto: 'Ti abbiamo mandato un link per confermare. Senza conferma, non ti scriviamo altro.',
+    graciasTitulo: 'Sei dentro.',
+    graciasTexto: 'Ti arriverà la prossima parola, con le novità di Carmina e i corsi del Círculo.',
+    verLasPalabras: 'Vedi le parole',
   },
 };
 
@@ -254,7 +334,7 @@ const ESTILO_AVISO = `
   [hidden] { display:none !important; }`;
 
 const AVISO_JS = `(function () {
-  var PIXEL = __PIXEL__, CATEGORIA = __CATEGORIA__, VERSION = ${VERSION_DEL_AVISO};
+  var PIXEL = __PIXEL__, CATEGORIA = __CATEGORIA__, DATOS = __DATOS__, VERSION = ${VERSION_DEL_AVISO};
   function leer() {
     var m = document.cookie.match(/(?:^|;\\s*)carmina_cookies=([^;]*)/);
     if (!m) return null;
@@ -272,6 +352,9 @@ const AVISO_JS = `(function () {
   function evento(nombre, datos, propio) {
     if (window.fbq) window.fbq(propio ? 'trackCustom' : 'track', nombre, datos || {}, { eventID: id() });
   }
+  // Para la ventana del boletín, que avisa de la suscripción (Lead). Sin
+  // «Aceptar» no hay fbq y no sale nada.
+  window.carminaEvento = evento;
   var cargado = false;
   function cargar() {
     if (cargado) return;
@@ -286,7 +369,11 @@ const AVISO_JS = `(function () {
     window.fbq('set', 'autoConfig', false, PIXEL);
     window.fbq('init', PIXEL);
     evento('PageView');
-    if (CATEGORIA) evento('ViewContent', { content_category: CATEGORIA });
+    if (CATEGORIA) {
+      var vista = { content_category: CATEGORIA };
+      for (var k in DATOS) vista[k] = DATOS[k];
+      evento('ViewContent', vista);
+    }
   }
   document.addEventListener('click', function (e) {
     var a = e.target && e.target.closest ? e.target.closest('a') : null;
@@ -305,14 +392,14 @@ const AVISO_JS = `(function () {
   if (eleccion === 'si') cargar(); else if (eleccion !== 'no') mostrar(true);
 })();`;
 
-/// El aviso, su enlace del pie y su script; nada sin PIXEL_ID.
-function avisoDeCookies(env, lang, categoria = '') {
+/// El aviso, su enlace del pie y su script; nada sin PIXEL_ID. [datos] va
+/// con el ViewContent: en la página de una palabra, cuál (`content_ids`).
+function avisoDeCookies(env, lang, categoria = '', datos = {}) {
   if (!env.PIXEL_ID) return '';
   const t = TEXTOS[lang];
-  const js = AVISO_JS.replace('__PIXEL__', JSON.stringify(String(env.PIXEL_ID))).replace(
-    '__CATEGORIA__',
-    JSON.stringify(categoria),
-  );
+  const js = AVISO_JS.replace('__PIXEL__', JSON.stringify(String(env.PIXEL_ID)))
+    .replace('__CATEGORIA__', JSON.stringify(categoria))
+    .replace('__DATOS__', JSON.stringify(datos).replace(/</g, '\\u003c'));
   return `<p class="cookies"><a href="#" id="aviso-reabrir">${t.cookies}</a></p>
 <div id="aviso-cookies" class="aviso-cookies" role="dialog" aria-live="polite" hidden>
   <p>${t.cookiesTexto} <a href="/legal/privacidad.html#cookies">${t.cookiesMas}</a></p>
@@ -686,6 +773,546 @@ ${tiendasHtml}
   );
 }
 
+// ---------- La palabra del día (27-oct-2026)
+//
+// Cada tres días, una palabra en Instagram con su imagen —la pantalla de la
+// app con la palabra tocada, que dibuja `tool/palabra_del_dia_test.dart`— y,
+// en la bio, un enlace fijo a /palabras?c=ig. Sin página intermedia de nadie
+// (David preguntó por la de Sprout): el Píxel, las cuentas y Google son de
+// aquí.
+//
+//   /palabras   la más nueva en grande y las anteriores, con su filtro
+//               (`?lengua=latin|griego`).
+//   /p/<slug>   una palabra: su imagen y una línea con lo mismo en texto
+//               —Google no lee imágenes; nada que no esté en la base—, y
+//               «Abrir en Carmina».
+//
+// Los datos son archivos de la web que deja el generador: `palabras/
+// indice.json` y, por palabra, `palabras/<slug>.png` (1080 × 1350, la de
+// Instagram) y `palabras/<slug>-m.png` (la miniatura). Una palabra con
+// `fecha` futura todavía no existe: se suben en lote y cada una sale el día
+// que le toca. Las dos páginas, en Google.
+
+const PALABRA = /^\/p\/([a-z0-9-]{1,40})\/?$/;
+const LENGUAS = ['latin', 'griego'];
+
+/// Las palabras ya publicadas, la más nueva primero, y la próxima por salir
+/// (o null). Sin índice, ninguna.
+async function lasPalabras(request, env) {
+  const url = new URL(request.url);
+  url.pathname = '/palabras/indice.json';
+  url.search = '';
+  let todas = [];
+  try {
+    const r = await env.ASSETS.fetch(new Request(url));
+    if (r.ok) {
+      const j = await r.json();
+      todas = (Array.isArray(j?.palabras) ? j.palabras : []).filter(
+        (p) =>
+          p &&
+          /^[a-z0-9-]{1,40}$/.test(p.slug) &&
+          /^\d{4}-\d{2}-\d{2}$/.test(p.fecha) &&
+          LENGUAS.includes(p.lengua),
+      );
+    }
+  } catch {
+    todas = [];
+  }
+  const hoy = new Date().toISOString().slice(0, 10);
+  const publicadas = todas
+    .filter((p) => p.fecha <= hoy)
+    .sort((a, b) => b.fecha.localeCompare(a.fecha));
+  const proxima = todas.filter((p) => p.fecha > hoy).sort((a, b) => a.fecha.localeCompare(b.fecha))[0];
+  return { publicadas, proxima: proxima || null, hoy };
+}
+
+/// El campo [campo] de la palabra en la lengua de la página: el italiano, si
+/// lo trae (`it`), y si no el castellano.
+function dePalabra(p, campo, lang) {
+  return (lang === 'it' && p.it && p.it[campo]) || p[campo] || '';
+}
+
+function fechaLarga(iso, lang) {
+  return new Intl.DateTimeFormat(lang, { day: 'numeric', month: 'long', timeZone: 'UTC' }).format(
+    new Date(`${iso}T12:00:00Z`),
+  );
+}
+
+/// **«Abrir en Carmina», para descargarla** (David: «un botón "Abrir en
+/// Carmina" para que puedan descargar la aplicación desde ahí»). En el iPhone
+/// lleva a la App Store, que dice «Abrir» si ya la tiene. En Android, a la
+/// app por su esquema y, si no está, a Google Play (`intent:` con
+/// `browser_fallback_url`): un esquema que nadie atiende deja en Safari un
+/// error a la vista, y en Android no. En el ordenador, las dos tiendas. Sin
+/// tiendas todavía, «Muy pronto».
+function botonAbrir(t, env, campana, ruta, ua) {
+  if (/iPhone|iPad|iPod/.test(ua) && env.APP_STORE) {
+    return `<a class="boton principal" data-tienda href="${esc(env.APP_STORE)}?ct=${campana}">${t.abrir}</a>`;
+  }
+  if (/Android/.test(ua) && env.GOOGLE_PLAY) {
+    const play = `${env.GOOGLE_PLAY}&utm_campaign=${campana}`;
+    const esquema = ESQUEMA.replace('://', '');
+    const intent = `intent://${ruta}#Intent;scheme=${esquema};package=${APP_ANDROID};S.browser_fallback_url=${encodeURIComponent(play)};end`;
+    return `<a class="boton principal" data-tienda href="${esc(intent)}">${t.abrir}</a>`;
+  }
+  if (env.APP_STORE || env.GOOGLE_PLAY) return `<p class="tienda">${tiendas(t, env, campana)}</p>`;
+  return `<p class="nota">${t.pronto}</p>`;
+}
+
+/// **Las visitas, sin cookies** (`contar_visita_web`, en Supabase): por día,
+/// página y origen (`?c=`), sin la IP ni nada de quien entra. Es la cuenta
+/// que vale aunque nadie acepte el aviso. Los robots, y las vistas previas de
+/// Facebook y WhatsApp, no cuentan.
+const ROBOT = /bot|crawl|spider|slurp|facebookexternalhit|whatsapp|preview/i;
+
+function contarVisita(request, env, ctx, ruta, origen) {
+  if (request.method !== 'GET' || !ctx || typeof ctx.waitUntil !== 'function') return;
+  if (ROBOT.test(request.headers.get('user-agent') || '')) return;
+  ctx.waitUntil(
+    rpc(env, 'contar_visita_web', { p_ruta: ruta, p_origen: origen || null }).catch(() => null),
+  );
+}
+
+const ESTILO_PALABRAS = `
+  .palabras { text-align:left; }
+  .palabras h1 { color:var(--tinta); font:400 1.7rem/1.2 Georgia,"Times New Roman",serif; text-align:left; margin:2px 0 20px; text-wrap:balance; }
+  .rotulo { font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; font-weight:600; color:var(--carmin); margin:0 0 6px; }
+  .rotulo.suave { color:var(--suave); }
+  .hoy { display:block; background:var(--tarjeta); border-radius:22px; overflow:hidden; color:var(--tinta); text-decoration:none; margin:0 0 28px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08); }
+  .hoy img, .lamina { width:100%; height:auto; display:block; }
+  .lamina { border-radius:18px; margin:0 0 14px; }
+  .hoy .pie-hoy { padding:14px 18px 18px; }
+  .lema { font:700 1.55rem/1.2 Georgia,"Times New Roman",serif; margin:2px 0; }
+  .corto { font-family:Georgia,"Times New Roman",serif; color:var(--suave); margin:0; }
+  .cita { font-size:.85rem; color:var(--suave); }
+  .ver { font-size:.9rem; font-weight:600; color:var(--carmin); }
+  .fila { display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap; margin:8px 0 0; }
+  .filtro { display:flex; gap:6px; }
+  .filtro a { min-height:34px; padding:0 14px; display:inline-flex; align-items:center; border-radius:999px; border:1.5px solid var(--filete);
+    color:var(--tinta); text-decoration:none; font-size:.85rem; font-weight:600; }
+  .filtro a[aria-current] { background:var(--tinta); color:var(--papel); border-color:var(--tinta); }
+  .rejilla { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:16px; margin:14px 0 28px; }
+  .rejilla.tres { grid-template-columns:repeat(3, minmax(0, 1fr)); gap:10px; }
+  .rejilla a { color:var(--tinta); text-decoration:none; display:flex; flex-direction:column; gap:6px; min-width:0; }
+  .rejilla img { width:100%; height:auto; border-radius:14px; display:block; }
+  .rejilla .lema { font-size:1.1rem; }
+  .rejilla .corto { font-size:.9rem; }
+  .rejilla .todas { border:1.5px solid var(--filete); border-radius:14px; align-items:center; justify-content:center; aspect-ratio:4 / 5;
+    font-family:Georgia,"Times New Roman",serif; }
+  .lengua { font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; font-weight:600; color:var(--suave); }
+  .linea { font-family:Georgia,"Times New Roman",serif; margin:0 0 18px; }
+  .boton { display:flex; align-items:center; justify-content:center; min-height:52px; border-radius:999px; font-weight:600;
+    text-decoration:none; margin:0 0 8px; }
+  .boton.principal { background:var(--carmin); color:#fff; }
+  .abrir-palabra { text-align:center; margin:0 0 26px; }
+  .abrir-palabra .nota { color:var(--suave); font-size:.88rem; margin:0; }
+  .tienda a { color:var(--carmin); font-weight:600; }
+  .proxima { border:1.5px dashed var(--filete); border-radius:20px; padding:18px; text-align:center; margin:0 0 16px; }
+  .proxima p { margin:0; }
+  .proxima .cuando { font:italic 1.25rem/1.3 Georgia,"Times New Roman",serif; margin:0 0 4px; }
+  .app { display:flex; gap:14px; align-items:center; background:var(--tarjeta); border-radius:20px; padding:16px; margin:0 0 16px; }
+  .app .icono { width:56px; height:56px; flex-shrink:0; border-radius:14px; background:var(--carmin); color:#fff; display:flex;
+    align-items:center; justify-content:center; font:700 1.9rem/1 Georgia,"Times New Roman",serif; }
+  .app p { margin:0 0 4px; font-size:.95rem; }
+  .app .boton { min-height:44px; margin:6px 0 0; }
+  .cursos { background:var(--tinta); color:var(--papel); border-radius:20px; padding:18px; margin:0 0 8px; }
+  .cursos p { margin:0 0 4px; }
+  .cursos .rotulo { color:inherit; opacity:.8; }
+  .cursos .que { font:1.2rem/1.3 Georgia,"Times New Roman",serif; }
+  .cursos a { color:var(--papel); font-weight:600; }
+  .legales { font-size:.85rem; color:var(--suave); margin-top:26px; text-align:center; }
+  .legales a { color:var(--suave); }`;
+
+// ---------- La ventana del boletín (27-oct-2026)
+//
+// «Suscríbete a Carmina» (la maqueta, 4b): arriba, «La palabra del día», la
+// palabra y su significado; el correo y «Suscribirme», sin casilla —el
+// formulario sólo sirve para suscribirse— y debajo el texto del
+// consentimiento. Sale sola **una vez y cuando ya leyó** —pasada la imagen o a
+// los 20 segundos—, nunca al llegar (en el móvil, Google baja a la página que
+// se tapa nada más entrar) ni con el aviso de cookies a la vista. Si se
+// cierra, no vuelve sola en 30 días: lo recuerda el navegador
+// (`localStorage`), sin cookie y sin mandarlo a nadie. «Suscribirme» en la
+// página la abre cuando se quiera.
+//
+// Manda a POST /boletin, que lo pasa a la función `boletin_web`: ésta apunta
+// el consentimiento y pide a Brevo el correo de confirmación.
+
+const ICONOS_BOLETIN = [
+  '<path d="M4 19.5V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M8 7h7"/><path d="M8 11h5"/>',
+  '<path d="M12 3l2.4 5.6L20 9.2l-4.3 3.9 1.2 5.9L12 16.1 7.1 19l1.2-5.9L4 9.2l5.6-.6z"/>',
+  '<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2.5 9 2.5 12 0v-5"/>',
+];
+
+const ESTILO_BOLETIN = `
+  .boletin { position:fixed; inset:0; background:rgba(20,16,14,.6); display:flex; align-items:center; justify-content:center;
+    padding:20px 16px; z-index:20; }
+  .boletin .ventana { background:var(--papel); color:var(--tinta); border-radius:24px; overflow:hidden; width:100%; max-width:24rem;
+    max-height:100%; overflow-y:auto; box-shadow:0 18px 48px rgba(0,0,0,.32); }
+  .boletin .banda { position:relative; background:var(--carmin); color:#fff; text-align:center; padding:24px 28px 20px; }
+  .boletin .banda p { margin:0; }
+  .boletin .rotulo-banda { font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; font-weight:600; }
+  .boletin .palabra-banda { font:italic 2.6rem/1.15 Georgia,"Times New Roman",serif; margin:4px 0 0; }
+  .boletin .raya { display:block; width:56px; height:1px; background:rgba(255,255,255,.7); margin:8px auto; }
+  .boletin .significado-banda { font-family:Georgia,"Times New Roman",serif; }
+  .boletin .cerrar { position:absolute; right:10px; top:10px; width:40px; height:40px; min-height:0; padding:0; border-radius:50%;
+    background:rgba(255,255,255,.2); color:#fff; font-size:1.3rem; line-height:40px; }
+  .boletin .cuerpo-ventana { padding:20px 22px 22px; text-align:center; }
+  .boletin h2 { font:700 1.6rem/1.2 Georgia,"Times New Roman",serif; margin:0 0 6px; }
+  .boletin .sub { color:var(--suave); margin:0 0 14px; }
+  .boletin ul { list-style:none; padding:0; margin:0 0 16px; display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:8px; }
+  .boletin li { background:var(--tarjeta); border-radius:12px; padding:10px 4px; font-size:.75rem; line-height:1.3; color:var(--suave);
+    display:flex; flex-direction:column; align-items:center; gap:6px; }
+  .boletin li svg { width:22px; height:22px; fill:none; stroke:var(--carmin); stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+  .boletin form { margin:0; gap:10px; }
+  .boletin label { display:grid; gap:4px; text-align:left; font-size:.85rem; color:var(--suave); }
+  .boletin input { font:inherit; font-size:1rem; padding:12px 14px; border-radius:12px; border:1px solid var(--filete);
+    background:var(--papel); color:var(--tinta); min-height:48px; }
+  .boletin button[type=submit] { border-radius:999px; min-height:50px; font-size:1.05rem; }
+  .boletin .letra { font-size:.75rem; color:var(--suave); margin:12px 0 0; }
+  .boletin .letra a { color:var(--suave); }
+  .boletin .error { color:var(--carmin); font-size:.85rem; margin:0; }
+  .suscribirse { display:flex; align-items:center; justify-content:space-between; gap:12px; background:var(--tarjeta);
+    border-radius:16px; padding:14px 16px; margin:0 0 26px; }
+  .suscribirse span { font-family:Georgia,"Times New Roman",serif; font-size:1.1rem; }
+  .suscribirse a, .proxima a { color:var(--carmin); font-weight:600; white-space:nowrap; text-decoration:none; }
+  .proxima a { display:inline-flex; align-items:center; min-height:44px; padding:0 26px; margin-top:10px; border-radius:999px;
+    background:var(--carmin); color:#fff; }`;
+
+const BOLETIN_JS = `(function () {
+  var v = document.getElementById('boletin');
+  if (!v) return;
+  var CLAVE = 'carmina_boletin', TREINTA = 30 * 864e5;
+  function cerradaHacePoco() {
+    try { var t = +localStorage.getItem(CLAVE); return !!t && Date.now() - t < TREINTA; } catch (e) { return false; }
+  }
+  function apuntar() { try { localStorage.setItem(CLAVE, String(Date.now())); } catch (e) {} }
+  function abrir() { v.hidden = false; var i = v.querySelector('input[type=email]'); if (i) i.focus(); }
+  function cerrar() { v.hidden = true; apuntar(); }
+  var abridores = document.querySelectorAll('[data-boletin]');
+  for (var i = 0; i < abridores.length; i++) {
+    abridores[i].addEventListener('click', function (e) { e.preventDefault(); abrir(); });
+  }
+  v.querySelector('[data-cerrar]').addEventListener('click', cerrar);
+  v.addEventListener('click', function (e) { if (e.target === v) cerrar(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !v.hidden) cerrar(); });
+  var salio = false;
+  function quizas() {
+    if (salio || cerradaHacePoco()) return;
+    var aviso = document.getElementById('aviso-cookies');
+    if (aviso && !aviso.hidden) { setTimeout(quizas, 10000); return; }
+    salio = true;
+    abrir();
+  }
+  var leido = document.querySelector('[data-leido]');
+  if (leido && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (vistas, o) {
+      for (var j = 0; j < vistas.length; j++) {
+        if (!vistas[j].isIntersecting && vistas[j].boundingClientRect.top < 0) { o.disconnect(); quizas(); }
+      }
+    }).observe(leido);
+  }
+  setTimeout(quizas, 20000);
+  var form = v.querySelector('form');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var boton = form.querySelector('button[type=submit]');
+    var error = v.querySelector('[data-error]');
+    boton.disabled = true;
+    error.hidden = true;
+    function mal() { error.hidden = false; boton.disabled = false; }
+    fetch('/boletin', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({
+        correo: form.elements.correo.value,
+        palabra: form.getAttribute('data-palabra') || null,
+        origen: form.getAttribute('data-origen') || null,
+        lengua: document.documentElement.lang,
+      }),
+    }).then(function (r) {
+      return r.json().then(function (j) { return r.ok && j && j.ok; }, function () { return false; });
+    }).then(function (bien) {
+      if (!bien) return mal();
+      v.querySelector('[data-formulario]').hidden = true;
+      v.querySelector('[data-hecho]').hidden = false;
+      apuntar();
+      if (window.carminaEvento) window.carminaEvento('Lead', { content_category: 'boletin' });
+    }, mal);
+  });
+})();`;
+
+/// La ventana, cerrada; [p] es la palabra de la página (o la más nueva, en
+/// /palabras), y [origen] el `?c=` con que se llegó.
+function ventanaDelBoletin(t, lang, p, origen) {
+  const banda = p
+    ? `<p class="palabra-banda">${esc(dePalabra(p, 'palabra', lang) || dePalabra(p, 'lema', lang))}</p><span class="raya"></span><p class="significado-banda">${esc(dePalabra(p, 'corto', lang))}</p>`
+    : '';
+  const tres = [t.bolPalabras, t.bolNovedades, t.cursos]
+    .map((n, i) => `<li><svg viewBox="0 0 24 24" aria-hidden="true">${ICONOS_BOLETIN[i]}</svg>${n}</li>`)
+    .join('');
+  return `<div id="boletin" class="boletin" role="dialog" aria-modal="true" aria-labelledby="boletin-titulo" hidden>
+<div class="ventana">
+<div class="banda"><button type="button" class="cerrar" data-cerrar aria-label="${t.cerrar}">×</button>
+<p class="rotulo-banda">${t.palabraDelDia}</p>${banda}</div>
+<div class="cuerpo-ventana" data-formulario>
+<h2 id="boletin-titulo">${t.suscribeteTitulo}</h2>
+<p class="sub">${t.suscribeteTexto}</p>
+<ul>${tres}</ul>
+<form data-palabra="${p ? esc(p.slug) : ''}" data-origen="${esc(origen || '')}">
+<label>${t.tuCorreo}<input type="email" name="correo" required maxlength="254" autocomplete="email" placeholder="nombre@ejemplo.com"></label>
+<button type="submit">${t.suscribirme}</button>
+<p class="error" data-error hidden>${t.bolError}</p>
+</form>
+<p class="letra">${t.bolLetra} <a href="/legal/privacidad.html#boletin">${t.politica}</a></p>
+</div>
+<div class="cuerpo-ventana" data-hecho hidden><h2>${t.bolHechoTitulo}</h2><p class="sub">${t.bolHechoTexto}</p></div>
+</div></div>
+<style>${ESTILO_BOLETIN}</style>
+<script>${BOLETIN_JS}</script>`;
+}
+
+const CORREO = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function jsonNoGuardar(cuerpo, estado) {
+  return new Response(JSON.stringify(cuerpo), {
+    status: estado,
+    headers: { 'content-type': 'application/json', 'cache-control': 'no-store' },
+  });
+}
+
+/// POST /boletin: el correo de la ventana, a la función `boletin_web`. Un
+/// correo que no puede serlo no sale de aquí.
+async function suscribir(request, env) {
+  let c = null;
+  try {
+    c = await request.json();
+  } catch {
+    c = null;
+  }
+  const correo = String(c?.correo ?? '').trim();
+  if (correo.length > 254 || !CORREO.test(correo)) return jsonNoGuardar({ ok: false, error: 'correo' }, 400);
+  const palabra = typeof c?.palabra === 'string' && /^[a-z0-9-]{1,40}$/.test(c.palabra) ? c.palabra : null;
+  const origen = typeof c?.origen === 'string' && CAMPANA.test(c.origen) ? c.origen : null;
+  const r = await fetch(`${env.SUPABASE_URL}/functions/v1/boletin_web`, {
+    method: 'POST',
+    headers: {
+      apikey: env.SUPABASE_ANON,
+      authorization: `Bearer ${env.SUPABASE_ANON}`,
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({ correo, palabra, origen, lengua: c?.lengua === 'it' ? 'it' : 'es' }),
+  }).catch(() => null);
+  if (!r || !r.ok) return jsonNoGuardar({ ok: false }, 502);
+  return jsonNoGuardar({ ok: true }, 200);
+}
+
+/// Adonde lleva el enlace del correo de confirmación (BOLETIN_GRACIAS).
+function graciasDelBoletin(request) {
+  const lang = lengua(request);
+  const t = TEXTOS[lang];
+  return respuesta(
+    pagina({
+      lang,
+      titulo: `${t.graciasTitulo} — Carmina`,
+      cuerpo: `<div class="palabras" style="text-align:center"><h1 style="text-align:center">${t.graciasTitulo}</h1>
+<p class="aviso">${t.graciasTexto}</p>
+<p><a class="boton principal" href="/palabras">${t.verLasPalabras}</a></p></div>
+<style>${ESTILO_PALABRAS}</style>`,
+    }),
+    200,
+  );
+}
+
+function bloqueDeLaApp(t, env, campana, ua) {
+  return `<div class="app"><div class="icono" aria-hidden="true">C</div><div>
+<p>${t.palabrasApp}</p>
+${botonAbrir(t, env, campana, '', ua)}
+</div></div>`;
+}
+
+function bloqueDeCursos(t) {
+  return `<div class="cursos"><p class="rotulo">${t.cursos}</p>
+<p class="que">${t.cursosTexto}</p>
+<p><a href="https://circulodeestudiosliterarios.com">${t.verCursos} ›</a></p></div>`;
+}
+
+function piePalabras(t) {
+  return `<p class="legales"><a href="/legal/privacidad.html">${t.privacidad}</a> · <a href="/legal/condiciones.html">${t.condiciones}</a> · <a href="/legal/soporte.html">${t.soporte}</a><br>Círculo de Estudios Literarios</p>`;
+}
+
+function textoAlternativo(p, lang) {
+  return `${dePalabra(p, 'lema', lang)}: ${dePalabra(p, 'significado', lang)}. ${dePalabra(p, 'cita', lang)}.`;
+}
+
+async function portadaDePalabras(request, env, ctx) {
+  const lang = lengua(request);
+  const t = TEXTOS[lang];
+  const url = new URL(request.url);
+  const c = (url.searchParams.get('c') || '').toLowerCase();
+  const origen = CAMPANA.test(c) ? c : '';
+  const campana = origen ? `palabras_${origen}` : 'palabras';
+  const pedida = url.searchParams.get('lengua');
+  const filtro = LENGUAS.includes(pedida) ? pedida : '';
+  const ua = request.headers.get('user-agent') || '';
+  const { publicadas, proxima, hoy } = await lasPalabras(request, env);
+  const lista = filtro ? publicadas.filter((p) => p.lengua === filtro) : publicadas;
+  contarVisita(request, env, ctx, '/palabras', origen);
+
+  const [primera, ...resto] = lista;
+  const nombreDe = (p) => (p.lengua === 'griego' ? t.griego : t.latin);
+  const cuando = (p) => (p.fecha === hoy ? t.hoy : fechaLarga(p.fecha, lang));
+  const grande = primera
+    ? `<a class="hoy" data-leido href="/p/${primera.slug}">
+<img src="/palabras/${primera.slug}.png" width="1080" height="1350" alt="${esc(textoAlternativo(primera, lang))}">
+<div class="pie-hoy"><p class="rotulo">${cuando(primera)} · ${nombreDe(primera)}</p>
+<p class="lema">${esc(dePalabra(primera, 'lema', lang))}</p>
+<p class="corto">${esc(dePalabra(primera, 'corto', lang))}</p>
+<div class="fila"><span class="cita">${esc(dePalabra(primera, 'cita', lang))}</span><span class="ver">${t.verPalabra} ›</span></div></div></a>`
+    : `<p class="aviso">${t.sinPalabras}</p>`;
+  const filtroHtml = `<nav class="filtro" aria-label="${t.palabraDelDia}">${[
+    ['', t.todas],
+    ['latin', t.latin],
+    ['griego', t.griego],
+  ]
+    .map(
+      ([v, n]) =>
+        `<a href="/palabras${v ? `?lengua=${v}` : ''}"${v === filtro ? ' aria-current="page"' : ''}>${n}</a>`,
+    )
+    .join('')}</nav>`;
+  const anteriores = resto.length
+    ? `<div class="rejilla">${resto
+        .map(
+          (p) => `<a href="/p/${p.slug}"><img src="/palabras/${p.slug}-m.png" width="360" height="450" loading="lazy" alt="${esc(textoAlternativo(p, lang))}">
+<span class="lengua">${nombreDe(p)}</span><span class="lema">${esc(dePalabra(p, 'palabra', lang) || dePalabra(p, 'lema', lang))}</span><span class="corto">${esc(dePalabra(p, 'corto', lang))}</span></a>`,
+        )
+        .join('\n')}</div>`
+    : '';
+  const proximaHtml = `<div class="proxima">${
+    proxima ? `<p class="cuando">${t.laProxima} ${fechaLarga(proxima.fecha, lang)}.</p>` : ''
+  }<p>${t.recibelaEnTuCorreo}</p><a href="#boletin" data-boletin>${t.suscribirme}</a></div>`;
+  const cabeza = [
+    anuncioDeSafari(env),
+    `<meta name="description" content="${esc(t.palabrasLema)}">`,
+    `<meta property="og:type" content="website">`,
+    `<meta property="og:site_name" content="Carmina">`,
+    `<meta property="og:title" content="${esc(t.palabraDelDia)} — Carmina">`,
+    `<meta property="og:description" content="${esc(t.palabrasLema)}">`,
+    `<meta property="og:url" content="${url.origin}/palabras">`,
+    ...(primera
+      ? [
+          `<meta property="og:image" content="${url.origin}/palabras/${primera.slug}.png">`,
+          `<meta property="og:image:width" content="1080">`,
+          `<meta property="og:image:height" content="1350">`,
+        ]
+      : []),
+    `<link rel="canonical" href="${url.origin}/palabras${filtro ? `?lengua=${filtro}` : ''}">`,
+  ].join('\n');
+  const cuerpo = `<div class="palabras">
+<p class="rotulo">${t.palabraDelDia}</p>
+<h1>${t.palabrasLema}</h1>
+${grande}
+${resto.length || filtro ? `<div class="fila"><p class="rotulo suave">${t.anteriores}</p>${filtroHtml}</div>` : ''}
+${anteriores}
+${proximaHtml}
+${bloqueDeLaApp(t, env, campana, ua)}
+${bloqueDeCursos(t)}
+${piePalabras(t)}
+</div>
+${ventanaDelBoletin(t, lang, primera || null, origen)}
+<style>${ESTILO_PALABRAS}</style>`;
+  return respuesta(
+    pagina({
+      lang,
+      titulo: `${t.palabraDelDia} — Carmina`,
+      cabeza,
+      cuerpo,
+      aviso: avisoDeCookies(env, lang, 'palabras'),
+      indexable: true,
+    }),
+    200,
+    { indexable: true },
+  );
+}
+
+async function paginaDePalabra(slug, request, env, ctx) {
+  const lang = lengua(request);
+  const t = TEXTOS[lang];
+  const url = new URL(request.url);
+  const { publicadas } = await lasPalabras(request, env);
+  const p = publicadas.find((x) => x.slug === slug);
+  if (!p) return sinPagina(lang, 404);
+  const c = (url.searchParams.get('c') || '').toLowerCase();
+  contarVisita(request, env, ctx, `/p/${slug}`, CAMPANA.test(c) ? c : '');
+  const ua = request.headers.get('user-agent') || '';
+  const campana = `palabra_${slug.replace(/-/g, '_')}`.slice(0, 40);
+  const enlace = `${url.origin}/p/${slug}`;
+  const imagen = `${url.origin}/palabras/${slug}.png`;
+  const palabra = dePalabra(p, 'palabra', lang) || dePalabra(p, 'lema', lang);
+  const titulo = `${palabra} — ${t.palabraDelDia} · Carmina`;
+  const definida = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'DefinedTerm',
+    name: palabra,
+    alternateName: dePalabra(p, 'lema', lang),
+    description: dePalabra(p, 'significado', lang),
+    inLanguage: p.lengua === 'griego' ? 'grc' : 'la',
+    url: enlace,
+    image: imagen,
+    inDefinedTermSet: { '@type': 'DefinedTermSet', name: `Carmina — ${t.palabraDelDia}`, url: `${url.origin}/palabras` },
+  }).replace(/</g, '\\u003c');
+  // El anuncio de Safari, sin argumento: hasta que la app sepa abrir /p/
+  // (el enlace de la palabra), «Abrir» la lleva a su inicio.
+  const cabeza = [
+    anuncioDeSafari(env),
+    `<meta name="description" content="${esc(`${dePalabra(p, 'lema', lang)}: ${dePalabra(p, 'significado', lang)}`)}">`,
+    `<meta property="og:type" content="article">`,
+    `<meta property="og:site_name" content="Carmina">`,
+    `<meta property="og:title" content="${esc(titulo)}">`,
+    `<meta property="og:description" content="${esc(dePalabra(p, 'corto', lang))}">`,
+    `<meta property="og:url" content="${esc(enlace)}">`,
+    `<meta property="og:image" content="${esc(imagen)}">`,
+    `<meta property="og:image:width" content="1080">`,
+    `<meta property="og:image:height" content="1350">`,
+    `<meta name="twitter:card" content="summary_large_image">`,
+    `<link rel="canonical" href="${esc(enlace)}">`,
+    `<script type="application/ld+json">${definida}</script>`,
+  ].join('\n');
+  const otras = publicadas.filter((x) => x.slug !== slug).slice(0, 2);
+  const mas = `<p class="rotulo suave">${t.masPalabras}</p>
+<div class="rejilla tres">${otras
+    .map(
+      (x) =>
+        `<a href="/p/${x.slug}"><img src="/palabras/${x.slug}-m.png" width="360" height="450" loading="lazy" alt="${esc(textoAlternativo(x, lang))}"></a>`,
+    )
+    .join('')}<a class="todas" href="/palabras">${t.verTodas} ›</a></div>`;
+  const cuerpo = `<div class="palabras">
+<p class="rotulo">${t.palabraDelDia} · ${p.lengua === 'griego' ? t.griego : t.latin} · ${fechaLarga(p.fecha, lang)}</p>
+<img class="lamina" data-leido src="/palabras/${slug}.png" width="1080" height="1350" alt="${esc(textoAlternativo(p, lang))}">
+<p class="linea"><strong>${esc(dePalabra(p, 'lema', lang))}</strong>: ${esc(dePalabra(p, 'significado', lang))}. <span class="cita">${esc(dePalabra(p, 'cita', lang))}.</span></p>
+<div class="abrir-palabra">${botonAbrir(t, env, campana, `p/${slug}`, ua)}<p class="nota">${t.noLaTienesGratis}</p></div>
+<div class="suscribirse"><span>${t.proximaEnTuCorreo}</span><a href="#boletin" data-boletin>${t.suscribirme} ›</a></div>
+${mas}
+${bloqueDeCursos(t)}
+${piePalabras(t)}
+</div>
+${ventanaDelBoletin(t, lang, p, CAMPANA.test(c) ? c : '')}
+<style>${ESTILO_PALABRAS}</style>`;
+  return respuesta(
+    pagina({
+      lang,
+      titulo,
+      cabeza,
+      cuerpo,
+      aviso: avisoDeCookies(env, lang, 'palabra', { content_ids: [slug], content_name: palabra }),
+      indexable: true,
+    }),
+    200,
+    { indexable: true },
+  );
+}
+
 async function denunciar(id, request, env) {
   const form = await request.formData().catch(() => null);
   const motivo = String(form?.get('motivo') || 'otro');
@@ -703,7 +1330,7 @@ async function denunciar(id, request, env) {
 }
 
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     const url = new URL(request.url);
     if (url.pathname === '/.well-known/apple-app-site-association') {
       return json(ASOCIACION);
@@ -732,6 +1359,17 @@ export default {
     }
     if (url.pathname === '/' && (request.method === 'GET' || request.method === 'HEAD')) {
       return portada(request, env);
+    }
+    if (url.pathname === '/boletin') {
+      return request.method === 'POST' ? suscribir(request, env) : new Response('', { status: 405 });
+    }
+    if (request.method === 'GET' || request.method === 'HEAD') {
+      if (url.pathname === '/boletin/gracias') return graciasDelBoletin(request);
+      if (url.pathname === '/palabras' || url.pathname === '/palabras/') {
+        return portadaDePalabras(request, env, ctx);
+      }
+      const p = url.pathname.match(PALABRA);
+      if (p) return paginaDePalabra(p[1], request, env, ctx);
     }
     // **«Abrir en Carmina» de los correos** (N2): un enlace universal, así que
     // con la app instalada la abre sin llegar aquí; sin ella, la portada, con
