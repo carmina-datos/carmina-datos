@@ -930,7 +930,7 @@ const ESTILO_PALABRAS = `
 // palabra y su significado; el correo y «Suscribirme», sin casilla —el
 // formulario sólo sirve para suscribirse— y debajo el texto del
 // consentimiento. Sale sola **una vez y cuando ya leyó** —pasada la imagen o a
-// los 20 segundos—, nunca al llegar (en el móvil, Google baja a la página que
+// los 10 segundos—, nunca al llegar (en el móvil, Google baja a la página que
 // se tapa nada más entrar) ni con el aviso de cookies a la vista. Si se
 // cierra, no vuelve sola en 30 días: lo recuerda el navegador
 // (`localStorage`), sin cookie y sin mandarlo a nadie. «Suscribirme» en la
@@ -1013,7 +1013,7 @@ const BOLETIN_JS = `(function () {
       }
     }).observe(leido);
   }
-  setTimeout(quizas, 20000);
+  setTimeout(quizas, 10000);
   var form = v.querySelector('form');
   form.addEventListener('submit', function (e) {
     e.preventDefault();
