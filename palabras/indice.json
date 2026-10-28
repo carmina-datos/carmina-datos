@@ -38,7 +38,7 @@
       "significado": "beso; (esp.) beso lanzado con la mano",
       "corto": "beso",
       "forma": "basia",
-      "cita": "Catulo · Poemas V, 8",
+      "cita": "Catulo · Poemas V, 7",
       "renglon": 46630,
       "entrada": 5022
     },
@@ -66,7 +66,7 @@
       "significado": "el que interpreta, intérprete; y de ahí actor; (en el Nuevo Testamento) hipócrita",
       "corto": "el que interpreta, intérprete",
       "forma": "ὑποκριταί",
-      "cita": "Nuevo Testamento · Evangelio de Mateo, 22:18",
+      "cita": "Nuevo Testamento · Evangelio de Mateo 22:18",
       "renglon": 133149,
       "entrada": 34081
     },
@@ -107,9 +107,9 @@
       "clase": "sustantivo femenino · 1.ª declinación",
       "significado": "dinero; riqueza, hacienda, bienes",
       "corto": "dinero",
-      "forma": "pecunia",
-      "cita": "Plauto · Los cautivos II, 2, 258",
-      "renglon": 269697,
+      "forma": "pecuniam",
+      "cita": "Plauto · La comedia del fantasma 227",
+      "renglon": 270897,
       "entrada": 34308
     },
     {
@@ -122,7 +122,7 @@
       "significado": "hombre, ser humano, persona; (opuesto a los dioses) mortal",
       "corto": "hombre, ser humano, persona",
       "forma": "Homo",
-      "cita": "Terencio · El atormentador de sí mismo I, 1, 77",
+      "cita": "Terencio · El atormentador de sí mismo 77",
       "renglon": 280518,
       "entrada": 20869
     },
@@ -136,7 +136,7 @@
       "significado": "prodigio, portento; presagio funesto; monstruo, ser contra natura; atrocidad",
       "corto": "prodigio, portento",
       "forma": "monstrum",
-      "cita": "Séneca · Hércules furioso, 1280",
+      "cita": "Séneca · Hércules furioso 1280",
       "renglon": 341539,
       "entrada": 29621
     }
