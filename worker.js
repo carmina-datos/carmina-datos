@@ -27,6 +27,11 @@
 //   /palabras, /p/<slug>   la palabra del día (27-oct-2026): la portada de
 //             las palabras y la página de cada una, con la imagen de
 //             Instagram. Ver «La palabra del día», abajo.
+//   /ig       el enlace corto de la biografía de Instagram: lleva a
+//             /palabras?c=ig (23-nov-2026).
+//   POST /toque   el primer toque de una visita en «Descargar» (o en
+//             «Abrir en Carmina», que lleva a la tienda), sin cookies:
+//             `contarToque`, 24-nov-2026.
 //   POST /boletin, /boletin/gracias   la suscripción de la ventana del
 //             boletín, a la función `boletin_web`, y adonde lleva el enlace
 //             de confirmación. Ver «La ventana del boletín».
@@ -42,7 +47,8 @@
 // menos la portada, /palabras y /p/<slug>.
 // El aviso de cookies y el Píxel de Meta, sólo con PIXEL_ID (puesto el
 // 9-oct-2026): ver «El aviso de cookies y el Píxel de Meta», abajo. Las
-// visitas sin cookies de la portada, /palabras y /p/: ver `contarVisita`.
+// visitas sin cookies de la portada, /palabras y /p/: ver `contarVisita`; y
+// sus toques en «Descargar», `contarToque`.
 //
 // Las pruebas: `node --test web/worker.test.mjs`.
 
@@ -463,7 +469,8 @@ function anuncioDeSafari(env, argumento) {
 /// ella: antes ninguna página llevaba a otra de la web más que /p/ ↔
 /// /palabras, y quien llegaba a /t/ o /a/ no tenía adónde ir a ver qué es
 /// Carmina.
-function pagina({ lang, titulo, cabeza = '', cuerpo, aviso = '', indexable = false, inicio = false }) {
+/// [toques]: la página cuenta sus toques en «Descargar» (`TOQUE_JS`).
+function pagina({ lang, titulo, cabeza = '', cuerpo, aviso = '', indexable = false, inicio = false, toques = false }) {
   return `<!doctype html>
 <html lang="${lang}">
 <head>
@@ -478,7 +485,7 @@ ${cabeza}
 <p class="marca">${inicio ? 'Carmina' : '<a href="/">Carmina</a>'}</p>
 ${cuerpo}
 ${aviso}
-</main>
+${toques ? `<script>${TOQUE_JS}</script>\n` : ''}</main>
 </body>
 </html>`;
 }
@@ -940,6 +947,7 @@ ${botones ? `<div class="fija" id="fija" hidden>${botones}</div>\n<script>${PORT
       aviso: avisoDeCookies(env, lang),
       indexable: true,
       inicio: true,
+      toques: true,
     }),
     200,
     { indexable: true },
@@ -1079,6 +1087,75 @@ function contarVisita(request, env, ctx, ruta, origen) {
   ctx.waitUntil(
     rpc(env, 'contar_visita_web', { p_ruta: ruta, p_origen: origen || null }).catch(() => null),
   );
+}
+
+/// **Los toques en «Descargar», sin cookies** (David, 24-nov-2026:
+/// «Necesito las visitas a ese sitio y los clicks sobre Descargar»;
+/// `contar_toque_web`, en Supabase). En las páginas cuyas visitas se cuentan
+/// —la portada, /palabras y /p/<slug>—, el primer toque de cada visita en un
+/// botón de tienda (`data-tienda`: «Descargar» en la portada, «Abrir en
+/// Carmina» en las palabras) manda a /toque la página, con su búsqueda, y la
+/// tienda. Una vez por visita, para que «cuántos de los que llegaron tocaron»
+/// se pueda dividir; nada de quien toca. `sendBeacon` no detiene el paso a la
+/// tienda ni espera respuesta. El Píxel (`IrAAppStore`) sigue aparte, y sólo
+/// tras «Aceptar».
+const TOQUE_JS = `(function () {
+  var hecho = false;
+  document.addEventListener('click', function (e) {
+    var a = !hecho && e.target && e.target.closest ? e.target.closest('a[data-tienda]') : null;
+    if (!a) return;
+    var h = a.getAttribute('href') || '';
+    var tienda = h.indexOf('apps.apple.com') >= 0 ? 'app_store'
+      : h.indexOf('play.google.com') >= 0 || h.indexOf('intent:') === 0 ? 'google_play' : '';
+    if (!tienda) return;
+    hecho = true;
+    var cuerpo = JSON.stringify({ p: location.pathname + location.search, t: tienda });
+    try { if (navigator.sendBeacon && navigator.sendBeacon('/toque', cuerpo)) return; } catch (_) {}
+    try { fetch('/toque', { method: 'POST', body: cuerpo, keepalive: true }); } catch (_) {}
+  }, true);
+})();`;
+
+const TIENDAS_DEL_TOQUE = ['app_store', 'google_play'];
+
+/// La página como la cuenta `contarVisita` (`/`, `/palabras`, `/p/<slug>`);
+/// null si es otra.
+function rutaContada(pathname) {
+  if (pathname === '/') return '/';
+  if (pathname === '/palabras' || pathname === '/palabras/') return '/palabras';
+  const p = pathname.match(PALABRA);
+  return p ? `/p/${p[1]}` : null;
+}
+
+/// `POST /toque`, de `TOQUE_JS`: `{p: página con su búsqueda, t: tienda}`. El
+/// origen sale de la búsqueda de esa página, con `origenDe`, como el de su
+/// visita. Lo que no es de una página contada, de esta web o de una tienda
+/// conocida, y los robots, no se cuentan. Siempre 204: nadie lee la
+/// respuesta.
+async function contarToque(request, env) {
+  const nada = () => new Response(null, { status: 204 });
+  if (ROBOT.test(request.headers.get('user-agent') || '')) return nada();
+  let j = null;
+  try {
+    j = JSON.parse((await request.text()).slice(0, 500));
+  } catch {
+    return nada();
+  }
+  const tienda = TIENDAS_DEL_TOQUE.includes(j?.t) ? j.t : null;
+  let pagina = null;
+  try {
+    pagina = new URL(String(j?.p ?? ''), request.url);
+  } catch {
+    return nada();
+  }
+  const ruta = pagina.origin === new URL(request.url).origin ? rutaContada(pagina.pathname) : null;
+  if (tienda && ruta) {
+    await rpc(env, 'contar_toque_web', {
+      p_ruta: ruta,
+      p_origen: origenDe(pagina) || null,
+      p_tienda: tienda,
+    }).catch(() => null);
+  }
+  return nada();
 }
 
 const ESTILO_PALABRAS = `
@@ -1442,6 +1519,7 @@ ${ventanaDelBoletin(t, lang, primera || null, origen)}
       cuerpo,
       aviso: avisoDeCookies(env, lang, 'palabras'),
       indexable: true,
+      toques: true,
     }),
     200,
     { indexable: true },
@@ -1520,6 +1598,7 @@ ${ventanaDelBoletin(t, lang, p, origen)}
       cuerpo,
       aviso: avisoDeCookies(env, lang, 'palabra', { content_ids: [slug], content_name: palabra }),
       indexable: true,
+      toques: true,
     }),
     200,
     { indexable: true },
@@ -1576,6 +1655,9 @@ export default {
     if (url.pathname === '/boletin') {
       return request.method === 'POST' ? suscribir(request, env) : new Response('', { status: 405 });
     }
+    if (url.pathname === '/toque') {
+      return request.method === 'POST' ? contarToque(request, env) : new Response('', { status: 405 });
+    }
     if (request.method === 'GET' || request.method === 'HEAD') {
       if (url.pathname === '/boletin/gracias') return graciasDelBoletin(request);
       if (url.pathname === '/palabras' || url.pathname === '/palabras/') {
@@ -1589,6 +1671,20 @@ export default {
     // la búsqueda intacta (`?c=correo` llega a la tienda como campaña).
     if (url.pathname === '/abrir' && (request.method === 'GET' || request.method === 'HEAD')) {
       return new Response(null, { status: 302, headers: { location: `/${url.search}` } });
+    }
+    // **El enlace corto de la biografía de Instagram** (David, 23-nov-2026:
+    // «¿No hay una versión corta de ese link?»): `/ig` lleva a
+    // `/palabras?c=ig`, que es la que cuenta la visita con su origen y pasa
+    // la campaña a la tienda (`ct=palabras_ig`). La campaña es siempre `ig`;
+    // lo demás de la búsqueda (el `fbclid` que añade Instagram) va detrás.
+    if (/^\/ig\/?$/.test(url.pathname) && (request.method === 'GET' || request.method === 'HEAD')) {
+      const resto = new URLSearchParams(url.search);
+      resto.delete('c');
+      const mas = resto.toString();
+      return new Response(null, {
+        status: 302,
+        headers: { location: `/palabras?c=ig${mas ? `&${mas}` : ''}` },
+      });
     }
     const a = url.pathname.match(INVITACION);
     if (a && (request.method === 'GET' || request.method === 'HEAD')) {
