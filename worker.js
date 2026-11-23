@@ -32,15 +32,17 @@
 //             de confirmación. Ver «La ventana del boletín».
 //
 //   /.well-known/apple-app-site-association   los enlaces universales: un
-//             enlace a /t/, /h/ o /a/ abre la app si está instalada (la otra
-//             mitad, en `app/ios/Runner/Runner.entitlements`).
+//             enlace a /t/, /h/, /a/ o /abrir abre la app si está instalada
+//             (la otra mitad, en `app/ios/Runner/Runner.entitlements`). /p/
+//             no: la app todavía no sabe abrir una palabra.
 //   /.well-known/assetlinks.json   lo mismo en Android, sólo con la huella
 //             del certificado de Play en ANDROID_SHA256 (todavía no).
 //
 // Con `noindex`, en la etiqueta y en la cabecera: fuera de Google. Todas
-// menos la portada.
-// El aviso de cookies y el Píxel de Meta, sólo con PIXEL_ID (todavía no):
-// ver «El aviso de cookies y el Píxel de Meta», abajo.
+// menos la portada, /palabras y /p/<slug>.
+// El aviso de cookies y el Píxel de Meta, sólo con PIXEL_ID (puesto el
+// 9-oct-2026): ver «El aviso de cookies y el Píxel de Meta», abajo. Las
+// visitas sin cookies de la portada, /palabras y /p/: ver `contarVisita`.
 //
 // Las pruebas: `node --test web/worker.test.mjs`.
 
@@ -125,11 +127,38 @@ const TEXTOS = {
       'Latín y griego, el texto entero delante. Tocas cualquier palabra y te dice qué es, de qué viene y qué hace en la frase. Lo que traduzcas lo traduces tú.',
     portadaLinea: 'Latín y griego, el texto entero delante.',
     portadaImagen: 'La lectura en Carmina: el primer canto de la Eneida, con una palabra tocada.',
+    // La portada como página de llegada del anuncio (23-nov-2026). Lo que el
+    // anuncio promete —«diccionario, morfología, lectura y ejercicios, todo en
+    // una sola herramienta»—, con las palabras de la ficha de las tiendas
+    // (FICHA-TIENDAS.md), que ya dicen sólo lo que la app hace.
+    descargarPlay: 'Descargar en Google Play',
+    portadaGratis: 'Leer y buscar son gratis. Para iPhone, iPad y Android.',
+    portadaTodo: 'Todo en una sola herramienta',
+    portadaPilares: [
+      ['Diccionario', 'Busca cualquier forma, también flexionada, y llega a su entrada. Uno latino y uno griego.'],
+      ['Morfología', 'La flexión completa de cada palabra: su caso, su tiempo, su modo y su paradigma.'],
+      ['Lectura', 'Virgilio, Ovidio, Horacio, César, Cicerón; Homero, Platón, el Nuevo Testamento. Más de veinte autores latinos y más de treinta griegos.'],
+      ['Ejercicios', 'Mide el verso, corta la palabra en sus piezas, concuerda y traduce un pasaje paso a paso.'],
+    ],
+    // Las capturas de la App Store (capturas/tienda/es/iphone-*.png, a 540 de
+    // ancho): las mismas que verá en la tienda. Sólo las hay en castellano; la
+    // portada italiana sigue con la lectura.
+    portadaCapturas: [
+      ['tienda-1-leer-latin', 'Latín: toca una palabra y se explica sin salir del verso.'],
+      ['tienda-2-leer-griego', 'Griego: Homero y Platón, con su análisis.'],
+      ['tienda-3-medir', 'Métrica: mide el verso, y te dice por qué.'],
+      ['tienda-4-vocabulario', 'Vocabulario: primero, las palabras que más salen en tus autores.'],
+      ['tienda-5-traducir', 'Traducir: tradúcelo tú, primero las palabras, luego la frase.'],
+      ['tienda-6-buscar', 'Buscar: búscala como la encontraste.'],
+    ],
     privacidad: 'Privacidad',
     condiciones: 'Condiciones',
     soporte: 'Soporte',
     palabraDelDia: 'La palabra del día',
-    palabrasLema: 'Una palabra latina o griega cada tres días, como la enseña Carmina.',
+    // Sin cada cuánto: el calendario cambia (David, 23-nov-2026: desde el
+    // 26-nov, palabra y pregunta del día por turnos; hasta entonces, una
+    // palabra cada tres días) y la frase no tiene que saberlo.
+    palabrasLema: 'Una palabra latina o griega, como la enseña Carmina.',
     hoy: 'Hoy',
     latin: 'Latín',
     griego: 'Griego',
@@ -213,11 +242,20 @@ const TEXTOS = {
       "Latino e greco, il testo intero davanti. Tocchi una parola qualsiasi e ti dice che cos'è, da dove viene e che cosa fa nella frase. Quello che traduci lo traduci tu.",
     portadaLinea: 'Latino e greco, il testo intero davanti.',
     portadaImagen: "La lettura in Carmina: il primo canto dell'Eneide, con una parola toccata.",
+    descargarPlay: 'Scarica su Google Play',
+    portadaGratis: 'Leggere e cercare sono gratuiti. Per iPhone, iPad e Android.',
+    portadaTodo: 'Tutto in un solo strumento',
+    portadaPilares: [
+      ['Dizionario', 'Cerca qualsiasi forma, anche flessa, e arrivi alla sua voce. Uno latino e uno greco.'],
+      ['Morfologia', 'La flessione completa di ogni parola: caso, tempo, modo e paradigma.'],
+      ['Lettura', 'Virgilio, Ovidio, Orazio, Cesare, Cicerone; Omero, Platone, il Nuovo Testamento. Oltre venti autori latini e oltre trenta greci.'],
+      ['Esercizi', 'Misura il verso, dividi la parola nei suoi elementi, concorda e traduci un passo un poco alla volta.'],
+    ],
     privacidad: 'Privacy',
     condiciones: 'Condizioni',
     soporte: 'Assistenza',
     palabraDelDia: 'La parola del giorno',
-    palabrasLema: 'Una parola latina o greca ogni tre giorni, come la insegna Carmina.',
+    palabrasLema: 'Una parola latina o greca, come la insegna Carmina.',
     hoy: 'Oggi',
     latin: 'Latino',
     griego: 'Greco',
@@ -282,6 +320,7 @@ const ESTILO = `
   main { max-width:34rem; margin:0 auto; }
   .marca { color:var(--carmin); font-size:1.6rem; font-weight:700; letter-spacing:.5px;
     font-family:Georgia,"Times New Roman",serif; margin:0 0 22px; text-align:center; }
+  .marca a { color:inherit; text-decoration:none; }
   h1 { font-size:1.15rem; line-height:1.3; margin:0 0 16px; text-align:center; color:var(--suave); font-weight:600; }
   .imagen { width:100%; height:auto; border-radius:12px; border:1px solid var(--filete); margin:0 0 20px; display:block; }
   .latin { font-family:Georgia,"Times New Roman",serif; font-style:italic; white-space:pre-wrap;
@@ -420,7 +459,11 @@ function anuncioDeSafari(env, argumento) {
   return `<meta name="apple-itunes-app" content="app-id=${esc(env.APP_STORE_ID)}${extra}">`;
 }
 
-function pagina({ lang, titulo, cabeza = '', cuerpo, aviso = '', indexable = false }) {
+/// [inicio]: es la portada. Las demás llevan «Carmina», arriba, como enlace a
+/// ella: antes ninguna página llevaba a otra de la web más que /p/ ↔
+/// /palabras, y quien llegaba a /t/ o /a/ no tenía adónde ir a ver qué es
+/// Carmina.
+function pagina({ lang, titulo, cabeza = '', cuerpo, aviso = '', indexable = false, inicio = false }) {
   return `<!doctype html>
 <html lang="${lang}">
 <head>
@@ -432,7 +475,7 @@ ${cabeza}
 </head>
 <body>
 <main>
-<p class="marca">Carmina</p>
+<p class="marca">${inicio ? 'Carmina' : '<a href="/">Carmina</a>'}</p>
 ${cuerpo}
 ${aviso}
 </main>
@@ -457,15 +500,57 @@ function respuesta(html, estado, { indexable = false } = {}) {
 // variables de `wrangler.jsonc` (la de Google Play, con su `?id=`). Mientras,
 // «Muy pronto». Con el enlace de campaña de cada página (`ct=compartir_t`,
 // `ct=invitacion_a`): App Analytics cuenta las descargas por origen.
+//
+// **Apple sólo cuenta la campaña con `pt=`** (23-nov-2026): «Ensure your
+// campaign includes both a provider token and a campaign token»
+// (developer.apple.com/help/app-store-connect-analytics/acquisition/
+// campaign-links). El `pt` es de la cuenta, el mismo en todas las campañas,
+// y sólo lo da App Store Connect al crear la primera (Analytics › Campañas ›
+// +); va en APP_STORE_PT. Sin él, sólo `ct=`, como hasta ahora: App Analytics
+// no lo ve, pero tampoco se rompe nada. El nombre de la campaña, 30
+// caracteres como mucho, el límite de Apple; el mismo en Google Play, que lee
+// `utm_source` y `utm_campaign` del enlace (Play Console › Adquisición).
+const PT = /^\d{1,12}$/;
+
+const campanaDeTienda = (campana) => String(campana).slice(0, 30);
+
+function enlaceAppStore(env, campana) {
+  const ct = `ct=${campanaDeTienda(campana)}`;
+  const pt = String(env.APP_STORE_PT ?? '');
+  return PT.test(pt) ? `${env.APP_STORE}?pt=${pt}&${ct}&mt=8` : `${env.APP_STORE}?${ct}`;
+}
+
+function enlaceGooglePlay(env, campana) {
+  return `${env.GOOGLE_PLAY}&utm_source=web&utm_campaign=${campanaDeTienda(campana)}`;
+}
+
 function tiendas(t, env, campana) {
   const enlaces = [];
   if (env.APP_STORE) {
-    enlaces.push(`<a data-tienda href="${esc(env.APP_STORE)}?ct=${campana}">${t.descargar}</a>`);
+    enlaces.push(`<a data-tienda href="${esc(enlaceAppStore(env, campana))}">${t.descargar}</a>`);
   }
   if (env.GOOGLE_PLAY) {
-    enlaces.push(`<a data-tienda href="${esc(env.GOOGLE_PLAY)}&utm_campaign=${campana}">Google Play</a>`);
+    enlaces.push(`<a data-tienda href="${esc(enlaceGooglePlay(env, campana))}">Google Play</a>`);
   }
   return enlaces.length ? enlaces.join(' · ') : t.pronto;
+}
+
+/// **El botón de la tienda de quien mira** (23-nov-2026, la portada como
+/// página de llegada del anuncio): en el iPhone y el iPad, sólo la App Store;
+/// en Android, sólo Google Play; en el ordenador —o un iPad que se presenta
+/// como Mac—, las dos. Un botón que en ese teléfono no sirve es un toque
+/// perdido y una duda, justo en el paso que el anuncio paga. Vacío sin
+/// tiendas.
+function botonesDeTienda(t, env, campana, ua) {
+  const apple = env.APP_STORE
+    ? `<a class="boton principal" data-tienda href="${esc(enlaceAppStore(env, campana))}">${t.descargar}</a>`
+    : '';
+  const google = env.GOOGLE_PLAY
+    ? `<a class="boton principal" data-tienda href="${esc(enlaceGooglePlay(env, campana))}">${t.descargarPlay}</a>`
+    : '';
+  if (/iPhone|iPad|iPod/.test(ua) && apple) return apple;
+  if (/Android/.test(ua) && google) return google;
+  return apple + google;
 }
 
 function sinPagina(lang, estado) {
@@ -710,30 +795,100 @@ ${arriba}
 // ---------- La portada (F8)
 //
 // El destino de los anuncios: qué es Carmina en dos líneas —el título y el
-// párrafo de A1 del alta—, la lectura (un dibujo con Eneida I, 1–11, de
-// `tool/imagenes_de_la_web_test.dart`), la tienda y el aviso de cookies. Cada
-// anuncio la enlaza con su campaña, `/?c=verano`, y la tienda la recibe como
+// párrafo de A1 del alta—, la tienda y el aviso de cookies. Cada anuncio la
+// enlaza con su campaña, `/?c=verano`, y la tienda la recibe como
 // `ct=anuncio_verano`; sin campaña, `ct=portada`. Ésta sí, en Google.
+//
+// **Como página de llegada** (David, 23-nov-2026: «más robustecimiento a los
+// destinos a partir de la descarga», con el anuncio ya en circulación):
+//
+//   · **el botón, arriba**, debajo del párrafo y antes de cualquier imagen.
+//     Hasta hoy iba debajo de la lectura, que en un teléfono mide más que la
+//     pantalla: quien llegaba del anuncio no veía «Descargar» sin bajar;
+//   · **sólo la tienda de ese teléfono** ([botonesDeTienda]);
+//   · **lo que prometió el anuncio**: las capturas de la App Store, en fila
+//     —las mismas que verá en la tienda— y «diccionario, morfología, lectura
+//     y ejercicios» con una línea de la ficha cada uno;
+//   · **el botón otra vez al final** y, en el teléfono, **una barra fija**
+//     con él mientras no se ve ninguno de los dos. Nunca encima del aviso de
+//     cookies: con el aviso abierto, la barra se esconde (`PORTADA_JS`).
 
 const CAMPANA = /^[a-z0-9_-]{1,30}$/;
+
+/// **De dónde viene quien llega** (23-nov-2026): `?c=` si lo trae y vale;
+/// si no, `utm_campaign` —lo que Meta pone cuando se rellenan los
+/// «parámetros de URL» del anuncio—, en minúsculas y sin lo que no puede ir
+/// en un nombre de campaña; y si tampoco, `meta` cuando el enlace trae el
+/// `fbclid` que Facebook e Instagram añaden a los enlaces que se tocan en
+/// ellos. Así un anuncio cuyo enlace se puso sin `?c=` no se cuenta como
+/// visita sin origen. Vacío si no hay nada.
+function origenDe(url) {
+  const c = (url.searchParams.get('c') || '').toLowerCase();
+  if (CAMPANA.test(c)) return c;
+  const utm = (url.searchParams.get('utm_campaign') || '')
+    .toLowerCase()
+    .replace(/[^a-z0-9_-]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 30);
+  if (CAMPANA.test(utm)) return utm;
+  return url.searchParams.has('fbclid') ? 'meta' : '';
+}
 
 const ESTILO_PORTADA = `
   .portada { text-align:center; }
   .portada h1 { color:var(--tinta); font:400 2.1rem/1.15 Georgia,"Times New Roman",serif; margin:4px 0 14px; text-wrap:balance; }
   .portada .nota { color:var(--suave); margin:0 auto 22px; max-width:30rem; }
-  .portada img { width:min(78%, 320px); height:auto; display:block; margin:0 auto 22px; }
-  .portada .tienda a { display:inline-flex; align-items:center; justify-content:center; min-height:48px; padding:0 26px;
-    border-radius:999px; background:var(--carmin); color:#fff; font-weight:600; text-decoration:none; margin:4px; }
-  .portada .tienda { margin:0 0 8px; }
+  .boton { display:flex; align-items:center; justify-content:center; min-height:52px; padding:0 26px; border-radius:999px;
+    font-weight:600; text-decoration:none; }
+  .boton.principal { background:var(--carmin); color:#fff; }
+  .cta { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin:0 0 10px; }
+  .cta .boton { flex:1 1 15rem; max-width:22rem; }
+  .gratis { color:var(--suave); font-size:.88rem; margin:0 0 28px; }
+  .galeria { display:flex; gap:12px; overflow-x:auto; scroll-snap-type:x mandatory; margin:0 -22px 30px; padding:0 22px 4px;
+    scrollbar-width:none; -webkit-overflow-scrolling:touch; }
+  .galeria::-webkit-scrollbar { display:none; }
+  .galeria img { flex:0 0 auto; width:min(64%, 236px); height:auto; border-radius:18px; scroll-snap-align:center; display:block; }
+  .lectura { width:min(78%, 320px); height:auto; display:block; margin:0 auto 28px; }
+  .todo { font:400 1.45rem/1.2 Georgia,"Times New Roman",serif; color:var(--tinta); margin:0 0 14px; text-wrap:balance; }
+  .pilares { list-style:none; padding:0; margin:0 0 28px; text-align:left; display:grid; gap:10px; }
+  .pilares li { background:var(--tarjeta); border-radius:16px; padding:14px 16px; }
+  .pilares strong { display:block; font:700 1.12rem/1.25 Georgia,"Times New Roman",serif; color:var(--tinta); margin:0 0 2px; }
+  .pilares span { color:var(--suave); font-size:.95rem; }
+  .fija { position:fixed; left:0; right:0; bottom:0; z-index:9; display:flex; gap:8px; justify-content:center;
+    padding:10px 16px calc(10px + env(safe-area-inset-bottom, 0px)); background:var(--papel); border-top:1px solid var(--filete);
+    box-shadow:0 -6px 20px rgba(0,0,0,.08); }
+  .fija .boton { flex:1 1 0; max-width:22rem; min-height:48px; }
+  @media (min-width: 700px) { .fija { display:none !important; } }
+  @media (max-width: 699px) { .portada { padding-bottom:64px; } }
   .legales { font-size:.85rem; color:var(--suave); margin-top:26px; }
   .legales a { color:var(--suave); }`;
 
-function portada(request, env) {
+/// La barra fija del teléfono: sale cuando el botón de arriba ya se pasó y
+/// el de abajo aún no llega, y nunca con el aviso de cookies abierto (los dos
+/// van abajo). Sin IntersectionObserver, no sale: los dos botones bastan.
+const PORTADA_JS = `(function () {
+  var arriba = document.getElementById('cta'), abajo = document.getElementById('cta-final'), fija = document.getElementById('fija');
+  if (!arriba || !fija || !('IntersectionObserver' in window)) return;
+  var pasado = false, llega = false;
+  function poner() {
+    var aviso = document.getElementById('aviso-cookies');
+    fija.hidden = !pasado || llega || !!(aviso && !aviso.hidden);
+  }
+  new IntersectionObserver(function (e) {
+    pasado = !e[0].isIntersecting && e[0].boundingClientRect.top < 0; poner();
+  }).observe(arriba);
+  if (abajo) new IntersectionObserver(function (e) { llega = e[0].isIntersecting; poner(); }).observe(abajo);
+  document.addEventListener('click', function () { setTimeout(poner, 0); });
+})();`;
+
+function portada(request, env, ctx) {
   const lang = lengua(request);
   const t = TEXTOS[lang];
   const url = new URL(request.url);
-  const c = (url.searchParams.get('c') || '').toLowerCase();
-  const campana = CAMPANA.test(c) ? `anuncio_${c}` : 'portada';
+  const origen = origenDe(url);
+  const campana = origen ? `anuncio_${origen}` : 'portada';
+  contarVisita(request, env, ctx, '/', origen);
+  const ua = request.headers.get('user-agent') || '';
   const cabeza = [
     anuncioDeSafari(env),
     `<meta name="description" content="${esc(t.portadaNota)}">`,
@@ -748,16 +903,33 @@ function portada(request, env) {
     `<meta name="twitter:card" content="summary_large_image">`,
     `<link rel="canonical" href="${url.origin}/">`,
   ].join('\n');
-  const tiendasHtml = env.APP_STORE || env.GOOGLE_PLAY
-    ? `<p class="tienda">${tiendas(t, env, campana).split(' · ').join('')}</p>`
-    : `<p class="nota">${t.pronto}</p>`;
+  const botones = botonesDeTienda(t, env, campana, ua);
+  const cta = (id) =>
+    botones
+      ? `<div class="cta" id="${id}">${botones}</div>`
+      : id === 'cta' ? `<p class="nota">${t.pronto}</p>` : '';
+  // Las dos primeras capturas se ven al llegar; las demás, al pasar el dedo.
+  const galeria = t.portadaCapturas
+    ? `<div class="galeria">${t.portadaCapturas
+        .map(
+          ([archivo, dice], i) =>
+            `<img src="/portada/${archivo}.jpg" width="540" height="1173"${i > 1 ? ' loading="lazy"' : ''} alt="${esc(dice)}">`,
+        )
+        .join('')}</div>`
+    : `<img class="lectura" src="/portada/lectura.png" width="720" height="1100" alt="${esc(t.portadaImagen)}">`;
+  const pilares = `<h2 class="todo">${t.portadaTodo}</h2>
+<ul class="pilares">${t.portadaPilares.map(([que, dice]) => `<li><strong>${que}</strong><span>${dice}</span></li>`).join('')}</ul>`;
   const cuerpo = `<div class="portada">
 <h1>${t.portadaTitulo}</h1>
 <p class="nota">${t.portadaNota}</p>
-<img src="/portada/lectura.png" width="720" height="1100" alt="${esc(t.portadaImagen)}">
-${tiendasHtml}
-<p class="legales"><a href="/legal/privacidad.html">${t.privacidad}</a> · <a href="/legal/condiciones.html">${t.condiciones}</a> · <a href="/legal/soporte.html">${t.soporte}</a><br>Círculo de Estudios Literarios</p>
+${cta('cta')}
+${botones ? `<p class="gratis">${t.portadaGratis}</p>` : ''}
+${galeria}
+${pilares}
+${cta('cta-final')}
+<p class="legales"><a href="/palabras">${t.palabraDelDia}</a><br><a href="/legal/privacidad.html">${t.privacidad}</a> · <a href="/legal/condiciones.html">${t.condiciones}</a> · <a href="/legal/soporte.html">${t.soporte}</a><br>Círculo de Estudios Literarios</p>
 </div>
+${botones ? `<div class="fija" id="fija" hidden>${botones}</div>\n<script>${PORTADA_JS}</script>` : ''}
 <style>${ESTILO_PORTADA}</style>`;
   return respuesta(
     pagina({
@@ -767,6 +939,7 @@ ${tiendasHtml}
       cuerpo,
       aviso: avisoDeCookies(env, lang),
       indexable: true,
+      inicio: true,
     }),
     200,
     { indexable: true },
@@ -775,9 +948,10 @@ ${tiendasHtml}
 
 // ---------- La palabra del día (27-oct-2026)
 //
-// Cada tres días, una palabra en Instagram con su imagen —la pantalla de la
-// app con la palabra tocada, que dibuja `tool/palabra_del_dia_test.dart`— y,
-// en la bio, un enlace fijo a /palabras?c=ig. Sin página intermedia de nadie
+// Una palabra en Instagram, el día que le da el índice, con su imagen —la
+// pantalla de la app con la palabra tocada, que dibuja
+// `tool/palabra_del_dia_test.dart`— y, en la bio, un enlace fijo a
+// /palabras?c=ig. Sin página intermedia de nadie
 // (David preguntó por la de Sprout): el Píxel, las cuentas y Google son de
 // aquí.
 //
@@ -795,6 +969,19 @@ ${tiendasHtml}
 
 const PALABRA = /^\/p\/([a-z0-9-]{1,40})\/?$/;
 const LENGUAS = ['latin', 'griego'];
+
+/// **«Hoy» es el de Ciudad de México** (23-nov-2026). Hasta hoy era el de
+/// UTC, y la palabra de mañana salía a las 18:00 de México —la hora en que
+/// más se mira Instagram—: quien tocaba el enlace de la bio por la
+/// publicación del día encontraba, con «Hoy», la del día siguiente. México no
+/// cambia de hora desde 2022; en España, la palabra cambia a las 7:00.
+const ZONA_DE_LAS_PALABRAS = 'America/Mexico_City';
+
+/// La fecha de [ahora] en [zona], como la escribe el índice (AAAA-MM-DD:
+/// `en-CA` la escribe así).
+function hoyEn(zona, ahora = new Date()) {
+  return new Intl.DateTimeFormat('en-CA', { timeZone: zona, year: 'numeric', month: '2-digit', day: '2-digit' }).format(ahora);
+}
 
 /// Las palabras ya publicadas, la más nueva primero, y la próxima por salir
 /// (o null). Sin índice, ninguna.
@@ -818,7 +1005,7 @@ async function lasPalabras(request, env) {
   } catch {
     todas = [];
   }
-  const hoy = new Date().toISOString().slice(0, 10);
+  const hoy = hoyEn(ZONA_DE_LAS_PALABRAS);
   const publicadas = todas
     .filter((p) => p.fecha <= hoy)
     .sort((a, b) => b.fecha.localeCompare(a.fecha));
@@ -830,6 +1017,14 @@ async function lasPalabras(request, env) {
 /// lo trae (`it`), y si no el castellano.
 function dePalabra(p, campo, lang) {
   return (lang === 'it' && p.it && p.it[campo]) || p[campo] || '';
+}
+
+/// **El origen sigue a quien navega** (23-nov-2026): quien llega por la bio
+/// (`/palabras?c=ig`) y toca una palabra, llega a `/p/<slug>?c=ig`; antes
+/// llegaba a `/p/<slug>` y esa visita, y su suscripción, ya no decían de dónde
+/// venían. [origen] ya pasó por CAMPANA. La dirección canónica, sin él.
+function conElOrigen(origen) {
+  return (ruta) => (origen ? `${ruta}${ruta.includes('?') ? '&amp;' : '?'}c=${origen}` : ruta);
 }
 
 function fechaLarga(iso, lang) {
@@ -847,10 +1042,10 @@ function fechaLarga(iso, lang) {
 /// tiendas todavía, «Muy pronto».
 function botonAbrir(t, env, campana, ruta, ua) {
   if (/iPhone|iPad|iPod/.test(ua) && env.APP_STORE) {
-    return `<a class="boton principal" data-tienda href="${esc(env.APP_STORE)}?ct=${campana}">${t.abrir}</a>`;
+    return `<a class="boton principal" data-tienda href="${esc(enlaceAppStore(env, campana))}">${t.abrir}</a>`;
   }
   if (/Android/.test(ua) && env.GOOGLE_PLAY) {
-    const play = `${env.GOOGLE_PLAY}&utm_campaign=${campana}`;
+    const play = enlaceGooglePlay(env, campana);
     const esquema = ESQUEMA.replace('://', '');
     const intent = `intent://${ruta}#Intent;scheme=${esquema};package=${APP_ANDROID};S.browser_fallback_url=${encodeURIComponent(play)};end`;
     return `<a class="boton principal" data-tienda href="${esc(intent)}">${t.abrir}</a>`;
@@ -861,13 +1056,26 @@ function botonAbrir(t, env, campana, ruta, ua) {
 
 /// **Las visitas, sin cookies** (`contar_visita_web`, en Supabase): por día,
 /// página y origen (`?c=`), sin la IP ni nada de quien entra. Es la cuenta
-/// que vale aunque nadie acepte el aviso. Los robots, y las vistas previas de
-/// Facebook y WhatsApp, no cuentan.
-const ROBOT = /bot|crawl|spider|slurp|facebookexternalhit|whatsapp|preview/i;
+/// que vale aunque nadie acepte el aviso. Se cuentan la portada (desde el
+/// 23-nov-2026: es adonde llevan los anuncios), /palabras y /p/<slug>.
+///
+/// No cuentan los robots, las vistas previas de Facebook y WhatsApp, ni las
+/// páginas que el navegador **pide por adelantado** sin que nadie las abra:
+/// el de Facebook e Instagram baja la página de un enlace en cuanto asoma en
+/// la pantalla, con `X-Purpose: preview`; Chrome y Firefox avisan con
+/// `Sec-Purpose`, `Purpose` o `X-Moz: prefetch`.
+const ROBOT = /bot|crawl|spider|slurp|facebookexternalhit|whatsapp|preview|headless|lighthouse|inspectiontool/i;
+const POR_ADELANTADO = /prefetch|prerender|preview/i;
+
+function pedidaPorAdelantado(request) {
+  return ['sec-purpose', 'purpose', 'x-purpose', 'x-moz'].some((h) =>
+    POR_ADELANTADO.test(request.headers.get(h) || ''),
+  );
+}
 
 function contarVisita(request, env, ctx, ruta, origen) {
   if (request.method !== 'GET' || !ctx || typeof ctx.waitUntil !== 'function') return;
-  if (ROBOT.test(request.headers.get('user-agent') || '')) return;
+  if (ROBOT.test(request.headers.get('user-agent') || '') || pedidaPorAdelantado(request)) return;
   ctx.waitUntil(
     rpc(env, 'contar_visita_web', { p_ruta: ruta, p_origen: origen || null }).catch(() => null),
   );
@@ -1146,12 +1354,15 @@ function textoAlternativo(p, lang) {
   return `${dePalabra(p, 'lema', lang)}: ${dePalabra(p, 'significado', lang)}. ${dePalabra(p, 'cita', lang)}.`;
 }
 
+/// **La app, justo debajo de la palabra de hoy** (23-nov-2026): es la página
+/// del enlace de la bio. Hasta hoy, la app iba después de todas las
+/// anteriores —una rejilla que crece con cada palabra— y quien llegaba de
+/// Instagram no la encontraba sin bajar hasta el final.
 async function portadaDePalabras(request, env, ctx) {
   const lang = lengua(request);
   const t = TEXTOS[lang];
   const url = new URL(request.url);
-  const c = (url.searchParams.get('c') || '').toLowerCase();
-  const origen = CAMPANA.test(c) ? c : '';
+  const origen = origenDe(url);
   const campana = origen ? `palabras_${origen}` : 'palabras';
   const pedida = url.searchParams.get('lengua');
   const filtro = LENGUAS.includes(pedida) ? pedida : '';
@@ -1163,8 +1374,9 @@ async function portadaDePalabras(request, env, ctx) {
   const [primera, ...resto] = lista;
   const nombreDe = (p) => (p.lengua === 'griego' ? t.griego : t.latin);
   const cuando = (p) => (p.fecha === hoy ? t.hoy : fechaLarga(p.fecha, lang));
+  const conOrigen = conElOrigen(origen);
   const grande = primera
-    ? `<a class="hoy" data-leido href="/p/${primera.slug}">
+    ? `<a class="hoy" data-leido href="${conOrigen(`/p/${primera.slug}`)}">
 <img src="/palabras/${primera.slug}.png" width="1080" height="1350" alt="${esc(textoAlternativo(primera, lang))}">
 <div class="pie-hoy"><p class="rotulo">${cuando(primera)} · ${nombreDe(primera)}</p>
 <p class="lema">${esc(dePalabra(primera, 'lema', lang))}</p>
@@ -1178,13 +1390,13 @@ async function portadaDePalabras(request, env, ctx) {
   ]
     .map(
       ([v, n]) =>
-        `<a href="/palabras${v ? `?lengua=${v}` : ''}"${v === filtro ? ' aria-current="page"' : ''}>${n}</a>`,
+        `<a href="${conOrigen(`/palabras${v ? `?lengua=${v}` : ''}`)}"${v === filtro ? ' aria-current="page"' : ''}>${n}</a>`,
     )
     .join('')}</nav>`;
   const anteriores = resto.length
     ? `<div class="rejilla">${resto
         .map(
-          (p) => `<a href="/p/${p.slug}"><img src="/palabras/${p.slug}-m.png" width="360" height="450" loading="lazy" alt="${esc(textoAlternativo(p, lang))}">
+          (p) => `<a href="${conOrigen(`/p/${p.slug}`)}"><img src="/palabras/${p.slug}-m.png" width="360" height="450" loading="lazy" alt="${esc(textoAlternativo(p, lang))}">
 <span class="lengua">${nombreDe(p)}</span><span class="lema">${esc(dePalabra(p, 'palabra', lang) || dePalabra(p, 'lema', lang))}</span><span class="corto">${esc(dePalabra(p, 'corto', lang))}</span></a>`,
         )
         .join('\n')}</div>`
@@ -1213,10 +1425,10 @@ async function portadaDePalabras(request, env, ctx) {
 <p class="rotulo">${t.palabraDelDia}</p>
 <h1>${t.palabrasLema}</h1>
 ${grande}
+${bloqueDeLaApp(t, env, campana, ua)}
 ${resto.length || filtro ? `<div class="fila"><p class="rotulo suave">${t.anteriores}</p>${filtroHtml}</div>` : ''}
 ${anteriores}
 ${proximaHtml}
-${bloqueDeLaApp(t, env, campana, ua)}
 ${bloqueDeCursos(t)}
 ${piePalabras(t)}
 </div>
@@ -1243,10 +1455,11 @@ async function paginaDePalabra(slug, request, env, ctx) {
   const { publicadas } = await lasPalabras(request, env);
   const p = publicadas.find((x) => x.slug === slug);
   if (!p) return sinPagina(lang, 404);
-  const c = (url.searchParams.get('c') || '').toLowerCase();
-  contarVisita(request, env, ctx, `/p/${slug}`, CAMPANA.test(c) ? c : '');
+  const origen = origenDe(url);
+  const conOrigen = conElOrigen(origen);
+  contarVisita(request, env, ctx, `/p/${slug}`, origen);
   const ua = request.headers.get('user-agent') || '';
-  const campana = `palabra_${slug.replace(/-/g, '_')}`.slice(0, 40);
+  const campana = `palabra_${slug.replace(/-/g, '_')}`;
   const enlace = `${url.origin}/p/${slug}`;
   const imagen = `${url.origin}/palabras/${slug}.png`;
   const palabra = dePalabra(p, 'palabra', lang) || dePalabra(p, 'lema', lang);
@@ -1284,9 +1497,9 @@ async function paginaDePalabra(slug, request, env, ctx) {
 <div class="rejilla tres">${otras
     .map(
       (x) =>
-        `<a href="/p/${x.slug}"><img src="/palabras/${x.slug}-m.png" width="360" height="450" loading="lazy" alt="${esc(textoAlternativo(x, lang))}"></a>`,
+        `<a href="${conOrigen(`/p/${x.slug}`)}"><img src="/palabras/${x.slug}-m.png" width="360" height="450" loading="lazy" alt="${esc(textoAlternativo(x, lang))}"></a>`,
     )
-    .join('')}<a class="todas" href="/palabras">${t.verTodas} ›</a></div>`;
+    .join('')}<a class="todas" href="${conOrigen('/palabras')}">${t.verTodas} ›</a></div>`;
   const cuerpo = `<div class="palabras">
 <p class="rotulo">${t.palabraDelDia} · ${p.lengua === 'griego' ? t.griego : t.latin} · ${fechaLarga(p.fecha, lang)}</p>
 <img class="lamina" data-leido src="/palabras/${slug}.png" width="1080" height="1350" alt="${esc(textoAlternativo(p, lang))}">
@@ -1297,7 +1510,7 @@ ${mas}
 ${bloqueDeCursos(t)}
 ${piePalabras(t)}
 </div>
-${ventanaDelBoletin(t, lang, p, CAMPANA.test(c) ? c : '')}
+${ventanaDelBoletin(t, lang, p, origen)}
 <style>${ESTILO_PALABRAS}</style>`;
   return respuesta(
     pagina({
@@ -1358,7 +1571,7 @@ export default {
       return new Response('', { status: 405 });
     }
     if (url.pathname === '/' && (request.method === 'GET' || request.method === 'HEAD')) {
-      return portada(request, env);
+      return portada(request, env, ctx);
     }
     if (url.pathname === '/boletin') {
       return request.method === 'POST' ? suscribir(request, env) : new Response('', { status: 405 });

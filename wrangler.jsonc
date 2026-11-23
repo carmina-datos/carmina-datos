@@ -16,10 +16,10 @@
   // app. Las carpetas (`/a/`) las resuelve worker.js.
   "assets": { "directory": ".", "binding": "ASSETS", "html_handling": "none" },
   "vars": {
-    // El Píxel de Meta de la web (David, 9-oct-2026). Con él, la portada, /t/
-    // y /a/ llevan el aviso de cookies, y el Píxel se carga sólo tras
-    // «Aceptar» (worker.js, «El aviso de cookies y el Píxel de Meta»). Quitarlo
-    // apaga las dos cosas. Es público: va escrito en la página.
+    // El Píxel de Meta de la web (David, 9-oct-2026). Con él, la portada, /t/,
+    // /a/, /palabras y /p/ llevan el aviso de cookies, y el Píxel se carga
+    // sólo tras «Aceptar» (worker.js, «El aviso de cookies y el Píxel de
+    // Meta»). Quitarlo apaga las dos cosas. Es público: va escrito en la página.
     "PIXEL_ID": "1360946059199413",
     // El id de Carmina en la App Store (App Store Connect › Información de la
     // app › Apple ID), para el anuncio de Safari.
@@ -29,6 +29,13 @@
     // tienda; worker.js les añade la campaña (`?ct=` a la de Apple,
     // `&utm_campaign=` a la de Google, que por eso ya lleva su `?id=`).
     "APP_STORE": "https://apps.apple.com/app/id6808968860",
+    // El «provider token» de la cuenta de Apple (23-nov-2026): sin él, App
+    // Analytics NO cuenta las campañas (`ct=`) de la web. Es un número, el
+    // mismo para todas las campañas, y público (va en cada enlace). Sólo lo da
+    // App Store Connect: Apps › Carmina › Analytics › Adquisición › Campañas ›
+    // +, con cualquier nombre; el enlace que sale lleva `pt=<número>`, y ese
+    // número va aquí. Vacío, los enlaces siguen con `ct=` solo, como hasta hoy.
+    "APP_STORE_PT": "",
     "GOOGLE_PLAY": "https://play.google.com/store/apps/details?id=com.circuloestudiosliterarios.carmina_app",
     "SUPABASE_URL": "https://rpzrcrsjphrrzqpzjaec.supabase.co",
     // La clave PÚBLICA (rol «anon»), la misma que lleva la app: sólo puede
