@@ -173,6 +173,8 @@ const TEXTOS = {
     verPalabra: 'Ver la palabra',
     masPalabras: 'Más palabras',
     verTodas: 'Ver todas',
+    laHistoria: 'La historia',
+    descargarCorto: 'Descargar',
     sinPalabras: 'Muy pronto, la primera.',
     laProxima: 'La próxima sale el',
     noLaTienesGratis: '¿No la tienes? Descárgala gratis.',
@@ -270,6 +272,8 @@ const TEXTOS = {
     verPalabra: 'Vedi la parola',
     masPalabras: 'Altre parole',
     verTodas: 'Vedi tutte',
+    laHistoria: 'La storia',
+    descargarCorto: 'Scarica',
     sinPalabras: 'Presto, la prima.',
     laProxima: 'La prossima esce il',
     noLaTienesGratis: 'Non ce l’hai? Scaricala gratis.',
@@ -317,9 +321,9 @@ async function rpc(env, funcion, cuerpo) {
 
 const ESTILO = `
   :root { color-scheme: light dark;
-    --papel:#FCFBF8; --tinta:#1F1B19; --suave:#6B625D; --carmin:#D32B37; --filete:#E7E1D8; --tarjeta:#F4EFE8; }
+    --papel:#FCFBF8; --tinta:#1F1B19; --suave:#6B625D; --carmin:#D32B37; --filete:#E7E1D8; --tarjeta:#F4EFE8; --azul:#2B5FC7; }
   @media (prefers-color-scheme: dark) {
-    :root { --papel:#16120F; --tinta:#EDE7DF; --suave:#A89E95; --carmin:#E9636E; --filete:#322C26; --tarjeta:#221C17; } }
+    :root { --papel:#16120F; --tinta:#EDE7DF; --suave:#A89E95; --carmin:#E9636E; --filete:#322C26; --tarjeta:#221C17; --azul:#86A9EE; } }
   * { box-sizing:border-box; }
   body { margin:0; background:var(--papel); color:var(--tinta); padding:32px 22px;
     font:16.5px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
@@ -327,6 +331,9 @@ const ESTILO = `
   .marca { color:var(--carmin); font-size:1.6rem; font-weight:700; letter-spacing:.5px;
     font-family:Georgia,"Times New Roman",serif; margin:0 0 22px; text-align:center; }
   .marca a { color:inherit; text-decoration:none; }
+  .marca.con-boton { display:flex; align-items:center; justify-content:space-between; text-align:left; margin-bottom:14px; }
+  .marca .pildora { font:600 .85rem/1 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; letter-spacing:0;
+    border:1.5px solid var(--carmin); border-radius:999px; padding:8px 14px; }
   h1 { font-size:1.15rem; line-height:1.3; margin:0 0 16px; text-align:center; color:var(--suave); font-weight:600; }
   .imagen { width:100%; height:auto; border-radius:12px; border:1px solid var(--filete); margin:0 0 20px; display:block; }
   .latin { font-family:Georgia,"Times New Roman",serif; font-style:italic; white-space:pre-wrap;
@@ -349,6 +356,11 @@ const ESTILO = `
 // ---------- El aviso de cookies y el Píxel de Meta («Lo común a todas las
 // páginas web»; texto de F1e)
 //
+// **Compacto desde el 24-nov-2026**: con las mismas palabras, en letra y
+// botones más pequeños. Medía 210 px en un teléfono de 375 de ancho, y en la
+// primera visita tapaba el panel de la lámina en /palabras y las capturas en
+// la portada, que es lo que enseña la app.
+//
 // Sólo con PIXEL_ID: sin Píxel no hay cookies de nadie y no hay nada que
 // aceptar. Con él, la primera vez sale el aviso, con «Rechazar» y «Aceptar»
 // iguales; el script de Meta no se pide hasta «Aceptar» —ni la imagen
@@ -368,12 +380,12 @@ const VERSION_DEL_AVISO = 1;
 const ESTILO_AVISO = `
   .aviso-cookies { position:fixed; left:12px; right:12px; bottom:calc(12px + env(safe-area-inset-bottom, 0px));
     max-width:34rem; margin:0 auto; background:var(--tarjeta); color:var(--tinta); border:1px solid var(--filete);
-    border-radius:16px; padding:16px; box-shadow:0 6px 24px rgba(0,0,0,.18); font-size:.92rem; z-index:10; }
-  .aviso-cookies p { margin:0 0 12px; text-align:left; color:var(--tinta); }
+    border-radius:16px; padding:12px 14px; box-shadow:0 6px 24px rgba(0,0,0,.18); font-size:.8rem; line-height:1.4; z-index:10; }
+  .aviso-cookies p { margin:0 0 9px; text-align:left; color:var(--tinta); }
   .aviso-cookies a { color:var(--carmin); }
   .aviso-botones { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
   .aviso-botones button { background:var(--papel); color:var(--tinta); border:1.5px solid var(--tinta);
-    font-weight:600; min-height:44px; border-radius:999px; }
+    font-weight:600; min-height:40px; border-radius:999px; }
   .cookies { text-align:center; font-size:.85rem; margin:28px 0 0; }
   .cookies a { color:var(--suave); }
   [hidden] { display:none !important; }`;
@@ -470,7 +482,7 @@ function anuncioDeSafari(env, argumento) {
 /// /palabras, y quien llegaba a /t/ o /a/ no tenía adónde ir a ver qué es
 /// Carmina.
 /// [toques]: la página cuenta sus toques en «Descargar» (`TOQUE_JS`).
-function pagina({ lang, titulo, cabeza = '', cuerpo, aviso = '', indexable = false, inicio = false, toques = false }) {
+function pagina({ lang, titulo, cabeza = '', cuerpo, aviso = '', indexable = false, inicio = false, toques = false, descarga = '' }) {
   return `<!doctype html>
 <html lang="${lang}">
 <head>
@@ -482,7 +494,7 @@ ${cabeza}
 </head>
 <body>
 <main>
-<p class="marca">${inicio ? 'Carmina' : '<a href="/">Carmina</a>'}</p>
+<p class="marca${descarga ? ' con-boton' : ''}">${inicio ? 'Carmina' : '<a href="/">Carmina</a>'}${descarga}</p>
 ${cuerpo}
 ${aviso}
 ${toques ? `<script>${TOQUE_JS}</script>\n` : ''}</main>
@@ -558,6 +570,22 @@ function botonesDeTienda(t, env, campana, ua) {
   if (/iPhone|iPad|iPod/.test(ua) && apple) return apple;
   if (/Android/.test(ua) && google) return google;
   return apple + google;
+}
+
+/// **«Descargar», arriba y siempre a mano** (24-nov-2026, la maqueta 3 de la
+/// web de la palabra del día): la marca a la izquierda y la tienda de quien
+/// mira a la derecha, en la misma fila. En el ordenador, a la portada, que
+/// tiene las dos. [inicio] es la portada con el origen de quien navega. Vacío
+/// sin tiendas.
+function pildoraDeDescarga(t, env, campana, ua, inicio = '/') {
+  if (/iPhone|iPad|iPod/.test(ua) && env.APP_STORE) {
+    return `<a class="pildora" data-tienda href="${esc(enlaceAppStore(env, campana))}">${t.descargarCorto}</a>`;
+  }
+  if (/Android/.test(ua) && env.GOOGLE_PLAY) {
+    return `<a class="pildora" data-tienda href="${esc(enlaceGooglePlay(env, campana))}">${t.descargarCorto}</a>`;
+  }
+  if (env.APP_STORE || env.GOOGLE_PLAY) return `<a class="pildora" href="${inicio}">${t.descargarCorto}</a>`;
+  return '';
 }
 
 function sinPagina(lang, estado) {
@@ -991,32 +1019,76 @@ function hoyEn(zona, ahora = new Date()) {
   return new Intl.DateTimeFormat('en-CA', { timeZone: zona, year: 'numeric', month: '2-digit', day: '2-digit' }).format(ahora);
 }
 
-/// Las palabras ya publicadas, la más nueva primero, y la próxima por salir
-/// (o null). Sin índice, ninguna.
-async function lasPalabras(request, env) {
+const FECHA = /^\d{4}-\d{2}-\d{2}$/;
+
+/// Un archivo JSON de /palabras/, o null si no está o no se lee.
+async function archivoDePalabras(request, env, nombre) {
   const url = new URL(request.url);
-  url.pathname = '/palabras/indice.json';
+  url.pathname = `/palabras/${nombre}`;
   url.search = '';
-  let todas = [];
   try {
     const r = await env.ASSETS.fetch(new Request(url));
-    if (r.ok) {
-      const j = await r.json();
-      todas = (Array.isArray(j?.palabras) ? j.palabras : []).filter(
-        (p) =>
-          p &&
-          /^[a-z0-9-]{1,40}$/.test(p.slug) &&
-          /^\d{4}-\d{2}-\d{2}$/.test(p.fecha) &&
-          LENGUAS.includes(p.lengua),
-      );
-    }
+    return r.ok ? await r.json() : null;
   } catch {
-    todas = [];
+    return null;
   }
+}
+
+/// Sólo las parejas `slug: AAAA-MM-DD` bien escritas de [o].
+function fechasPorSlug(o) {
+  const r = {};
+  if (o && typeof o === 'object') {
+    for (const [slug, fecha] of Object.entries(o)) {
+      if (/^[a-z0-9-]{1,40}$/.test(slug) && typeof fecha === 'string' && FECHA.test(fecha)) r[slug] = fecha;
+    }
+  }
+  return r;
+}
+
+/// **El calendario es el de Instagram** (24-nov-2026): `calendario.json`, que
+/// escribe `equipo/calendario_de_instagram.py` con el orden de la página
+/// «Publicaciones del día». Hasta hoy la web publicaba por la `fecha` del
+/// índice, la de la tabla del filólogo, e Instagram por el orden de David: el
+/// 23-nov Instagram publicó φάρμακον y la web, que la tenía para el 12 de
+/// diciembre, enseñaba homō. Quien tocaba la bio no encontraba su palabra.
+///
+/// El día de una palabra, con el calendario delante:
+/// - el de Instagram (`palabras`), si ya llegó;
+/// - si no, el día en que la web ya la enseñaba antes del calendario único
+///   (`ya_en_la_web`): lo que se vio no se despublica;
+/// - si no, el de Instagram, que está por llegar. Sin hueco en él, no sale.
+///
+/// Sin `calendario.json`, o con uno sin un solo día legible, la `fecha` del
+/// índice, como hasta hoy.
+async function lasPalabras(request, env) {
+  const [indice, calendario] = await Promise.all([
+    archivoDePalabras(request, env, 'indice.json'),
+    archivoDePalabras(request, env, 'calendario.json'),
+  ]);
   const hoy = hoyEn(ZONA_DE_LAS_PALABRAS);
+  const deInstagram = fechasPorSlug(calendario?.palabras);
+  const yaEnLaWeb = fechasPorSlug(calendario?.ya_en_la_web);
+  // Un calendario que no trae ni un día (roto, o vacío) no puede dejar la
+  // web sin palabras: vale lo mismo que no tenerlo.
+  const conCalendario = Object.keys(deInstagram).length > 0;
+  const todas = [];
+  for (const p of Array.isArray(indice?.palabras) ? indice.palabras : []) {
+    if (!p || !/^[a-z0-9-]{1,40}$/.test(p.slug) || !FECHA.test(p.fecha) || !LENGUAS.includes(p.lengua)) continue;
+    if (!conCalendario) {
+      todas.push({ ...p, enInstagram: false });
+      continue;
+    }
+    const suDia = deInstagram[p.slug];
+    const salio = Boolean(suDia) && suDia <= hoy;
+    const antes = yaEnLaWeb[p.slug];
+    const fecha = salio ? suDia : antes && antes <= hoy ? antes : suDia;
+    if (fecha) todas.push({ ...p, fecha, enInstagram: salio });
+  }
+  // La más nueva primero; el mismo día, la que ya salió en Instagram antes
+  // que la que sólo se había visto en la web.
   const publicadas = todas
     .filter((p) => p.fecha <= hoy)
-    .sort((a, b) => b.fecha.localeCompare(a.fecha));
+    .sort((a, b) => b.fecha.localeCompare(a.fecha) || Number(b.enInstagram) - Number(a.enInstagram));
   const proxima = todas.filter((p) => p.fecha > hoy).sort((a, b) => a.fecha.localeCompare(b.fecha))[0];
   return { publicadas, proxima: proxima || null, hoy };
 }
@@ -1163,6 +1235,25 @@ const ESTILO_PALABRAS = `
   .palabras h1 { color:var(--tinta); font:400 1.7rem/1.2 Georgia,"Times New Roman",serif; text-align:left; margin:2px 0 20px; text-wrap:balance; }
   .rotulo { font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; font-weight:600; color:var(--carmin); margin:0 0 6px; }
   .rotulo.suave { color:var(--suave); }
+  .palabras h1.rotulo { font:600 .72rem/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--carmin); margin:0 0 8px; }
+  .fechas { display:flex; gap:6px; overflow-x:auto; margin:0 -22px 14px; padding:0 22px 4px; scrollbar-width:none; -webkit-overflow-scrolling:touch; }
+  .fechas::-webkit-scrollbar { display:none; }
+  .fechas a, .fechas .actual { flex:0 0 auto; display:inline-flex; align-items:baseline; gap:6px; min-height:36px; padding:6px 12px;
+    border-radius:999px; border:1.5px solid var(--filete); color:var(--tinta); text-decoration:none; white-space:nowrap; }
+  .fechas .actual, .fechas a[aria-current] { border-color:var(--tinta); }
+  .fechas small { font-size:.7rem; color:var(--suave); }
+  .fechas b { font:400 1rem/1.2 Georgia,"Times New Roman",serif; }
+  .fechas .pt { width:7px; height:7px; border-radius:50%; background:var(--carmin); align-self:center; }
+  .fechas .gr .pt { background:var(--azul); }
+  .palabras .griega, .fechas .gr b { font-family:"Times New Roman",Times,serif; }
+  .historia { margin:0 0 26px; }
+  .historia p:not(.rotulo) { font-family:Georgia,"Times New Roman",serif; margin:0 0 12px; }
+  .historia blockquote { margin:0 0 12px; padding:12px 16px; background:var(--tarjeta); border-radius:12px;
+    font:italic 1.05rem/1.5 Georgia,"Times New Roman",serif; }
+  .historia blockquote.griega { font-style:normal; font-family:"Times New Roman",Times,serif; font-size:1.15rem; }
+  .historia blockquote span { display:block; font:400 .95rem/1.5 Georgia,"Times New Roman",serif; color:var(--suave); margin-top:4px; }
+  .historia .dato { border-left:3px solid var(--carmin); padding:2px 0 2px 14px; font-size:.95rem; }
   .hoy { display:block; background:var(--tarjeta); border-radius:22px; overflow:hidden; color:var(--tinta); text-decoration:none; margin:0 0 28px;
     box-shadow:0 10px 30px rgba(0,0,0,.08); }
   .hoy img, .lamina { width:100%; height:auto; display:block; }
@@ -1215,7 +1306,8 @@ const ESTILO_PALABRAS = `
 // palabra y su significado; el correo y «Suscribirme», sin casilla —el
 // formulario sólo sirve para suscribirse— y debajo el texto del
 // consentimiento. Sale sola **una vez y cuando ya leyó** —pasada la imagen o a
-// los 10 segundos—, nunca al llegar (en el móvil, Google baja a la página que
+// los 10 segundos; en la página de una palabra con su historia, pasada la
+// historia y sin reloj—, nunca al llegar (en el móvil, Google baja a la página que
 // se tapa nada más entrar) ni con el aviso de cookies a la vista. Si se
 // cierra, no vuelve sola en 30 días: lo recuerda el navegador
 // (`localStorage`), sin cookie y sin mandarlo a nadie. «Suscribirme» en la
@@ -1291,6 +1383,9 @@ const BOLETIN_JS = `(function () {
     abrir();
   }
   var leido = document.querySelector('[data-leido]');
+  // Con la historia escrita (24-nov-2026), «ya leyó» es haberla pasado: a los
+  // diez segundos todavía la está leyendo, y la ventana se la tapaba.
+  var conHistoria = !!(leido && leido.className === 'historia');
   if (leido && 'IntersectionObserver' in window) {
     new IntersectionObserver(function (vistas, o) {
       for (var j = 0; j < vistas.length; j++) {
@@ -1298,7 +1393,7 @@ const BOLETIN_JS = `(function () {
       }
     }).observe(leido);
   }
-  setTimeout(quizas, 10000);
+  if (!conHistoria) setTimeout(quizas, 10000);
   var form = v.querySelector('form');
   form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -1410,6 +1505,60 @@ function graciasDelBoletin(request) {
   );
 }
 
+/// La clase de una palabra griega escrita: la letra de la página, Georgia, no
+/// trae espíritus ni circunflejos, y `ὑποκρῐτής` salía con dos letras
+/// mezcladas (visto el 24-nov-2026 en /p/hypokrites). Times New Roman sí.
+const siGriega = (p, otras = '') => {
+  const clases = [otras, p.lengua === 'griego' ? 'griega' : ''].filter(Boolean).join(' ');
+  return clases ? ` class="${clases}"` : '';
+};
+
+/// **Las últimas palabras, por su nombre** (24-nov-2026, la maqueta 3): una
+/// fila con el día y la palabra de las seis más nuevas, y un punto del color
+/// de su lengua. Quien llega por la bio viene de la imagen de una palabra,
+/// que puede ser de hace días: aquí la encuentra escrita, sin bajar. En
+/// /palabras todas llevan a su página; en la de una palabra, [actual] va sin
+/// enlace. Con una sola palabra no hay fila.
+function filaDeFechas(palabras, { t, lang, hoy, conOrigen, actual = '' }) {
+  if (palabras.length < 2) return '';
+  const dia = (p) =>
+    p.fecha === hoy
+      ? t.hoy
+      : new Intl.DateTimeFormat(lang, { day: 'numeric', month: 'short', timeZone: 'UTC' }).format(new Date(`${p.fecha}T12:00:00Z`));
+  const fichas = palabras.slice(0, 6).map((p) => {
+    const dentro = `<span class="pt"></span><small>${dia(p)}</small><b>${esc(dePalabra(p, 'palabra', lang) || dePalabra(p, 'lema', lang))}</b>`;
+    const gr = p.lengua === 'griego' ? 'gr' : '';
+    return p.slug === actual
+      ? `<span class="${['actual', gr].filter(Boolean).join(' ')}">${dentro}</span>`
+      : `<a${gr ? ' class="gr"' : ''} href="${conOrigen(`/p/${p.slug}`)}">${dentro}</a>`;
+  });
+  const todas = `<a href="${actual ? conOrigen('/palabras') : ''}#todas"><small>${t.todas} ›</small></a>`;
+  return `<nav class="fechas" aria-label="${t.masPalabras}">${fichas.join('')}${todas}</nav>`;
+}
+
+/// **La historia de la palabra**: el guion revisado del vídeo, escrito
+/// (`historias.json`, de `equipo/web_del_dia.py`). Hasta el 24-nov-2026 la
+/// página traía la lámina y una línea: lo que cuenta el vídeo no se podía
+/// leer, y un buscador no tenía qué leer. Sólo en castellano, que es como
+/// están los guiones. El dato (`pie_es`, `pie_it`) es la misma etimología en
+/// corto: sale sólo donde no hay historia que pintar —en italiano, o si el
+/// guion no trae su verso—, para no decirlo dos veces. Lo que no venga con su
+/// forma no se pinta.
+function historiaDe(h, p, lang, t) {
+  if (!h || typeof h !== 'object') return '';
+  const textos = (x) => (Array.isArray(x) ? x.filter((s) => typeof s === 'string' && s) : []);
+  const parrafos = (x) => textos(x).map((s) => `<p>${esc(s)}</p>`).join('\n');
+  const dato = lang === 'it' ? h.dato_it : h.dato;
+  const elDato = typeof dato === 'string' && dato ? `<p class="dato">${esc(dato)}</p>` : '';
+  if (lang === 'it') return elDato ? `<div class="historia">${elDato}</div>` : '';
+  if (typeof h.verso !== 'string' || !h.verso) return elDato ? `<div class="historia">${elDato}</div>` : '';
+  const traduccion = typeof h.traduccion === 'string' && h.traduccion ? `<span>${esc(h.traduccion)}</span>` : '';
+  return `<div class="historia"><p class="rotulo suave">${t.laHistoria}</p>
+${parrafos(h.antes)}
+<blockquote${siGriega(p)} lang="${p.lengua === 'griego' ? 'grc' : 'la'}">${esc(h.verso)}${traduccion}</blockquote>
+${parrafos(h.despues)}</div>`;
+}
+
 function bloqueDeLaApp(t, env, campana, ua) {
   return `<div class="app"><div class="icono" aria-hidden="true">C</div><div>
 <p>${t.palabrasApp}</p>
@@ -1456,7 +1605,7 @@ async function portadaDePalabras(request, env, ctx) {
     ? `<a class="hoy" data-leido href="${conOrigen(`/p/${primera.slug}`)}">
 <img src="/palabras/${primera.slug}.png" width="1080" height="1350" alt="${esc(textoAlternativo(primera, lang))}">
 <div class="pie-hoy"><p class="rotulo">${cuando(primera)} · ${nombreDe(primera)}</p>
-<p class="lema">${esc(dePalabra(primera, 'lema', lang))}</p>
+<p${siGriega(primera, 'lema')}>${esc(dePalabra(primera, 'lema', lang))}</p>
 <p class="corto">${esc(dePalabra(primera, 'corto', lang))}</p>
 <div class="fila"><span class="cita">${esc(dePalabra(primera, 'cita', lang))}</span><span class="ver">${t.verPalabra} ›</span></div></div></a>`
     : `<p class="aviso">${t.sinPalabras}</p>`;
@@ -1474,7 +1623,7 @@ async function portadaDePalabras(request, env, ctx) {
     ? `<div class="rejilla">${resto
         .map(
           (p) => `<a href="${conOrigen(`/p/${p.slug}`)}"><img src="/palabras/${p.slug}-m.png" width="360" height="450" loading="lazy" alt="${esc(textoAlternativo(p, lang))}">
-<span class="lengua">${nombreDe(p)}</span><span class="lema">${esc(dePalabra(p, 'palabra', lang) || dePalabra(p, 'lema', lang))}</span><span class="corto">${esc(dePalabra(p, 'corto', lang))}</span></a>`,
+<span class="lengua">${nombreDe(p)}</span><span${siGriega(p, 'lema')}>${esc(dePalabra(p, 'palabra', lang) || dePalabra(p, 'lema', lang))}</span><span class="corto">${esc(dePalabra(p, 'corto', lang))}</span></a>`,
         )
         .join('\n')}</div>`
     : '';
@@ -1498,12 +1647,15 @@ async function portadaDePalabras(request, env, ctx) {
       : []),
     `<link rel="canonical" href="${url.origin}/palabras${filtro ? `?lengua=${filtro}` : ''}">`,
   ].join('\n');
+  // La cabecera, en poco sitio (24-nov-2026): el título es el rótulo, sin el
+  // lema de tres renglones, que sigue en la descripción. Medido a 375 de
+  // ancho: la lámina empezaba en el píxel 237.
   const cuerpo = `<div class="palabras">
-<p class="rotulo">${t.palabraDelDia}</p>
-<h1>${t.palabrasLema}</h1>
+<h1 class="rotulo">${t.palabraDelDia}</h1>
+${filaDeFechas(lista, { t, lang, hoy, conOrigen })}
 ${grande}
 ${bloqueDeLaApp(t, env, campana, ua)}
-${resto.length || filtro ? `<div class="fila"><p class="rotulo suave">${t.anteriores}</p>${filtroHtml}</div>` : ''}
+${resto.length || filtro ? `<div class="fila" id="todas"><p class="rotulo suave">${t.anteriores}</p>${filtroHtml}</div>` : ''}
 ${anteriores}
 ${proximaHtml}
 ${bloqueDeCursos(t)}
@@ -1520,6 +1672,7 @@ ${ventanaDelBoletin(t, lang, primera || null, origen)}
       aviso: avisoDeCookies(env, lang, 'palabras'),
       indexable: true,
       toques: true,
+      descarga: pildoraDeDescarga(t, env, campana, ua, conOrigen('/')),
     }),
     200,
     { indexable: true },
@@ -1530,9 +1683,16 @@ async function paginaDePalabra(slug, request, env, ctx) {
   const lang = lengua(request);
   const t = TEXTOS[lang];
   const url = new URL(request.url);
-  const { publicadas } = await lasPalabras(request, env);
+  const { publicadas, hoy } = await lasPalabras(request, env);
   const p = publicadas.find((x) => x.slug === slug);
   if (!p) return sinPagina(lang, 404);
+  const historias = await archivoDePalabras(request, env, 'historias.json');
+  const historia = historias?.historias?.[slug];
+  const entrada = lang !== 'it' && Array.isArray(historia?.antes) && typeof historia.antes[0] === 'string' ? historia.antes[0] : '';
+  // Con la historia entera, lo «leído» (lo que espera la ventana del boletín)
+  // es la historia, no la imagen.
+  const cuento = historiaDe(historia, p, lang, t);
+  const conHistoria = cuento.includes('<blockquote');
   const origen = origenDe(url);
   const conOrigen = conElOrigen(origen);
   contarVisita(request, env, ctx, `/p/${slug}`, origen);
@@ -1557,7 +1717,9 @@ async function paginaDePalabra(slug, request, env, ctx) {
   // (el enlace de la palabra), «Abrir» la lleva a su inicio.
   const cabeza = [
     anuncioDeSafari(env),
-    `<meta name="description" content="${esc(`${dePalabra(p, 'lema', lang)}: ${dePalabra(p, 'significado', lang)}`)}">`,
+    // Con historia, la descripción es su primera frase: lo que el buscador
+    // enseña debajo del título.
+    `<meta name="description" content="${esc(entrada || `${dePalabra(p, 'lema', lang)}: ${dePalabra(p, 'significado', lang)}`)}">`,
     `<meta property="og:type" content="article">`,
     `<meta property="og:site_name" content="Carmina">`,
     `<meta property="og:title" content="${esc(titulo)}">`,
@@ -1579,10 +1741,12 @@ async function paginaDePalabra(slug, request, env, ctx) {
     )
     .join('')}<a class="todas" href="${conOrigen('/palabras')}">${t.verTodas} ›</a></div>`;
   const cuerpo = `<div class="palabras">
+${filaDeFechas(publicadas, { t, lang, hoy, conOrigen, actual: slug })}
 <p class="rotulo">${t.palabraDelDia} · ${p.lengua === 'griego' ? t.griego : t.latin} · ${fechaLarga(p.fecha, lang)}</p>
-<img class="lamina" data-leido src="/palabras/${slug}.png" width="1080" height="1350" alt="${esc(textoAlternativo(p, lang))}">
-<p class="linea"><strong>${esc(dePalabra(p, 'lema', lang))}</strong>: ${esc(dePalabra(p, 'significado', lang))}. <span class="cita">${esc(dePalabra(p, 'cita', lang))}.</span></p>
+<img class="lamina"${conHistoria ? '' : ' data-leido'} src="/palabras/${slug}.png" width="1080" height="1350" alt="${esc(textoAlternativo(p, lang))}">
+<p class="linea"><strong${siGriega(p)}>${esc(dePalabra(p, 'lema', lang))}</strong>: ${esc(dePalabra(p, 'significado', lang))}. <span class="cita">${esc(dePalabra(p, 'cita', lang))}.</span></p>
 <div class="abrir-palabra">${botonAbrir(t, env, campana, `p/${slug}`, ua)}<p class="nota">${t.noLaTienesGratis}</p></div>
+${conHistoria ? cuento.replace('<div class="historia">', '<div class="historia" data-leido>') : cuento}
 <div class="suscribirse"><span>${t.proximaEnTuCorreo}</span><a href="#boletin" data-boletin>${t.suscribirme} ›</a></div>
 ${mas}
 ${bloqueDeCursos(t)}
@@ -1599,10 +1763,36 @@ ${ventanaDelBoletin(t, lang, p, origen)}
       aviso: avisoDeCookies(env, lang, 'palabra', { content_ids: [slug], content_name: palabra }),
       indexable: true,
       toques: true,
+      descarga: pildoraDeDescarga(t, env, campana, ua, conOrigen('/')),
     }),
     200,
     { indexable: true },
   );
+}
+
+/// **El mapa del sitio**, para los buscadores (24-nov-2026): la portada,
+/// /palabras y cada palabra ya publicada, con su día. Hasta hoy no había, y a
+/// una palabra sólo se llegaba por el enlace de otra página. `robots.txt` lo
+/// anuncia; las páginas que no van a Google (/t/, /a/…) ya dicen `noindex`.
+async function mapaDelSitio(request, env) {
+  const { origin } = new URL(request.url);
+  const { publicadas, hoy } = await lasPalabras(request, env);
+  const una = (ruta, dia) => `<url><loc>${esc(origin + ruta)}</loc>${dia ? `<lastmod>${dia}</lastmod>` : ''}</url>`;
+  const cuerpo = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${[una('/'), una('/palabras', publicadas.length ? publicadas[0].fecha : hoy), ...publicadas.map((p) => una(`/p/${p.slug}`, p.fecha))].join('\n')}
+</urlset>
+`;
+  return new Response(cuerpo, {
+    headers: { 'content-type': 'application/xml; charset=utf-8', 'cache-control': 'public, max-age=3600' },
+  });
+}
+
+function robots(request) {
+  const { origin } = new URL(request.url);
+  return new Response(`User-agent: *\nAllow: /\nSitemap: ${origin}/sitemap.xml\n`, {
+    headers: { 'content-type': 'text/plain; charset=utf-8', 'cache-control': 'public, max-age=3600' },
+  });
 }
 
 async function denunciar(id, request, env) {
@@ -1665,6 +1855,8 @@ export default {
       }
       const p = url.pathname.match(PALABRA);
       if (p) return paginaDePalabra(p[1], request, env, ctx);
+      if (url.pathname === '/sitemap.xml') return mapaDelSitio(request, env);
+      if (url.pathname === '/robots.txt') return robots(request);
     }
     // **«Abrir en Carmina» de los correos** (N2): un enlace universal, así que
     // con la app instalada la abre sin llegar aquí; sin ella, la portada, con

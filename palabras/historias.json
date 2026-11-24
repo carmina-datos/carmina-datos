@@ -1,0 +1,989 @@
+{
+ "nota": "Lo escribe equipo/web_del_dia.py con las tablas del filólogo. No se edita a mano.",
+ "historias": {
+  "idea": {
+   "antes": [
+    "Cuando dices «idea», hablas de algo que no se ve. En griego empezó siendo lo contrario: lo que se ve.",
+    "Idea es la palabra del día de Carmina. Viene de ideîn, «ver», y era el aspecto de las cosas.",
+    "El poeta Teognis la usa así. Quien compra una mula no se fía de su pinta: la carga y la pone a andar, porque sólo trabajando se ve si sirve. Con las personas, dice Teognis, pasa lo mismo: no sabes cómo es alguien hasta haberlo puesto a prueba. Y lo remata con este verso:"
+   ],
+   "verso": "πολλάκι γὰρ γνώμην ἐξαπατῶσʼ ἰδέαι",
+   "traduccion": "«Porque a menudo las apariencias engañan el juicio.»",
+   "despues": [
+    "Esas apariencias, idéai, son lo que se ve de alguien. Platón llamó así a lo que no se ve y se alcanza pensando; de ahí, siglos después, nuestra idea."
+   ],
+   "dato": "Idea viene de ἰδέα, de ἰδεῖν, «ver»: primero fue el aspecto de las cosas, lo que se ve. Platón llamó así a lo que no se ve y se alcanza pensando; antes, Teognis ya avisaba: «las apariencias engañan a menudo el juicio».",
+   "dato_it": "Idea viene da ἰδέα, da ἰδεῖν, «vedere»: prima fu l'aspetto delle cose, ciò che si vede. Platone chiamò così ciò che non si vede e si coglie col pensiero; già prima Teognide avvertiva: «spesso le apparenze ingannano il giudizio»."
+  },
+  "deliro": {
+   "antes": [
+    "Cuando decimos que alguien delira, decimos, sin saberlo, que se ha salido del surco.",
+    "Dēlīrō es la palabra del día de Carmina. Se forma con dē, «fuera de», y līra, el lomo de tierra del surco. La imagen es la del labrador; en latín ya es perder la cabeza.",
+    "Horacio usa dēlīrō hablando de la Ilíada. Dos reyes griegos, Aquiles y Agamenón, se pelean, y ¿quién lo paga?"
+   ],
+   "verso": "quidquid delirant reges, plectuntur Achivi",
+   "traduccion": "«Cualquier delirio de los reyes lo pagan a golpes los aqueos.»",
+   "despues": [
+    "Aquí dēlīrāre ya es nuestro delirar: los reyes se salen del surco y pagan los demás."
+   ],
+   "dato": "Delirar es salirse del surco: dē, «fuera de», y līra, el lomo de tierra del surco. La imagen es la del labrador; en latín ya es perder la cabeza.",
+   "dato_it": "Delirare è uscire dal solco: dē, «fuori da», e līra, il rialzo di terra del solco. L'immagine è quella del contadino; in latino è già perdere la testa."
+  },
+  "pharmakon": {
+   "antes": [
+    "Un fármaco te cura. Pero la palabra griega de la que viene también podía envenenarte, o hechizarte.",
+    "Phármakon es la palabra del día de Carmina.",
+    "En el Agamenón de Esquilo, un heraldo vuelve de Troya y encuentra sombríos a los ancianos de Argos. Les pregunta por qué. No se lo explican; sólo le contestan:"
+   ],
+   "verso": "πάλαι τὸ σιγᾶν φάρμακον βλάβης ἔχω",
+   "traduccion": "«Hace tiempo que tengo el callar por remedio contra el daño.»",
+   "despues": [
+    "Aquí phármakon es remedio, y no se bebe: lo que protege a estos ancianos es callar. De esa palabra, que curaba y envenenaba, viene nuestro fármaco."
+   ],
+   "dato": "Fármaco viene de φάρμακον, que en griego era a la vez remedio y veneno, y también hechizo. Aquí es remedio: «hace tiempo que tengo el callar por remedio contra el daño».",
+   "dato_it": "Farmaco viene da φάρμακον, che in greco era insieme rimedio e veleno, e anche incantesimo. Qui è rimedio: «da tempo ho il tacere come rimedio contro il danno»."
+  },
+  "basium": {
+   "antes": [
+    "Beso viene de una palabra que Virgilio, Horacio y Ovidio no escribieron nunca.",
+    "Bāsium es la palabra del día de Carmina. Para «beso», esos tres dicen ōscula. Antes que ellos, Catulo ya escribe bāsium: el primero, que sepamos.",
+    "Le recuerda a Lesbia, su amada, que la vida es corta: el sol se pone y vuelve, pero nosotros, cuando se apague nuestra breve luz, dormiremos una sola noche sin fin."
+   ],
+   "verso": "da mi basia mille, deinde centum",
+   "traduccion": "«Dame mil besos, y luego cien.»",
+   "despues": [
+    "Y sigue sumando miles y cientos, para luego embrollar la cuenta a propósito: si nadie sabe cuántos se dan, ningún envidioso puede echarles mal de ojo. Aquí bāsia son besos de amor. Esa palabra sobrevivió: por eso decimos beso, y no ósculo."
+   ],
+   "dato": "Beso viene de bāsium, una palabra que Virgilio, Horacio y Ovidio no escribieron nunca, y que tampoco sale en Plauto ni en Terencio. El primero que la escribe, que sepamos, es Catulo. Es la que sobrevivió: por eso decimos beso, y no ósculo.",
+   "dato_it": "Bacio viene da bāsium, una parola che Virgilio, Orazio e Ovidio non scrissero mai, e che non compare neppure in Plauto né in Terenzio. Il primo a scriverla, per quanto ne sappiamo, è Catullo. È quella che è sopravvissuta: per questo diciamo bacio, e non osculo."
+  },
+  "tragodia": {
+   "antes": [
+    "¿Qué tiene que ver una tragedia con una cabra?",
+    "Tragōdía es la palabra del día de Carmina. Viene de tragōdós: trágos, «macho cabrío», y ōdós, «cantor». Por qué una cabra, se discute: los antiguos decían que el premio era un macho cabrío; otros suponen coros vestidos de cabra.",
+    "En la Poética, Aristóteles compara las partes de la tragedia con las de la epopeya:"
+   ],
+   "verso": "μέρη δ’ ἐστὶ τὰ μὲν ταὐτά, τὰ δὲ ἴδια τῆς τραγῳδίας",
+   "traduccion": "«Unas partes son las mismas; otras, propias de la tragedia.»",
+   "despues": [
+    "Aquí tragōdía es nuestra tragedia: un género de teatro. De la cabra sólo queda el nombre."
+   ],
+   "dato": "Tragedia viene de τραγῳδία, y ésta de τραγῳδός, «cantor del macho cabrío»: τράγος y ᾠδός. Por qué una cabra, se discute: los antiguos decían que el premio era un macho cabrío; otros suponen coros vestidos de cabra.",
+   "dato_it": "Tragedia viene da τραγῳδία, e questa da τραγῳδός, «cantore del capro»: τράγος e ᾠδός. Perché un capro, è discusso: gli antichi dicevano che il premio era un capro; altri suppongono cori travestiti da capri."
+  },
+  "papilio": {
+   "antes": [
+    "En latín, un pabellón y una mariposa eran la misma palabra.",
+    "Pāpiliō es la palabra del día de Carmina. Significa «mariposa», y en el latín tardío pasó a nombrar también la tienda de campaña: por el parecido, dice Isidoro de Sevilla. De ahí nuestro pabellón: primero tienda, hoy edificio.",
+    "Ovidio todavía habla del insecto. En las Metamorfosis, Pitágoras explica que todo se transforma, también el gusano:"
+   ],
+   "verso": "ferali mutant cum papilione figuram",
+   "traduccion": "«Los gusanos del campo cambian su figura por la de la mariposa dañina.»",
+   "despues": [
+    "Una metamorfosis tras otra: el gusano se hizo mariposa, y la mariposa, pabellón."
+   ],
+   "dato": "Pabellón viene de pāpiliō, «mariposa». En el latín tardío la palabra pasó a nombrar también la tienda de campaña, por el parecido, dice Isidoro de Sevilla; de ahí el pabellón, y el italiano padiglione.",
+   "dato_it": "Padiglione viene da pāpiliō, «farfalla». Nel latino tardo la parola passò a indicare anche la tenda da campo, per la somiglianza, dice Isidoro di Siviglia; da qui il padiglione, e lo spagnolo pabellón."
+  },
+  "angelos": {
+   "antes": [
+    "Para nosotros, un ángel viene del cielo. En griego, ángelos era cualquier mensajero, hasta un pájaro.",
+    "Ángelos es la palabra del día de Carmina: «mensajero».",
+    "En la Electra de Sófocles, el coro le dice a Electra que llorar no le devolverá a su padre. Ella contesta que su corazón está con el ruiseñor, que en el mito es una madre, Procne, y llora sin fin a su hijo Itis:"
+   ],
+   "verso": "ὄρνις ἀτυζομένα, Διὸς ἄγγελος.",
+   "traduccion": "«El ave trastornada de dolor, mensajera de Zeus.»",
+   "despues": [
+    "Aquí ángelos es mensajera: según un comentario antiguo, porque el ruiseñor anuncia la primavera. La Biblia griega llamó así a los mensajeros de Dios; pasó al latín, y de ahí nuestro ángel."
+   ],
+   "dato": "Ángel viene de ἄγγελος, «mensajero». Antes de que la Biblia griega llamara así a los enviados de Dios, lo eran los heraldos, los poetas y las aves de los augurios: aquí, en Sófocles, el ruiseñor es «mensajero de Zeus».",
+   "dato_it": "Angelo viene da ἄγγελος, «messaggero». Prima che la Bibbia greca chiamasse così gli inviati di Dio, lo erano gli araldi, i poeti e gli uccelli degli àuguri: qui, in Sofocle, l'usignolo è «messaggero di Zeus»."
+  },
+  "mus": {
+   "antes": [
+    "¿Qué tienen que ver tus músculos con un ratón? En latín, mucho.",
+    "Mūs es la palabra del día de Carmina: «ratón». Su diminutivo, mūsculus, «ratoncito», era también el músculo. Isidoro de Sevilla lo explica por su parecido con los ratones, animalillos que viven escondidos bajo tierra.",
+    "En una fábula de Fedro, un monte está de parto, entre gemidos enormes, y en la tierra la expectación es máxima:"
+   ],
+   "verso": "At ille murem peperit. Hoc scriptum est tibi,",
+   "traduccion": "«Pero parió un ratón. Esto se ha escrito para ti,»",
+   "despues": [
+    "para ti, que amenazas con grandes cosas y no sacas nada. Aquí mūs es un ratón de verdad, frente a todo un monte. Y de mūsculus, el ratoncito, viene nuestro músculo."
+   ],
+   "dato": "Músculo viene de mūsculus, «ratoncito», el diminutivo de mūs. El latín ya llamaba así a las dos cosas: al ratón pequeño y al músculo.",
+   "dato_it": "Muscolo viene da mūsculus, «topolino», il diminutivo di mūs. Il latino chiamava già così le due cose: il topolino e il muscolo."
+  },
+  "charakter": {
+   "antes": [
+    "Decimos que alguien tiene carácter. En griego, el carácter se grababa en las monedas.",
+    "Charaktḗr es la palabra del día de Carmina. Viene de charássein, «grabar»: es el cuño de monedas y sellos.",
+    "En la Medea de Eurípides, Jasón abandona a Medea, que lo salvó, para casarse con otra. Ella le reprocha a Zeus que les diera a los hombres señales claras para reconocer el oro falso, y ninguna para reconocer al hombre malo:"
+   ],
+   "verso": "οὐδεὶς χαρακτὴρ ἐμπέφυκε σώματι;",
+   "traduccion": "«¿Ningún cuño le nace en el cuerpo?»",
+   "despues": [
+    "Aquí charaktḗr es la marca visible que delataría al malo, como el cuño a la moneda. De esa marca que distingue a cada cual viene nuestro carácter."
+   ],
+   "dato": "Carácter viene de χαρακτήρ, la marca grabada, el cuño de una moneda, de χαράσσειν, «grabar». Medea se queja aquí de que el oro falso se reconozca y el hombre malo no lleve ningún cuño en el cuerpo.",
+   "dato_it": "Carattere viene da χαρακτήρ, il segno inciso, il conio di una moneta, da χαράσσειν, «incidere». Medea si lamenta qui che l'oro falso si riconosca e l'uomo malvagio non porti alcun conio sul corpo."
+  },
+  "examen": {
+   "antes": [
+    "Un examen y un enjambre: en latín, la misma palabra.",
+    "Exāmen es la palabra del día de Carmina. Viene de ex, «fuera», y agō, «conducir»: el enjambre que sale de la colmena.",
+    "En las Geórgicas, Virgilio enseña a criar abejas, y avisa:"
+   ],
+   "verso": "At cum incerta volant caeloque examina ludunt",
+   "traduccion": "«Pero cuando los enjambres vuelan sin rumbo y juegan en el cielo»",
+   "despues": [
+    "y dejan la colmena, hay que arrancarles las alas a sus reyes, que en realidad son reinas. Aquí exāmina son enjambres: de ahí nuestro enjambre. Pero de ex y agō sale también exigere, que era sacar y, además, pesar con exactitud; por eso exāmen nombraba también el fiel de la balanza, la aguja que marca el equilibrio. De pesar se pasó a examinar, y de ahí nuestro examen."
+   ],
+   "dato": "Examen y enjambre son la misma palabra latina, exāmen: el enjambre que sale de la colmena (ex + agō). También fue el fiel de la balanza, y de pesar se pasó a examinar.",
+   "dato_it": "Esame e sciame sono la stessa parola latina, exāmen: lo sciame che esce dall'alveare (ex + agō). Fu anche l'ago della bilancia, e dal pesare si passò all'esaminare."
+  },
+  "atomos": {
+   "antes": [
+    "Un átomo, por su nombre, es lo que no se puede partir. En griego, la palabra servía también para un prado.",
+    "Átomos es la palabra del día de Carmina. Se forma con a-, «sin», y témnein, «cortar».",
+    "En las Traquinias de Sófocles, Deyanira lleva quince meses sin noticias de Heracles, su marido. Llega un mensajero: Heracles está vivo y vuelve vencedor. Ella da gracias:"
+   ],
+   "verso": "ὦ Ζεῦ, τὸν Οἴτης ἄτομον ὃς λειμῶνʼ ἔχεις,",
+   "traduccion": "«Oh Zeus, que habitas el prado sin segar del Eta,»",
+   "despues": [
+    "Aquí átomos es «sin segar»: nadie ha cortado el prado. Los filósofos llamaron así a lo que no se puede cortar: de ahí nuestro átomo."
+   ],
+   "dato": "Átomo viene de ἄτομος, «sin cortar», de τέμνειν, «cortar». Además de la partícula indivisible de los filósofos, era lo que nadie ha cortado: en Sófocles, el prado del Eta sin segar.",
+   "dato_it": "Atomo viene da ἄτομος, «non tagliato», da τέμνειν, «tagliare». Oltre alla particella indivisibile dei filosofi, era ciò che nessuno ha tagliato: in Sofocle, il prato dell'Eta mai falciato."
+  },
+  "pecunia": {
+   "antes": [
+    "El dinero, en latín, empezó en el corral.",
+    "Pecūnia es la palabra del día de Carmina. Viene de pecus, «ganado»: la riqueza se contaba en cabezas.",
+    "En La comedia del fantasma, de Plauto, una joven quiere serle fiel a quien pagó su libertad. Su criada se lo desaconseja. La joven responde:"
+   ],
+   "verso": "Vt fama est homini, exin solet pecuniam invenire.",
+   "traduccion": "«Según la fama que uno tiene, así suele encontrar el dinero.»",
+   "despues": [
+    "Si guarda su buen nombre, será bastante rica. Aquí pecūnia ya es dinero, no ganado. De pecus viene también pecūlium, lo que el amo dejaba al esclavo como suyo; y de ahí peculiar, lo propio."
+   ],
+   "dato": "Pecūnia viene de pecus, «ganado»: la riqueza se contaba en cabezas. Del mismo pecus sale pecūlium, lo que el amo dejaba al esclavo como propio, y de ahí peculiar.",
+   "dato_it": "Pecūnia viene da pecus, «bestiame»: la ricchezza si contava a capi. Dallo stesso pecus viene pecūlium, ciò che il padrone lasciava allo schiavo come proprio, e da qui peculiare."
+  },
+  "gymnasion": {
+   "antes": [
+    "En el gimnasio griego se entrenaba desnudo: lo dice la palabra.",
+    "Gymnásion es la palabra del día de Carmina. Viene de gymnázein, «entrenar», y este de gymnós, «desnudo».",
+    "En Las aves de Aristófanes, dos atenienses buscan una ciudad mullida como una manta. Uno sueña con una donde el padre de un chico guapo le reproche:"
+   ],
+   "verso": "εὑρὼν ἀπιόντʼ ἀπὸ γυμνασίου λελουμένον",
+   "traduccion": "«Te lo encontraste saliendo del gimnasio, recién bañado,»",
+   "despues": [
+    "¡y no lo besaste, ni lo saludaste! Lo normal era que un padre alejara de su hijo a los admiradores; éste se queja de lo contrario. Aquí gymnásion es donde se ejercitaban. De ahí nuestro gimnasio."
+   ],
+   "dato": "Gimnasio viene de γυμνάσιον, el lugar de los ejercicios, de γυμνάζειν, «entrenar desnudo» (γυμνός, «desnudo»): así se entrenaban los griegos. Aquí, en Aristófanes, uno vuelve del gimnasio recién bañado.",
+   "dato_it": "Ginnasio viene da γυμνάσιον, il luogo degli esercizi, da γυμνάζειν, «allenare nudo» (γυμνός, «nudo»): così si allenavano i Greci. Qui, in Aristofane, uno torna dal ginnasio appena lavato."
+  },
+  "homo": {
+   "antes": [
+    "«Nada humano me es ajeno» suena a filósofo. Pero lo dice un vecino al que acusan de entrometido.",
+    "Homō es la palabra del día de Carmina: «ser humano». Es pariente de humus, «tierra»: el hombre es el de la tierra, frente a los dioses del cielo.",
+    "En una comedia de Terencio, Cremes ve a su vecino Menedemo cavar y arar de sol a sol, y le pregunta por qué. Menedemo le pregunta si no tiene bastante con lo suyo. Cremes contesta:"
+   ],
+   "verso": "Homo sum: humani nihil a me alienum puto.",
+   "traduccion": "«Soy hombre: nada humano considero ajeno a mí.»",
+   "despues": [
+    "Aquí homō es uno más de los hombres: por eso le importa el vecino. De homō viene nuestro hombre."
+   ],
+   "dato": "Hombre (homo) es pariente de humus, «tierra», como humilde (humilis): el ser humano es el de la tierra, frente a los dioses del cielo. Ya lo decía Isidoro: homo dictus, quia ex humo est factus.",
+   "dato_it": "Uomo (homo) è parente di humus, «terra», come umile (humilis): l'essere umano è quello della terra, di fronte agli dèi del cielo. Lo diceva già Isidoro: homo dictus, quia ex humo est factus."
+  },
+  "ekklesia": {
+   "antes": [
+    "Una iglesia es un templo. En griego, ekklēsía era una asamblea de ciudadanos.",
+    "Ekklēsía es la palabra del día de Carmina. Viene de ekkaléō, «llamar afuera», «convocar».",
+    "En los Hechos de los Apóstoles, los plateros de Éfeso, que hacen templetes de Ártemis, levantan la ciudad contra Pablo. Gritan unas dos horas en el teatro. El secretario los calma: para las quejas hay tribunales y asamblea legal."
+   ],
+   "verso": "καὶ ταῦτα εἰπὼν ἀπέλυσεν τὴν ἐκκλησίαν.",
+   "traduccion": "«Y dicho esto, disolvió la asamblea.»",
+   "despues": [
+    "Aquí ekklēsía es la multitud del teatro. Los cristianos llamaron así a su comunidad y después a su templo; pasó al latín, y de ahí nuestra iglesia."
+   ],
+   "dato": "Iglesia viene de ἐκκλησία, la asamblea de los ciudadanos convocados. El Nuevo Testamento la usa todavía en sentido civil: aquí llama así al gentío reunido en el teatro de Éfeso, que el secretario de la ciudad disuelve.",
+   "dato_it": "Chiesa viene da ἐκκλησία, l'assemblea dei cittadini convocati. Il Nuovo Testamento la usa ancora in senso civile: qui chiama così la folla radunata nel teatro di Efeso, che il cancelliere della città scioglie."
+  },
+  "monstrum": {
+   "antes": [
+    "Hércules libró la tierra de monstruos. En esta tragedia, el último es él.",
+    "Mōnstrum es la palabra del día de Carmina: el prodigio que avisaba de una desgracia.",
+    "En el Hércules furioso de Séneca, el héroe, enloquecido por Juno, ha matado a su mujer y a sus hijos. Al volver en sí, quiere morir: tiene prisa por limpiar la tierra, porque todavía anda suelto"
+   ],
+   "verso": "monstrum impium saevumque et immite ac ferum",
+   "traduccion": "«un monstruo impío, cruel, despiadado y salvaje».",
+   "despues": [
+    "Y pide a su mano una hazaña mayor que los doce trabajos. Aquí mōnstrum ya no avisa: es un monstruo más que matar, él mismo. De ahí nuestro monstruo."
+   ],
+   "dato": "Monstruo viene de mōnstrum, una palabra de la religión romana: el prodigio que avisaba de una desgracia. Los antiguos la sacaban de monēre, «avisar», o, como Cicerón, de mōnstrāre, «mostrar».",
+   "dato_it": "Mostro viene da mōnstrum, una parola della religione romana: il prodigio che avvertiva di una sventura. Gli antichi la facevano venire da monēre, «avvertire», o, come Cicerone, da mōnstrāre, «mostrare»."
+  },
+  "martys": {
+   "antes": [
+    "Un mártir muere por su fe. En griego, mártys empezó siendo un testigo.",
+    "Mártys es la palabra del día de Carmina: «testigo».",
+    "Al final del Evangelio de Lucas, Jesús resucitado se aparece a sus discípulos, les enseña las manos y los pies, come pescado y les explica que el Mesías tenía que padecer y resucitar:"
+   ],
+   "verso": "ὑμεῖς μάρτυρες τούτων.",
+   "traduccion": "«Vosotros sois testigos de estas cosas.»",
+   "despues": [
+    "Aquí mártys es el que lo ha visto y tiene que contarlo. En los Hechos de los Apóstoles, Esteban, muerto a pedradas, es ya el testigo que da la vida. La palabra pasó al latín, y de ahí nuestro mártir."
+   ],
+   "dato": "Mártir viene de μάρτυς, que propiamente es «testigo». Jesús resucitado se lo dice a los discípulos: «vosotros sois testigos de estas cosas».",
+   "dato_it": "Martire viene da μάρτυς, che propriamente è «testimone». Gesù risorto lo dice ai discepoli: «voi siete testimoni di queste cose»."
+  },
+  "ambitio": {
+   "antes": [
+    "Hoy la ambición es querer llegar alto. En Roma era, primero, dar vueltas por la ciudad pidiendo el voto.",
+    "Ambitiō es la palabra del día de Carmina. Viene de ambīre, «andar alrededor».",
+    "En un poema de los Tristes, Ovidio cuenta su vida desde el destierro. Tuvo sus primeros cargos, pero no quiso entrar en el senado: era un peso mayor que sus fuerzas."
+   ],
+   "verso": "sollicitaeque fugax ambitionis eram,",
+   "traduccion": "«y huía de la inquieta ambición,»",
+   "despues": [
+    "y las Musas le aconsejaban un ocio seguro. Aquí ambitiō es esa carrera de cargos y votos. Servía para subir, y la palabra acabó nombrando el deseo de subir: nuestra ambición."
+   ],
+   "dato": "Ambición viene de ambitiō, «el ir de un lado a otro»: en la Roma republicana, la ronda del candidato que recorría la ciudad pidiendo el voto a cada ciudadano. Ovidio cuenta aquí que él la huía.",
+   "dato_it": "Ambizione viene da ambitiō, «l'andare intorno»: nella Roma repubblicana, il giro del candidato che percorreva la città chiedendo il voto a ogni cittadino. Ovidio racconta qui che lui la fuggiva."
+  },
+  "idiotes": {
+   "antes": [
+    "Hoy un idiota es un tonto. En griego, idiṓtēs era un particular.",
+    "Idiṓtēs es la palabra del día de Carmina. Viene de ídios, «propio», «privado».",
+    "En el Crátilo de Platón, Hermógenes sostiene que un nombre vale sólo por acuerdo, como el nuevo que le ponemos a un esclavo. Sócrates le pregunta si vale lo que cada cual llame a cada cosa:"
+   ],
+   "verso": "καὶ ἐὰν ἰδιώτης καλῇ καὶ ἐὰν πόλις;",
+   "traduccion": "«¿Tanto si lo llama un particular como si lo llama una ciudad?»",
+   "despues": [
+    "Aquí idiṓtēs es el particular frente a la ciudad. Era también el profano: en latín pasó a ser el ignorante, y de ahí nuestro idiota."
+   ],
+   "dato": "Idiota viene de ἰδιώτης, el particular, el que no tiene cargo público; y de ahí el profano, el que no sabe del oficio, frente al médico. Aquí Platón opone el particular a la ciudad.",
+   "dato_it": "Idiota viene da ἰδιώτης, il privato, chi non ha cariche pubbliche; e da qui il profano, chi non è del mestiere, di fronte al medico. Qui Platone oppone il privato alla città."
+  },
+  "vicinus": {
+   "antes": [
+    "¿Se puede vivir pegado a alguien y no verlo nunca? Marcial dice que sí.",
+    "Vīcīnus es la palabra del día de Carmina. Viene de vīcus, «barrio», «aldea»: el vecino era el del mismo barrio.",
+    "Marcial presume de vecino:"
+   ],
+   "verso": "Vicinus meus est manuque tangi",
+   "traduccion": "«Es vecino mío, y tocarlo con la mano…»",
+   "despues": [
+    "…se puede desde mis ventanas: es Novio. ¿Quién no me envidiaría? Pero no puedo cenar con él, ni verlo, ni oírlo: en toda Roma nadie está tan cerca de mí y tan lejos. Tendré que mudarme más lejos, yo o él. Aquí vīcīnus es el que vive al lado. De ahí nuestro vecino."
+   ],
+   "dato": "Vecino viene de vīcīnus, el del mismo vīcus, «barrio, aldea». Marcial tenía uno, Novio, al que podía tocar desde su ventana, y no lo veía nunca: «nadie está tan cerca y tan lejos».",
+   "dato_it": "Vicino viene da vīcīnus, quello dello stesso vīcus, «quartiere, villaggio». Marziale ne aveva uno, Novio, che poteva toccare dalla finestra, e non lo vedeva mai: «nessuno è così vicino e così lontano»."
+  },
+  "hypokrites": {
+   "antes": [
+    "Un hipócrita finge. En griego, hypokritḗs era el actor: fingía por oficio.",
+    "Hypokritḗs es la palabra del día de Carmina.",
+    "En el Evangelio de Mateo, los fariseos quieren atrapar a Jesús en una palabra y le mandan a sus propios discípulos: lo alaban y le preguntan si es lícito pagar tributo al César:"
+   ],
+   "verso": "γνοὺς δὲ ὁ Ἰησοῦς τὴν πονηρίαν αὐτῶν εἶπεν Τί με πειράζετε, ὑποκριταί;",
+   "traduccion": "«Jesús, conociendo su malicia, dijo: ¿Por qué me ponéis a prueba, hipócritas?»",
+   "despues": [
+    "Aquí hypokritḗs ya no es el actor, sino el que hace un papel para engañar: lo alaban para tenderle una trampa. Pasó al latín, y de ahí nuestro hipócrita."
+   ],
+   "dato": "Hipócrita viene de ὑποκριτής, el actor de teatro: el que hace un papel. En los evangelios ya es el que finge ser lo que no es.",
+   "dato_it": "Ipocrita viene da ὑποκριτής, l'attore di teatro: chi recita una parte. Nei Vangeli è già chi finge di essere ciò che non è."
+  },
+  "penso": {
+   "antes": [
+    "Pensar y pesar: en latín, la misma palabra.",
+    "Pensō es la palabra del día de Carmina: «pesar con cuidado», «compensar».",
+    "En el Tiestes de Séneca, Atreo se venga de su hermano Tiestes, que le sedujo a la esposa: en un banquete le sirve la carne de los hijos de Tiestes. El padre invoca a los dioses de los piadosos; Atreo le pregunta por qué no a los del matrimonio, los que el adúltero ofendió. Tiestes contesta:"
+   ],
+   "verso": "Scelere quis pensat scelus?",
+   "traduccion": "«¿Quién paga un crimen con otro crimen?»",
+   "despues": [
+    "Aquí pensāre es pagar, compensar: un crimen en la balanza frente a otro. Ya en latín, sopesar llevó a pensar: de pensāre vienen nuestros pesar y pensar."
+   ],
+   "dato": "Pesar y pensar son la misma palabra latina, pensāre, «pesar con cuidado», «calcular». Pensar fue primero sopesar. Aquí se pregunta quién paga un crimen con otro crimen.",
+   "dato_it": "In spagnolo pesar e pensar («pesare» e «pensare») sono la stessa parola latina, pensāre, «pesare con cura», «calcolare». Pensare fu prima soppesare. Qui ci si chiede chi paga un delitto con un altro delitto."
+  },
+  "diabolos": {
+   "antes": [
+    "El diablo es el enemigo. En griego, diábolos era cualquier calumniador.",
+    "Diábolos es la palabra del día de Carmina. Viene de diabállein, «lanzar a través», y de ahí «enemistar», «calumniar».",
+    "En la Carta de Santiago, el autor les reprocha a los fieles sus guerras y sus envidias: la amistad con el mundo es enemistad con Dios. Y aconseja:"
+   ],
+   "verso": "Ὑποτάγητε οὖν τῷ θεῷ· ἀντίστητε δὲ τῷ διαβόλῳ, καὶ φεύξεται ἀφʼ ὑμῶν·",
+   "traduccion": "«Someteos, pues, a Dios; resistid, en cambio, al diablo, y huirá de vosotros.»",
+   "despues": [
+    "Aquí diábolos ya es el Diablo, el Calumniador por excelencia. Pasó al latín, y de ahí nuestro diablo."
+   ],
+   "dato": "Diablo viene de διάβολος, «calumniador». Ya la Biblia griega llamó así a Satanás, el Calumniador por excelencia, y así lo usa el Nuevo Testamento: «resistid al diablo, y huirá de vosotros».",
+   "dato_it": "Diavolo viene da διάβολος, «calunniatore». Già la Bibbia greca chiamò così Satana, il Calunniatore per eccellenza, e così lo usa il Nuovo Testamento: «resistete al diavolo, ed egli fuggirà da voi»."
+  },
+  "afflo": {
+   "antes": [
+    "¿Qué tiene que ver hallar con soplar?",
+    "Afflō es la palabra del día de Carmina: «soplar hacia algo», «rozar con el aliento».",
+    "En los Fastos, Ovidio recorre el calendario. Una noche de junio sale una constelación: un joven con una serpiente. Es Esculapio: resucitó a Hipólito, y Júpiter, su propio abuelo, lo fulminó:"
+   ],
+   "verso": "surgit humo iuvenis telis afflatus avitis",
+   "traduccion": "«se alza de la tierra el joven alcanzado por las armas de su abuelo»",
+   "despues": [
+    "Aquí afflātus es tocado por el soplo del rayo. Según la Real Academia, afflāre era también olfatear, y de ahí viene nuestro hallar: dar con lo que se busca."
+   ],
+   "dato": "Hallar viene de afflāre, por el antiguo fallar: «soplar hacia algo», «rozar con el aliento», «olfatear». Aquí el soplo es el del rayo: un joven «alcanzado por las armas de su abuelo».",
+   "dato_it": "Lo spagnolo hallar («trovare») viene da afflāre, attraverso l'antico fallar: «soffiare verso qualcosa», «sfiorare col fiato», «fiutare». Qui il soffio è quello del fulmine: un giovane «colpito dalle armi del nonno»."
+  },
+  "chaos": {
+   "antes": [
+    "El caos es el desorden. En griego, cháos era un hueco: el vacío del principio.",
+    "Cháos es la palabra del día de Carmina: propiamente, «abertura».",
+    "En la Teogonía, Hesíodo cuenta cómo nacieron los dioses: primero surgió Cháos. Más adelante describe el fondo del mundo, con sus puertas resplandecientes y su umbral de bronce. Allí, lejos de todos los dioses,"
+   ],
+   "verso": "Τιτῆνες ναίουσι, πέρην Χάεος ζοφεροῖο.",
+   "traduccion": "«viven los Titanes, más allá del Caos sombrío.»",
+   "despues": [
+    "Aquí cháos es un abismo oscuro, no un desorden. En Ovidio ya es la masa revuelta de antes del mundo: de ahí, por el latín, nuestro caos."
+   ],
+   "dato": "Caos viene de χάος, que propiamente es «abertura»: el vacío inmenso que, según Hesíodo, fue lo primero de todo. Aquí los Titanes viven «más allá del Caos sombrío».",
+   "dato_it": "Caos viene da χάος, che propriamente è «apertura»: il vuoto immenso che, secondo Esiodo, fu la prima di tutte le cose. Qui i Titani abitano «al di là del Caos tenebroso»."
+  },
+  "rostrum": {
+   "antes": [
+    "Para nosotros, rostro es la cara. En latín, rōstrum era el pico, el hocico y el espolón de la nave.",
+    "Rōstrum es la palabra del día de Carmina. Viene de rōdere, «roer».",
+    "En la Farsalia, Lucano cuenta la batalla naval de Marsella. Telón, el mejor piloto de los marselleses, embiste:"
+   ],
+   "verso": "Hic Latiae rostro compagem ruperat alni:",
+   "traduccion": "«Éste había roto con el espolón el armazón de una nave latina:»",
+   "despues": [
+    "pero las jabalinas se le clavan en el pecho. Aquí rōstrum es el espolón. Nuestro rostro viene del hocico: ya en latín, en tono familiar o despectivo, se llamaba rōstrum a la cara de una persona."
+   ],
+   "dato": "Rostro viene de rōstrum, el pico del ave y el hocico; también el espolón de la nave. Los Rostra, la tribuna del Foro, se llamaban así por los espolones de naves enemigas que la adornaban. En castellano acabó siendo la cara.",
+   "dato_it": "Rostro viene da rōstrum, il becco dell'uccello e il muso; anche lo sperone della nave. I Rostra, la tribuna del Foro, si chiamavano così per gli speroni di navi nemiche che la ornavano."
+  },
+  "theatron": {
+   "antes": [
+    "Un teatro es un edificio. En griego, théatron era también la gente que mira.",
+    "Théatron es la palabra del día de Carmina. Viene de theâsthai, «mirar»: el lugar desde donde se mira.",
+    "En Los caballeros, Aristófanes saca a escena a Cleón, el político más escuchado de Atenas, como un esclavo del Pueblo. Otro esclavo anima a un salchichero a plantarle cara, y le dice que no tema: los actores llevaban máscara, y ningún fabricante de máscaras se atrevió a hacer la de Cleón, por miedo."
+   ],
+   "verso": "γνωσθήσεται· τὸ γὰρ θέατρον δεξιόν.",
+   "traduccion": "«Lo reconocerán, que el público es listo.»",
+   "despues": [
+    "Aquí théatron es el público: poco antes, el mismo esclavo había hablado de los espectadores listos. Pasó al latín, y de ahí nuestro teatro."
+   ],
+   "dato": "Teatro viene de θέατρον, de θεᾶσθαι, «mirar»: el lugar desde donde se mira. Pero θέατρον era también el público mismo, y así lo usa Aristófanes: «el teatro es listo».",
+   "dato_it": "Teatro viene da θέατρον, da θεᾶσθαι, «guardare»: il luogo da cui si guarda. Ma θέατρον era anche il pubblico stesso, e così lo usa Aristofane: «il teatro è sveglio»."
+  },
+  "infans": {
+   "antes": [
+    "Un infante es un niño. Pero la palabra dice otra cosa: «el que no habla».",
+    "Īnfāns es la palabra del día de Carmina. Viene de in-, «no», y fārī, «hablar».",
+    "En una oda, Horacio cuenta un prodigio de su niñez. En el monte Vúlture se quedó dormido, cansado de jugar, y unas palomas lo cubrieron de hojas. Ni las víboras ni los osos lo tocaron: dormía cubierto de laurel sagrado y de mirto,"
+   ],
+   "verso": "non sine dis animosus infans.",
+   "traduccion": "«niño valiente, no sin los dioses.»",
+   "despues": [
+    "Aquí īnfāns es Horacio niño: la palabra del que no habla ya nombraba al niño pequeño. De ahí nuestro infante."
+   ],
+   "dato": "Infante viene de infans: in- + fārī, «el que no habla». Era el niño que todavía no sabe hablar. Aquí es Horacio de pequeño: «niño valiente, no sin los dioses».",
+   "dato_it": "Infante viene da infans: in- + fārī, «colui che non parla». Era il bambino che ancora non sa parlare. Qui è Orazio da piccolo: «bambino coraggioso, non senza gli dèi»."
+  },
+  "thesauros": {
+   "antes": [
+    "Un tesoro se guarda. En griego, thēsaurós era lo guardado, y también la cámara donde se guarda.",
+    "Thēsaurós es la palabra del día de Carmina.",
+    "En Trabajos y días, Hesíodo da consejos: cuándo casarse, cómo tratar a un amigo, no echarle a nadie en cara su pobreza. Y dice cuál es el mejor tesoro:"
+   ],
+   "verso": "γλώσσης τοι θησαυρὸς ἐν ἀνθρώποισιν ἄριστος",
+   "traduccion": "«el mejor tesoro entre los hombres es una lengua…»",
+   "despues": [
+    "…que ahorra palabras: si dices algo malo, pronto oirás algo peor. Aquí thēsaurós es un tesoro guardado: la lengua que guarda sus palabras en vez de gastarlas. Pasó al latín, y de ahí nuestro tesoro."
+   ],
+   "dato": "Tesoro viene de θησαυρός, lo que se guarda y la cámara donde se guarda. Hesíodo dice cuál es el mejor: «el mejor tesoro entre los hombres es una lengua que ahorra palabras».",
+   "dato_it": "Tesoro viene da θησαυρός, ciò che si conserva e la camera dove lo si conserva. Esiodo dice qual è il migliore: «il miglior tesoro fra gli uomini è una lingua parsimoniosa»."
+  },
+  "palatium": {
+   "antes": [
+    "Un palacio es la casa de un rey. En latín, Palātium era un monte de Roma: el Palatino.",
+    "Palātium es la palabra del día de Carmina.",
+    "En la Púnica, Silio Itálico canta la guerra contra Aníbal. Para elogiar a Fabio Máximo, el general romano que lo contuvo ganando tiempo, cuenta el origen de su familia: cuando Hércules pasó por donde hoy está Roma con unos bueyes robados, Evandro, un caudillo llegado de Arcadia, asentaba"
+   ],
+   "verso": "inter desertos fundata Palatia dumos",
+   "traduccion": "«el Palatino, fundado entre zarzales desiertos,»",
+   "despues": [
+    "y la hija de Evandro tuvo de Hércules al primer Fabio. Allí Palātium es todavía el monte. Augusto vivió en él, y la casa del emperador tomó su nombre: de ahí nuestro palacio."
+   ],
+   "dato": "Palacio viene de Palātium, el Palatino, una de las colinas de Roma. Augusto vivía allí, y desde entonces palātium fue la casa del príncipe. Aquí, en Silio Itálico, todavía es la colina entre zarzas.",
+   "dato_it": "Palazzo viene da Palātium, il Palatino, uno dei colli di Roma. Augusto viveva lì, e da allora palātium fu la casa del principe. Qui, in Silio Italico, è ancora il colle tra i rovi."
+  },
+  "kometes": {
+   "antes": [
+    "Un cometa es un astro con cola. Para los griegos, era un astro con melena.",
+    "Komḗtēs es la palabra del día de Carmina: «melenudo», de kómē, «cabellera».",
+    "En Las nubes, de Aristófanes, discuten el Argumento Justo y el Injusto. El Injusto le pide al Justo que mire al público y cuente a los depravados. El Justo mira, ve que son muchos más que los otros, y señala:"
+   ],
+   "verso": "καὶ τὸν κομήτην τουτονί.",
+   "traduccion": "«y a este melenudo de aquí.»",
+   "despues": [
+    "Y se rinde. Aquí komḗtēs es un espectador de pelo largo, a la moda de los jóvenes jinetes. Aristóteles ya llama así al astro con cabellera: de ahí, por el latín, nuestro cometa."
+   ],
+   "dato": "Cometa viene de κομήτης, «melenudo», de κόμη, «cabellera»: el astro con cola era el astro de pelo largo. Aristófanes todavía lo dice de un melenudo de carne y hueso.",
+   "dato_it": "Cometa viene da κομήτης, «chiomato», da κόμη, «chioma»: l'astro con la coda era l'astro dai capelli lunghi. Aristofane lo dice ancora di un capellone in carne e ossa."
+  },
+  "ausculto": {
+   "antes": [
+    "Escuchar es más que oír: es prestar atención. Eso era auscultāre.",
+    "Auscultō es la palabra del día de Carmina: «oír con atención».",
+    "En Los hermanos, de Terencio, Esquino ha tenido un hijo con su vecina, una muchacha pobre, y no se lo ha contado a su padre adoptivo. El padre, que ya lo sabe todo, le gasta una broma: un pariente va a casarse con ella y se la llevará a Mileto. Esquino se echa a llorar:"
+   ],
+   "verso": "Pater obsecro ausculta.",
+   "traduccion": "«Padre, te lo suplico, escúchame.»",
+   "despues": [
+    "Aquí auscultāre es lo que pide el que suplica: atención. En latín vulgar se decía ascultāre, y de ahí nuestro escuchar."
+   ],
+   "dato": "Escuchar viene de auscultāre, que el latín vulgar decía ascultāre: «oír con atención». Aquí, en Terencio, un hijo le ruega a su padre que lo escuche.",
+   "dato_it": "Ascoltare viene da auscultāre, che il latino volgare diceva ascultāre: «udire con attenzione». Qui, in Terenzio, un figlio prega il padre di ascoltarlo."
+  },
+  "krisis": {
+   "antes": [
+    "Una crisis es un momento difícil. En griego, krísis era una decisión.",
+    "Krísis es la palabra del día de Carmina. Viene de krínein, «separar», «decidir».",
+    "En Las ranas, de Aristófanes, Dioniso baja al Hades a buscar a Eurípides. Allí le toca juzgar entre Esquilo y Eurípides: se llevará de vuelta al elegido. Y anuncia:"
+   ],
+   "verso": "αὕτη σφῷν κρίσις γενήσεται·",
+   "traduccion": "«Este será el juicio entre vosotros dos.»",
+   "despues": [
+    "Y elige a Esquilo. Aquí krísis es el juicio que decide. En español, crisis también quiso decir juicio; y en medicina es el cambio brusco de una enfermedad, a mejor o a peor: el momento en que se decide."
+   ],
+   "dato": "Crisis viene de κρίσις, de κρίνειν, «separar», «decidir»: la decisión, el juicio. En las Ranas de Aristófanes, Dioniso tiene que decidir entre Esquilo y Eurípides: «este será vuestro juicio».",
+   "dato_it": "Crisi viene da κρίσις, da κρίνειν, «separare», «decidere»: la decisione, il giudizio. Nelle Rane di Aristofane, Dioniso deve decidere tra Eschilo ed Euripide: «questo sarà il vostro giudizio»."
+  },
+  "volumen": {
+   "antes": [
+    "Un volumen es un tomo. En latín, volūmen era un rollo.",
+    "Volūmen es la palabra del día de Carmina. Viene de volvere, «enrollar».",
+    "En una epístola, Horacio manda a Vinio a llevar sus libros al emperador:"
+   ],
+   "verso": "Augusto reddes signata volumina, Vini,",
+   "traduccion": "«Entregarás a Augusto los rollos sellados, Vinio,»",
+   "despues": [
+    "pero sólo si Augusto está sano, de buen humor y los pide. Y si la carga le pesa, mejor que la tire por el camino que llegar y soltarla de golpe, como un burro bravo suelta la albarda: Vinio lleva el sobrenombre de su padre, Asina, «burra», y el chiste estaría servido.",
+    "Aquí volūmina son los libros de Horacio, enrollados. Como una obra larga ocupaba varios rollos, volumen acabó nombrando cada tomo."
+   ],
+   "dato": "Volumen viene de volūmen, de volvere, «enrollar»: el libro antiguo era un rollo. Aquí Horacio manda a un tal Vinio a entregarle a Augusto unos rollos sellados.",
+   "dato_it": "Volume viene da volūmen, da volvere, «avvolgere»: il libro antico era un rotolo. Qui Orazio manda un certo Vinio a consegnare ad Augusto dei rotoli sigillati."
+  },
+  "votum": {
+   "antes": [
+    "¿Qué tiene que ver una boda con una promesa? Boda viene de vōta, «promesas».",
+    "Vōtum es la palabra del día de Carmina: la promesa hecha a un dios.",
+    "La amada de Catulo les prometió a Venus y a Cupido que, si él volvía con ella y dejaba de lanzar yambos feroces, sus versos de ataque, quemaría lo mejor del peor poeta. Ella, en broma, pensaba en el propio Catulo; él escoge los Anales de Volusio, un poeta que detesta. Y a esos Anales les dice:"
+   ],
+   "verso": "votum soluite pro mea puella.",
+   "traduccion": "«cumplid el voto por mi amada.»",
+   "despues": [
+    "Y los manda al fuego. Aquí vōtum es esa promesa. De vōtum vienen nuestro voto y, por su plural vōta, nuestra boda."
+   ],
+   "dato": "Boda viene de vōta, el plural de vōtum, «promesa hecha a los dioses». Aquí Catulo da por cumplido el voto que su amada hizo a Venus y a Cupido: quemar lo más escogido del peor poeta.",
+   "dato_it": "Lo spagnolo boda («nozze») viene da vōta, plurale di vōtum, «promessa fatta agli dèi», come l'italiano voto. Qui Catullo dà per sciolto il voto che la sua donna fece a Venere e a Cupido: bruciare gli scritti più scelti del peggior poeta."
+  },
+  "fabulor": {
+   "antes": [
+    "Hablar viene del latín fābulārī, «charlar».",
+    "Fābulor (en infinitivo, fābulārī) es la palabra del día de Carmina. Viene de fābula, «lo que se cuenta».",
+    "En el Pséudolo, de Plauto, un soldado le debe dinero a un proxeneta, Balión, por una muchacha. El criado del soldado viene a pagar y a llevársela, pero Balión se distrae bromeando con un viejo. El criado protesta: «¿Por qué no hablas conmigo?». Y Balión:"
+   ],
+   "verso": "Fabulor. quid vis tibi?",
+   "traduccion": "«Estoy hablando. ¿Qué quieres?»",
+   "despues": [
+    "Aquí no se cuenta ninguna fábula: fābulārī es hablar sin más. Cicerón no la usa; Plauto, a cada paso. Y de ella viene nuestro hablar."
+   ],
+   "dato": "Hablar viene de fābulārī, «conversar, charlar», de fābula, «lo que se cuenta». Plauto la usa a cada paso, y hasta con el infinitivo viejo fābulārier. Aquí, en el Pseudolo: «Estoy hablando. ¿Qué quieres?».",
+   "dato_it": "Lo spagnolo hablar («parlare») viene da fābulārī, «conversare, chiacchierare», da fābula, «ciò che si racconta». Plauto la usa di continuo, perfino con l'infinito arcaico fābulārier. Qui, nello Pseudolo: «Sto parlando. Che vuoi?»."
+  },
+  "stilus": {
+   "antes": [
+    "Hoy el estilo es una manera de escribir. En latín, stilus fue primero un instrumento.",
+    "Stilus es la palabra del día de Carmina: el punzón de las tablillas de cera. Con la punta se escribía; con el otro extremo, plano, se borraba.",
+    "En una sátira, Horacio dice que Lucilio, si fuera contemporáneo suyo, tacharía mucho y se mordería las uñas. Y aconseja:"
+   ],
+   "verso": "saepe stilum vertas, iterum quae digna legi sint",
+   "traduccion": "«dale la vuelta a menudo al estilo, si vas a escribir algo digno de leerse dos veces»",
+   "despues": [
+    "Es decir: borra. Ya los romanos pasaron del punzón a la manera de escribir: de ahí nuestro estilo."
+   ],
+   "dato": "Estilo viene de stilus, el punzón con que se escribía en las tablillas de cera; con el otro extremo, plano, se borraba. Por eso Horacio aconseja «dar vuelta al estilo» a menudo: borrar.",
+   "dato_it": "Stile viene da stilus, lo stilo con cui si scriveva sulle tavolette di cera; con l'altra estremità, piatta, si cancellava. Per questo Orazio consiglia di «girare lo stilo» spesso: cancellare."
+  },
+  "liber": {
+   "antes": [
+    "Un libro es de papel. Pero el liber latino salió de un árbol.",
+    "Liber es la palabra del día de Carmina: primero, la capa interior de la corteza, en la que se escribía antiguamente; después, el libro.",
+    "Fedro escribe fábulas a la manera de Esopo. Al empezar su tercer libro, se lo dedica a un tal Eutico, un hombre muy ocupado, y le anuncia:"
+   ],
+   "verso": "librum exarabo tertium Aesopi stilo,",
+   "traduccion": "«araré un tercer libro con el estilo de Esopo,»",
+   "despues": [
+    "Aquí escribir es arar: el estilo, que era el punzón, abre surcos en la cera. Y liber ya es el libro, de donde viene el nuestro."
+   ],
+   "dato": "Libro viene de liber, que primero fue la corteza interior del árbol: los antiguos escribían sobre ella. Aquí Fedro anuncia su tercer libro, escrito «con el estilo de Esopo».",
+   "dato_it": "Libro viene da liber, che prima fu la corteccia interna dell'albero: gli antichi scrivevano su di essa. Qui Fedro annuncia il suo terzo libro, scritto «con lo stilo di Esopo»."
+  },
+  "rivalis": {
+   "antes": [
+    "Un rival es el que compite contigo. En latín, rīvālēs eran también los vecinos de un arroyo.",
+    "Rīvālis es la palabra del día de Carmina: «del arroyo», de rīvus. Los que sacaban agua del mismo arroyo podían pelearse por ella.",
+    "En El eunuco, de Terencio, un joven, Fedria, y un soldado fanfarrón, Trasón, quieren a la misma mujer, Tais. Gnatón, el parásito del soldado, propone un trato:"
+   ],
+   "verso": "Militem ego rivalem recipiendum censeo.",
+   "traduccion": "«Yo opino que hay que admitir al soldado como rival.»",
+   "despues": [
+    "El soldado paga, y Fedria sigue con ella. Aquí rīvālis es el que quiere a la misma mujer. De ahí nuestro rival."
+   ],
+   "dato": "Rival viene de rīvālis, «del arroyo» (rīvus): rīvālēs eran los que sacaban agua del mismo arroyo, y podían reñir por ella. De ahí, los que quieren a la misma mujer. En el Eunuco, el parásito propone compartirla: «opino que hay que admitir al soldado como rival».",
+   "dato_it": "Rivale viene da rīvālis, «del ruscello» (rīvus): rīvālēs erano quelli che prendevano l'acqua dallo stesso ruscello, e potevano litigare per essa. Da qui, quelli che amano la stessa donna. Nell'Eunuco il parassita propone di dividerla: «sono del parere che si debba accettare il soldato come rivale»."
+  },
+  "insula": {
+   "antes": [
+    "Una isla es tierra rodeada de agua. En Roma, insula era también un edificio.",
+    "Insula es la palabra del día de Carmina. Era la casa de vecinos, alquilada a varias familias; los ricos vivían en una domus.",
+    "En La consolación de la filosofía, Boecio canta una aventura de Ulises: sus naves vagaban por el mar, y"
+   ],
+   "verso": "Eurus appulit insulae,",
+   "traduccion": "«el viento Euro las empujó hasta la isla»",
+   "despues": [
+    "de Circe, la hija del Sol, que convertía a sus huéspedes en jabalíes y leones. Aquí insula es una isla de verdad. De ahí nuestra isla, que es también la manzana: rodeada de calles como de agua."
+   ],
+   "dato": "Isla viene de insula. En Roma la palabra nombraba también la casa de vecindad, la que se alquilaba por partes a varias familias, frente a la domus de los ricos.",
+   "dato_it": "Isola viene da insula. A Roma la parola indicava anche il caseggiato, quello che si affittava a parti a più famiglie, di contro alla domus dei ricchi."
+  },
+  "bellus": {
+   "antes": [
+    "Bello es lo hermoso. En latín, bellus era algo más modesto: «lindo».",
+    "Bellus es la palabra del día de Carmina. El gramático Prisciano lo explicaba como diminutivo de bonus: «buenecito».",
+    "Marcial tiene un epigrama de dos versos para un tal Cota, que quiere parecer a la vez lindo e importante:"
+   ],
+   "verso": "Bellus homo et magnus uis idem, Cotta, uideri:",
+   "traduccion": "«Quieres parecer, Cota, un hombre lindo y a la vez grande.»",
+   "despues": [
+    "Y remata: el que es un hombre lindo es un hombre pequeño. Aquí bellus es lo lindo, y Marcial lo opone a lo grande. De bellus viene nuestro bello."
+   ],
+   "dato": "Bello viene de bellus, que Prisciano explicaba como diminutivo de bonus: «buenecito», «lindo». Marcial le advierte aquí a Cotta que el que es bellus homo es un hombre pequeño.",
+   "dato_it": "Bello viene da bellus, che Prisciano spiegava come diminutivo di bonus: «buonino», «carino». Marziale avverte qui Cotta che chi è un bellus homo è un uomo piccolo."
+  },
+  "otium": {
+   "antes": [
+    "¿Qué tiene que ver el negocio con el ocio? Negocio es, literalmente, «no-ocio».",
+    "Ōtium es la palabra del día de Carmina: el tiempo libre. Lo contrario era negōtium, nec-ōtium: la ocupación.",
+    "En la primera Bucólica de Virgilio, Melibeo tiene que dejar su tierra, mientras Títiro toca la flauta tumbado a la sombra. Títiro explica:"
+   ],
+   "verso": "O Meliboee, deus nobis haec otia fecit:",
+   "traduccion": "«Oh Melibeo, un dios nos ha dado este ocio.»",
+   "despues": [
+    "Gracias a ese dios, las vacas de Títiro andan sueltas y él toca lo que quiere: ōtia, en plural, es ese tiempo libre y en paz. De ōtium viene nuestro ocio; de negōtium, nuestro negocio."
+   ],
+   "dato": "Negocio viene del latín negōtium: nec + ōtium, «no-ocio». Ya lo explicaban así los romanos: negotium, quod non sit otium, «el negocio es lo que no es ocio».",
+   "dato_it": "Negozio viene dal latino negōtium: nec + ōtium, «non-ozio». Lo spiegavano già così i Romani: negotium, quod non sit otium, «il negozio è ciò che non è ozio»."
+  },
+  "securus": {
+   "antes": [
+    "Seguro es lo que no corre peligro. En latín, sēcūrus era, sobre todo, el que no tiene preocupaciones.",
+    "Sēcūrus es la palabra del día de Carmina: sē-, «sin», y cūra, «cuidado», «preocupación».",
+    "En el Hércules furioso, de Séneca, el coro repasa a los que viven sin descanso: el que hace antesala ante los poderosos, el avaro, el abogado que vende su rabia. Y concluye:"
+   ],
+   "verso": "Novit paucos secura quies,",
+   "traduccion": "«La quietud sin cuidados conoce a pocos»:",
+   "despues": [
+    "a los que aprovechan el tiempo, que nunca ha de volver. Aquí sēcūrus es «sin preocupaciones»; en otros textos, también «a salvo». De ahí nuestro seguro, «libre de riesgo»."
+   ],
+   "dato": "Seguro viene de sēcūrus: sē-, «sin», y cūra, «cuidado». Era el que no tiene preocupaciones, y también el descuidado. Séneca: «la quietud sin cuidados conoce a pocos».",
+   "dato_it": "Sicuro viene da sēcūrus: sē-, «senza», e cūra, «preoccupazione». Era chi non ha preoccupazioni, e anche il trascurato. Seneca: «la quiete senza affanni conosce pochi»."
+  },
+  "calculus": {
+   "antes": [
+    "Hoy calculamos con números. Los romanos calculaban con piedrecitas.",
+    "Calculus es la palabra del día de Carmina: «piedrecita». Con ellas se contaba, y también se jugaba sobre un tablero.",
+    "En el Arte de amar, Ovidio aconseja a las muchachas aprender juegos: los dados, y una batalla de fichas que hay que jugar con cuidado, en la que"
+   ],
+   "verso": "Unus cum gemino calculus hoste perit,",
+   "traduccion": "«una ficha sola muere entre dos enemigas».",
+   "despues": [
+    "Aquí calculus es la ficha del juego. Las piedrecitas de contar dieron nuestro cálculo; y los médicos llaman cálculo a la piedra del riñón o de la vejiga, como ya hacían los romanos."
+   ],
+   "dato": "Cálculo viene de calculus, «piedrecita»: con piedrecitas se contaba en el ábaco y se jugaba a un juego de tablero. Ovidio lo explica aquí: la ficha muere atrapada entre dos enemigas.",
+   "dato_it": "Calcolo viene da calculus, «sassolino»: con i sassolini si contava sull'abaco e si giocava a un gioco da tavolo. Ovidio lo spiega qui: la pedina muore presa tra due nemiche."
+  },
+  "luna": {
+   "antes": [
+    "¿Por qué el lunes se llama lunes? Por la Luna.",
+    "Lūna es la palabra del día de Carmina: la luna, la que luce, de la misma raíz que lūcēre, «brillar».",
+    "En una oda, Horacio se impacienta con un amigo que habla de linajes y de la guerra de Troya, pero calla dónde y a qué precio se bebe. Y le pide al esclavo que sirva las copas para brindar:"
+   ],
+   "verso": "Da lunae propere novae,",
+   "traduccion": "«Sirve ya, por la luna nueva,»",
+   "despues": [
+    "por la medianoche y por Murena, el augur. Aquí la luna nueva es el principio del mes. Los romanos decían diēs Lūnae, «día de la Luna»: de ahí nuestro lunes."
+   ],
+   "dato": "Lunes es el día de la Luna: diēs Lūnae. Y Horacio brinda por ella: «sirve ya, por la luna nueva».",
+   "dato_it": "Lunedì è il giorno della Luna: diēs Lūnae. E Orazio brinda proprio a lei: «versa subito, per la luna nuova»."
+  },
+  "casa": {
+   "antes": [
+    "Hoy casa es cualquier vivienda. En latín, casa era una choza.",
+    "Casa es la palabra del día de Carmina.",
+    "En la Fedra, de Séneca, Hipólito acaba de morir arrastrado por sus caballos. El coro reflexiona: la Fortuna se ensaña menos con los pequeños; la vida retirada y humilde mantiene a los hombres en paz,"
+   ],
+   "verso": "praebetque senes casa securos.",
+   "traduccion": "«y la choza da una vejez sin cuidados.»",
+   "despues": [
+    "Las cumbres reciben todos los vientos; en el valle rara vez cae un rayo. Aquí casa es la choza de los humildes, frente a las cumbres. Con los siglos, la palabra de la choza pasó a nombrar cualquier vivienda: nuestra casa."
+   ],
+   "dato": "Casa viene de casa, que en latín era la choza, la cabaña pobre. Séneca la elogia aquí: «la choza da una vejez sin cuidados».",
+   "dato_it": "Casa viene da casa, che in latino era la capanna, la casupola povera. Seneca qui la loda: «la capanna dà una vecchiaia senza affanni»."
+  },
+  "senatus": {
+   "antes": [
+    "El senado de Roma fue, al principio, un consejo de viejos.",
+    "Senātus es la palabra del día de Carmina. Viene de senex, «anciano».",
+    "En los Fastos, Ovidio pregunta a las Musas por qué mayo se llama así. Una de ellas, Urania, contesta que por los mayores. Antes se respetaban las canas: los jóvenes hacían la guerra y los viejos daban consejo. En la curia sólo se entraba de viejo:"
+   ],
+   "verso": "nomen et aetatis mite senatus erat.",
+   "traduccion": "«Y senado era un nombre de edad madura.»",
+   "despues": [
+    "Senātus era eso, el consejo de los ancianos. Y de senātus viene nuestro senado."
+   ],
+   "dato": "Senado viene de senātus, de senex, «anciano»: el consejo de los viejos, como la γερουσία griega. En los Fastos de Ovidio lo dice la musa Urania: el nombre del senado venía de la edad.",
+   "dato_it": "Senato viene da senātus, da senex, «vecchio»: il consiglio degli anziani, come la γερουσία greca. Nei Fasti di Ovidio lo dice la musa Urania: il nome del senato veniva dall'età."
+  },
+  "villa": {
+   "antes": [
+    "Hoy una villa es una casa de recreo, o un pueblo. En latín era la casa de campo.",
+    "Villa es la palabra del día de Carmina. De ella salió, en latín tardío, villānus, «el de la villa», y de ahí nuestro villano.",
+    "Ausonio, poeta de Burdeos, ve el Mosela y le parece estar en su tierra. Mira"
+   ],
+   "verso": "culmina villarum pendentibus edita ripis",
+   "traduccion": "«los tejados de las villas, alzados sobre las riberas escarpadas»",
+   "despues": [
+    "y las colinas verdes de viñas.",
+    "Esas villas eran casas de campo. El villano fue el vecino no noble de una villa; hoy, también el ruin y el malo de las películas."
+   ],
+   "dato": "Villa era en latín la casa de campo. De villa salió el latín tardío villānus, y de ahí villano. Ausonio ve aquí los tejados de las villas asomados a las orillas del Mosela.",
+   "dato_it": "Villa era in latino la casa di campagna. Da villa venne il latino tardo villānus, e da qui villano. Ausonio vede qui i tetti delle ville affacciati sulle rive della Mosella."
+  },
+  "mundus": {
+   "antes": [
+    "Llamamos mundo a todo lo que existe. En latín, mundus era también el adorno de una mujer.",
+    "Mundus es la palabra del día de Carmina. Imitando al griego kósmos, adorno y orden, pasó a ser el universo, por su orden perfecto.",
+    "En el Agamenón de Séneca, el coro canta el nacimiento de Hércules. Júpiter dobló la noche: un héroe así no podía hacerse en una sola. Y el coro le dice al niño:"
+   ],
+   "verso": "tibi concitatus substitit mundus,",
+   "traduccion": "«por ti se paró el cielo en su carrera»",
+   "despues": [
+    "Aquí mundus es el cielo, el universo ordenado: de ahí, nuestro mundo. Y de kósmos, cosmos y cosmético."
+   ],
+   "dato": "Mundo viene de mundus, que el latín calcó del griego κόσμος. Como κόσμος, mundus era también el adorno, el aderezo de la mujer. Aquí, en Séneca, el cielo entero se detiene.",
+   "dato_it": "Mondo viene da mundus, che il latino ricalcò sul greco κόσμος. Come κόσμος, mundus era anche l'ornamento, gli abbellimenti della donna. Qui, in Seneca, il cielo intero si ferma."
+  },
+  "comedo": {
+   "antes": [
+    "En latín, comer era edere. Comedere era más: comérselo todo.",
+    "Comedō es la palabra del día de Carmina: com- y edo, «comer».",
+    "En Las tres monedas, de Plauto, un joven, Lisiteles, quiere ayudar a otro, Lesbónico, que vive en la miseria. El padre de Lisiteles, Filtón, se opone:"
+   ],
+   "verso": "Quin comedit quod fuit, quod non fuit?",
+   "traduccion": "«¿Pues no se comió lo que tenía y lo que no tenía?»",
+   "despues": [
+    "El hijo lo defiende: al hombre le pasan muchas cosas, las quiera o no.",
+    "Aquí comerse es derrochar la hacienda paterna. De comedere viene nuestro comer, y en español también uno se come los ahorros."
+   ],
+   "dato": "Comer viene de comedere, «comérselo todo»: com- + edere, «comer». Plauto: «¿pues no se comió lo que tenía y lo que no tenía?».",
+   "dato_it": "Lo spagnolo comer («mangiare») viene da comedere, «mangiarsi tutto»: com- + edere, «mangiare». Plauto: «non s'è forse mangiato quel che aveva e quel che non aveva?»."
+  },
+  "pontifex": {
+   "antes": [
+    "Al papa lo llamamos sumo pontífice. El título es romano, anterior al cristianismo.",
+    "Pontifex es la palabra del día de Carmina: de pons, «puente», y facere, «hacer». Según Varrón, porque los pontífices hicieron el puente Sublicio, sobre el Tíber.",
+    "Persio se burla de los que llevan oro a los templos, y pregunta:"
+   ],
+   "verso": "dicite, pontifices: in sancto quid facit aurum?",
+   "traduccion": "«Decid, pontífices: ¿qué hace el oro en lo sagrado?»",
+   "despues": [
+    "Lo mismo, contesta, que las muñecas que una doncella regala a Venus: un juguete. A los dioses hay que darles un alma justa. En Persio, pontifex es el sacerdote romano; en latín tardío, el obispo; de ahí, el papa."
+   ],
+   "dato": "Pontífice viene de pontifex, de pons y facere: «el que hace puentes». Ya los romanos dudaban del porqué; Escévola, pontífice máximo, lo sacaba de posse y facere. Persio: «decid, pontífices: ¿qué hace el oro en lo sagrado?».",
+   "dato_it": "Pontefice viene da pontifex, da pons e facere: «colui che fa i ponti». Già i Romani ne dubitavano; Scevola, pontefice massimo, lo faceva venire da posse e facere. Persio: «ditemi, pontefici: che ci fa l'oro nelle cose sacre?»."
+  },
+  "pupula": {
+   "antes": [
+    "La pupila tiene nombre de niña.",
+    "Pūpula es la palabra del día de Carmina: diminutivo de pūpa, «niña», «muñeca». Era la muchachita y también la niña del ojo.",
+    "Para Lucrecio los átomos no tienen color: ver blanco es un golpe en la pupila, según la forma de lo que la toca:"
+   ],
+   "verso": "pupula, cum sentire colorem dicitur album,",
+   "traduccion": "«la pupila, cuando se dice que siente el color blanco»",
+   "despues": [
+    "¿Por qué niña? En los ojos del otro te ves en pequeño, como una muñeca. Igual en griego: en Platón, a esa imagen del que mira la llaman kórē, «muchacha». Y de pupilla, palabra hermana de pūpula, viene nuestra pupila."
+   ],
+   "dato": "La pupila es la «niña» del ojo, y en latín pasaba lo mismo: pūpula y pupilla eran «niña, muñequita» y también la pupila. Lucrecio la nombra aquí hablando de cómo se ven los colores.",
+   "dato_it": "La pupilla è la «bambina» dell'occhio, e in latino era lo stesso: pūpula e pupilla erano «bambina, bambolina» e anche la pupilla. Lucrezio la nomina qui parlando di come si vedono i colori."
+  },
+  "speculum": {
+   "antes": [
+    "Un espejo es aquello en que uno se mira.",
+    "Speculum es la palabra del día de Carmina: de specere, «mirar». Ya lo explicaba Varrón: en él nos miramos.",
+    "En La comedia del fantasma, de Plauto, una joven se arregla para su amante. La criada no le da colorete: a su edad no hace falta. La joven le devuelve el espejo:"
+   ],
+   "verso": "Cape igitur speculum.",
+   "traduccion": "«Toma, pues, el espejo.»",
+   "despues": [
+    "La criada le pide que se limpie las manos: el espejo es de plata, y en latín plata también es dinero. Si le huelen a plata, el amante sospechará que le han pagado. De speculum viene nuestro espejo."
+   ],
+   "dato": "Espejo viene de speculum, de specere, «mirar»: aquello en que uno se ve. Ya lo explicaba Varrón: speculum a speciendo. Aquí, en Plauto, la joven le devuelve el espejo a su criada.",
+   "dato_it": "Specchio viene da speculum, da specere, «guardare»: ciò in cui ci si vede. Lo spiegava già Varrone: speculum a speciendo. Qui, in Plauto, la giovane rende lo specchio all'ancella."
+  },
+  "lupa": {
+   "antes": [
+    "La loba amamantó a Rómulo y Remo. En latín, era lupa.",
+    "Lupa es la palabra del día de Carmina. Era también la prostituta.",
+    "En la Eneida, Vulcano le hace a Eneas un escudo con la historia futura de Roma. En la cueva verde de Marte está la loba:"
+   ],
+   "verso": "procubuisse lupam, geminos huic ubera circum",
+   "traduccion": "«la loba echada, y los gemelos en torno a sus ubres»",
+   "despues": [
+    "Livio cuenta que, según algunos, la loba era Larentia, la esposa del pastor que los crió: los pastores la llamaban lupa porque se prostituía, y de ahí nació la leyenda. De lupa vienen nuestra loba y nuestro lupanar, el burdel."
+   ],
+   "dato": "Lupa era la loba, como la que amamantó a Rómulo y Remo, y también la prostituta: de ahí lupānar, el burdel. Aquí, en el escudo de Eneas, la loba recostada con los gemelos.",
+   "dato_it": "Lupa era la lupa, come quella che allattò Romolo e Remo, e anche la prostituta: da qui lupānar, il lupanare. Qui, sullo scudo di Enea, la lupa sdraiata con i gemelli."
+  },
+  "focus": {
+   "antes": [
+    "Fuego viene del latín focus. Pero focus no era el fuego, sino el hogar.",
+    "Focus es la palabra del día de Carmina: el fogón de la casa, donde ardía la lumbre.",
+    "Horacio le hace mirar a su amigo Taliarco el monte Soracte, nevado, y los ríos helados. Y le dice:"
+   ],
+   "verso": "Dissolve frigus ligna super foco",
+   "traduccion": "«Deshaz el frío echando leña al hogar»",
+   "despues": [
+    "En latín clásico, el fuego era ignis. Isidoro, siguiendo a Varrón, lo explica: el fuego es la llama misma; focus, lo que la mantiene viva. De focus, el sitio del fuego, salió nuestro fuego; y también foco, fogón y, por un derivado, hogar."
+   ],
+   "dato": "Fuego viene de focus, que en latín era el hogar, el fogón: «el fuego es la llama misma», explica Isidoro siguiendo a Varrón, y focus lo que la guarda. Horacio, con el Soracte nevado: «deshaz el frío echando leña al hogar».",
+   "dato_it": "Fuoco viene da focus, che in latino era il focolare: «il fuoco è la fiamma stessa», spiega Isidoro sulla scia di Varrone, e focus ciò che la custodisce. Orazio, col Soratte innevato: «sciogli il freddo mettendo legna sul focolare»."
+  },
+  "hostis": {
+   "antes": [
+    "Ovidio les desea a sus enemigos lo peor: dormir solos.",
+    "Hostis es la palabra del día de Carmina: el enemigo.",
+    "En los Amores, Ovidio le confiesa a Grecino que está enamorado de dos mujeres a la vez. Venus le dobla las penas; aun así, mejor eso que vivir sin amor:"
+   ],
+   "verso": "Hostibus eveniat vita severa meis!",
+   "traduccion": "«¡Que les toque a mis enemigos una vida austera!»",
+   "despues": [
+    "Y que duerman solos, bien anchos en una cama vacía.",
+    "Antes de ser el enemigo, hostis fue el extranjero: Cicerón recuerda que así llamaban los antiguos al forastero. De hostis viene nuestra hueste: en el latín tardío, hostis pasó a nombrar también al ejército. Y de su adjetivo, hostīlis, nuestro hostil."
+   ],
+   "dato": "Hueste viene de hostis, «enemigo»; pero en el latín antiguo hostis era el extranjero, como recuerda Cicerón. Ovidio desea aquí lo peor a sus enemigos: «¡que les toque una vida austera!».",
+   "dato_it": "Lo spagnolo hueste («schiera») viene da hostis, «nemico»; ma nel latino antico hostis era lo straniero, come ricorda Cicerone. Ovidio augura qui il peggio ai suoi nemici: «che tocchi loro una vita austera!»."
+  },
+  "quaero": {
+   "antes": [
+    "Nuestro querer, en latín, era buscar.",
+    "Quaerō es la palabra del día de Carmina: «buscar», «pedir», «preguntar».",
+    "En Los Menecmos de Plauto, Menecmo le ha robado un manto a su mujer para regalárselo a Erotio, una cortesana. Su mujer no lo deja entrar sin el manto, y él llama a casa de Erotio para pedírselo. Sale ella:"
+   ],
+   "verso": "Quis hic me quaerit?",
+   "traduccion": "«¿Quién me busca aquí?»",
+   "despues": [
+    "Pero Erotio ya le había dado el manto al gemelo de Menecmo, creyendo que era él, y le cierra la puerta. De quaerere, «buscar» y «pedir», viene nuestro querer, que acabó por significar desear y amar."
+   ],
+   "dato": "Querer viene de quaerere, que en latín era «buscar», «pedir»; en castellano pasó a desear y a amar. Plauto: «¿quién me busca aquí?».",
+   "dato_it": "Chiedere viene da quaerere, che in latino era «cercare», «domandare»; e da lì viene anche lo spagnolo querer, «volere», «amare». Plauto: «chi mi cerca qui?»."
+  },
+  "alumnus": {
+   "antes": [
+    "Un alumno era, primero, alguien a quien se alimentaba.",
+    "Alumnus es la palabra del día de Carmina. Viene de alere, «alimentar»: el que alguien cría, la criatura.",
+    "En el Edipo de Séneca, el coro recuerda el origen de Tebas: Cadmo sembró dientes de serpiente y la tierra parió guerreros, que se mataron entre ellos el mismo día. Y la tierra, su madre, los vio volver a su regazo:"
+   ],
+   "verso": "modo productos vidit alumnos.",
+   "traduccion": "«vio a las criaturas que acababa de dar a luz»",
+   "despues": [
+    "Los había parido: eran sus alumni, sus criaturas. Cicerón llama ya Platonis alumni a los discípulos de Platón. De ahí nuestro alumno."
+   ],
+   "dato": "Alumno viene de alumnus, de alere, «alimentar»: el que alguien cría y alimenta, el hijo de crianza; luego, el discípulo.",
+   "dato_it": "Alunno viene da alumnus, da alere, «nutrire»: colui che qualcuno alleva e nutre come un figlio; poi, il discepolo."
+  },
+  "parabola": {
+   "antes": [
+    "Palabra y parábola son, en el fondo, la misma palabra.",
+    "Parabola es la palabra del día de Carmina. Viene del griego parabolḗ, «comparación».",
+    "El latín de la Iglesia la usó para las parábolas de los Evangelios y también para los proverbios. Así empieza el libro de los Proverbios en la Vulgata, la Biblia latina:"
+   ],
+   "verso": "parabolae Salomonis filii David regis Israhel",
+   "traduccion": "«Parábolas de Salomón, hijo de David, rey de Israel»",
+   "despues": [
+    "En el latín tardío pasó a ser también lo que uno dice: de ahí, por la vía popular, nuestra palabra. Por la vía culta, con su sentido de los Evangelios, nos llegó parábola."
+   ],
+   "dato": "Palabra viene de parabola, «comparación», que el latín tardío usó para los proverbios y las parábolas. Así empieza el libro de los Proverbios en la Vulgata: «Parábolas de Salomón, hijo de David».",
+   "dato_it": "Parola viene da parabola, «paragone», che il latino tardo usò per i proverbi e le parabole. Così comincia il libro dei Proverbi nella Vulgata: «Parabole di Salomone, figlio di Davide»."
+  },
+  "moneta": {
+   "antes": [
+    "La moneda lleva el nombre de una diosa.",
+    "Monēta es la palabra del día de Carmina. Era un sobrenombre de Juno. Según una leyenda que recoge Cicerón, en un terremoto salió de su templo una voz que avisaba qué sacrificio hacer. Por eso la llamaron Moneta, de monēre, «avisar».",
+    "En los Fastos, Ovidio celebra el templo de la Concordia, junto a la escalinata que sube al de Moneta:"
+   ],
+   "verso": "qua fert sublimes alta Moneta gradus:",
+   "traduccion": "«por donde la alta Moneta alza sus gradas»",
+   "despues": [
+    "En el templo de Moneta se acuñaba el dinero, y moneta acabó siendo el dinero mismo. De ahí nuestra moneda."
+   ],
+   "dato": "Moneda viene de Monēta, sobrenombre de Juno: en su templo de Roma se acuñaba el dinero. Ovidio la nombra aquí: «por donde la alta Moneta alza sus gradas».",
+   "dato_it": "Moneta viene da Monēta, soprannome di Giunone: nel suo tempio a Roma si coniava il denaro. Ovidio la nomina qui: «dove l'alta Moneta innalza i suoi gradini»."
+  },
+  "salus": {
+   "antes": [
+    "Saludar es desearle a otro la salud.",
+    "Salūs es la palabra del día de Carmina: la salud, la salvación y también el saludo.",
+    "En la Casina de Plauto, un viejo está loco por la joven Casina y quiere casarla con su capataz, Olimpión, para tenerla él. Llega el novio con corona y antorcha, y el viejo lo recibe así:"
+   ],
+   "verso": "Quid agis, mea salus?",
+   "traduccion": "«¿Qué tal, salud mía?»",
+   "despues": [
+    "Olimpión contesta: «Con hambre, y nada saludable». Aquí salūs es un requiebro, como «vida mía». Y los romanos se mandaban salūtem, «salud», al empezar una carta. De salūs vienen salud, saludar y saludo."
+   ],
+   "dato": "Salud viene de salūs, «buen estado, salvación»; y saludar, de salūtāre: saludar era desearle a otro la salud. Plauto la usa como requiebro: «¿qué tal, salud mía?».",
+   "dato_it": "Salute viene da salūs, «buono stato, salvezza»; e salutare, da salūtāre: salutare era augurare all'altro la salute. Plauto la usa come vezzeggiativo: «come stai, salute mia?»."
+  },
+  "sinister": {
+   "antes": [
+    "Para los romanos, la izquierda podía ser de buen agüero.",
+    "Sinister es la palabra del día de Carmina: «izquierdo».",
+    "En Las troyanas de Séneca, los griegos sortean a las cautivas. Helena le anuncia a Hécuba, la madre de Héctor, que le ha tocado Ulises. Hécuba clama:"
+   ],
+   "verso": "quis tam sinister dividit captas deus?",
+   "traduccion": "«¿Qué dios tan funesto reparte a las cautivas?»",
+   "despues": [
+    "Aquí sinister es «funesto»: así lo usan los poetas. Pero en los augurios romanos la izquierda era propicia: según Varrón, el augur miraba al sur y tenía a la izquierda el oriente, el lado de la suerte; los griegos miraban al norte y lo tenían a la derecha. De sinister viene siniestro: izquierdo y funesto."
+   ],
+   "dato": "Siniestro viene de sinister, «izquierdo». En los augurios romanos la izquierda era de buen agüero: miraban al sur, y el oriente les quedaba a la izquierda; los griegos, al revés. Los poetas la hicieron funesta.",
+   "dato_it": "Sinistro viene da sinister, «di sinistra». Negli auspici romani la sinistra era di buon augurio: guardavano a sud, e l'oriente restava a sinistra; i Greci, al contrario. I poeti la resero funesta."
+  },
+  "formosus": {
+   "antes": [
+    "Hermoso y horma son de la misma familia latina.",
+    "Formōsus es la palabra del día de Carmina. Viene de forma, «figura»: formōsus era el de buena figura, el hermoso.",
+    "Así empieza la segunda égloga de Virgilio. Un pastor está enamorado de un muchacho que no le hace caso, el favorito del amo:"
+   ],
+   "verso": "Formosum pastor Corydon ardebat Alexim,",
+   "traduccion": "«El pastor Coridón ardía por el hermoso Alexis»",
+   "despues": [
+    "Y, solo, les canta a los montes y a los bosques. De formōsus viene nuestro hermoso: la f inicial latina se volvió h, igual que en horma, que viene del latín forma."
+   ],
+   "dato": "Hermoso viene de formōsus, «de buena forma», de forma, «figura». Así empieza la segunda égloga de Virgilio: «el pastor Coridón ardía por el hermoso Alexis».",
+   "dato_it": "Lo spagnolo hermoso («bello») viene da formōsus, «di bella forma», da forma, «figura». Così comincia la seconda egloga di Virgilio: «il pastore Coridone ardeva per il bell'Alessi»."
+  },
+  "colloco": {
+   "antes": [
+    "Colocar y colgar vienen de la misma palabra latina.",
+    "Collocō es la palabra del día de Carmina: «poner en su sitio».",
+    "En el canto de bodas de Catulo, la novia ya va al lecho del marido. El poeta se dirige a las madrinas, mujeres buenas que llevan toda la vida con sus maridos, ya viejos:"
+   ],
+   "verso": "collocate puellulam.",
+   "traduccion": "«Colocad a la muchachita»",
+   "despues": [
+    "Es decir, acostadla en el lecho. Collocāre era la palabra propia: lo dice Donato, un gramático antiguo, comentando a Terencio, y añade que corresponde a las madrinas. Por la vía culta, collocāre nos dio colocar; por la popular, colgar."
+   ],
+   "dato": "Colocar y colgar son la misma palabra latina, collocāre, «poner en su sitio». En el canto de bodas de Catulo es acostar a la novia: «colocad a la muchachita».",
+   "dato_it": "Collocare e lo spagnolo colgar («appendere») sono la stessa parola latina, collocāre, «mettere al suo posto». Nel canto nuziale di Catullo è coricare la sposa: «collocate la fanciullina»."
+  },
+  "vulgus": {
+   "antes": [
+    "Vulgar, divulgar y la Vulgata tienen el mismo origen.",
+    "Vulgus es la palabra del día de Carmina: la gente común, la multitud.",
+    "Ovidio, desterrado junto al mar Negro, le da las gracias a su amigo Máximo, que no le ha vuelto la espalda. Porque eso es raro:"
+   ],
+   "verso": "vulgus amicitias utilitate probat,",
+   "traduccion": "«El vulgo aprecia las amistades por lo que rinden»",
+   "despues": [
+    "La gente corriente quiere al amigo mientras le sirve. De vulgus vienen vulgo y vulgar; de divulgāre, «extender entre la gente», divulgar; y la Vulgata, la Biblia latina que se remonta a san Jerónimo, es la vulgāta, la «divulgada», la de uso común."
+   ],
+   "dato": "Vulgo y vulgar vienen de vulgus, «la gente común, la multitud». Ovidio, desde el destierro: «el vulgo aprecia las amistades por lo que rinden».",
+   "dato_it": "Volgo e volgare vengono da vulgus, «la gente comune, la moltitudine». Ovidio, dall'esilio: «il volgo apprezza le amicizie per quel che rendono»."
+  },
+  "computo": {
+   "antes": [
+    "Contar y computar vienen de la misma palabra latina.",
+    "Computō es la palabra del día de Carmina: «echar la cuenta, calcular».",
+    "En El soldado fanfarrón de Plauto, el esclavo Palestrión busca un engaño. Un viejo lo mira pensar: Palestrión tiene la mano izquierda apoyada en el muslo izquierdo, y"
+   ],
+   "verso": "dextera digitis rationem computat, ferit femur",
+   "traduccion": "«con la derecha echa la cuenta con los dedos, se golpea el muslo»",
+   "despues": [
+    "Computāre era sumar, echar la cuenta; Palestrión la echa con los dedos. Por la vía popular nos dio contar; por la culta, computar. Contar acabó significando también narrar; y de compŭtus, «la cuenta», viene nuestro cuento."
+   ],
+   "dato": "Contar viene de computāre, «sumar, echar cuentas», y de la misma palabra viene computar. Plauto pinta aquí a un esclavo que piensa: «hace la cuenta con los dedos de la derecha, se golpea el muslo».",
+   "dato_it": "Contare viene da computāre, «sommare, fare i conti», come computare. Plauto dipinge qui uno schiavo che pensa: «fa il conto con le dita della destra, si batte la coscia»."
+  },
+  "magister": {
+   "antes": [
+    "Maestro y ministro vienen de dos comparativos latinos.",
+    "Magister es la palabra del día de Carmina. Viene de magis, «más»: el magister es el que manda.",
+    "En la Medea de Séneca, el coro cuenta cómo el mar castigó a los argonautas. El primero fue Tifis, el piloto de la nave Argo, que murió lejos de su tierra:"
+   ],
+   "verso": "liquit indocto regimen magistro;",
+   "traduccion": "«dejó el timón a un piloto sin experiencia»",
+   "despues": [
+    "Aquí magister es el nuevo piloto. Su gemelo es minister, de minus, «menos»: el que sirve. Magister era también el que enseña: de ahí nuestro maestro; de minister, ministro, que en latín era el criado."
+   ],
+   "dato": "Maestro viene de magister, y ministro de minister: los dos son comparativos, de magis, «más», y de minus, «menos». El magister manda; el minister sirve. Aquí es el piloto sin experiencia que tomó el timón de la nave Argo cuando murió Tifis.",
+   "dato_it": "Maestro viene da magister, e ministro da minister: sono due comparativi, da magis, «più», e da minus, «meno». Il magister comanda; il minister serve. Qui è il pilota senza esperienza che prese il timone della nave Argo alla morte di Tifi."
+  },
+  "plico": {
+   "antes": [
+    "Llegar viene de un verbo latino que significaba «plegar».",
+    "Plicō es la palabra del día de Carmina: «plegar, doblar».",
+    "En la Eneida de Virgilio, la nave de Sergesto vuelve de la regata maltrecha, sin parte de sus remos, como una serpiente aplastada por una rueda:"
+   ],
+   "verso": "nexantem nodis seque in sua membra plicantem:",
+   "traduccion": "«haciendo nudos y plegándose sobre sus propios miembros»",
+   "despues": [
+    "Ahí plicāre es plegarse la serpiente. Su compuesto applicāre se decía de la nave que se arrima a la orilla: de ahí le viene a llegar su sentido, con la pl hecha ll, como plōrāre dio llorar y plēnus, lleno. Plegar guardó la pl."
+   ],
+   "dato": "Llegar viene de plicāre, «plegar»; y el latín ya decía applicāre de la nave que se arrima a la orilla. Virgilio: la serpiente herida «plegándose sobre sus propios miembros».",
+   "dato_it": "Lo spagnolo llegar («arrivare») viene da plicāre, «piegare», come l'italiano piegare; e il latino diceva già applicāre della nave che approda. Virgilio: il serpente ferito «che si piega sulle sue membra»."
+  },
+  "caballus": {
+   "antes": [
+    "En latín, el caballo era equus. Caballus era el jamelgo.",
+    "Caballus es la palabra del día de Carmina: el caballo de carga, el rocín.",
+    "Horacio le recuerda a Mecenas cómo se conocieron: «No te conté que fuera hijo de padre ilustre»,"
+   ],
+   "verso": "me Satureiano vectari rura caballo,",
+   "traduccion": "«ni que recorriera mis fincas en un caballo de Apulia»",
+   "despues": [
+    "Le dijo lo que era. Horacio usa caballus, la palabra llana de la conversación. Esa palabra humilde ganó: de caballus viene nuestro caballo. De equus nos quedan palabras cultas, como ecuestre. Su femenino, equa, dio yegua."
+   ],
+   "dato": "Caballo viene de caballus, que en latín era el jamelgo, el caballo de carga. Horacio niega aquí que pasee sus tierras «en un caballo de Apulia».",
+   "dato_it": "Cavallo viene da caballus, che in latino era il ronzino, il cavallo da soma. Orazio nega qui di girare per le sue terre «su un cavallo di Puglia»."
+  },
+  "civitas": {
+   "antes": [
+    "Ciudad viene de cīvitās, que al principio no eran las casas, sino la gente.",
+    "Cīvitās es la palabra del día de Carmina: la ciudadanía y el conjunto de los ciudadanos, de cīvis, «ciudadano».",
+    "Fedro va a contar la fábula de las ranas que pidieron rey. Antes explica cuándo la contó Esopo: Atenas florecía con leyes justas, hasta que"
+   ],
+   "verso": "procax libertas civitatem miscuit,",
+   "traduccion": "«la libertad sin freno revolvió la ciudad»",
+   "despues": [
+    "y Pisístrato se hizo tirano. Aquí «la ciudad» son los ciudadanos de Atenas; las casas y las calles eran urbs. Con el tiempo, cīvitās pasó a ser la ciudad misma: de ahí nuestra ciudad."
+   ],
+   "dato": "Ciudad viene de cīvitās, que primero fue el conjunto de los ciudadanos (cīvēs) y la ciudadanía; luego, la ciudad. Fedro, antes de la fábula de las ranas que pidieron rey: «la libertad sin freno revolvió la ciudad».",
+   "dato_it": "Città viene da cīvitās, che prima fu l'insieme dei cittadini (cīvēs) e la cittadinanza; poi, la città. Fedro, prima della favola delle rane che chiesero un re: «la libertà sfrenata sconvolse la città»."
+  }
+ }
+}
